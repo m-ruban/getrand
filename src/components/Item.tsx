@@ -1,15 +1,15 @@
 import React, { FC } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { useSelector, useDispatch } from 'react-redux';
 import { decrement, increment } from 'models/counter';
-import { Store } from 'models/store';
+import { RootStore } from 'models/store';
 
 interface ItemProp {
     title: string;
 }
 
 const Item: FC<ItemProp> = ({ title }) => {
-    const count = useSelector((state: Store) => state.counter.value);
+    const count = useSelector((state: RootStore) => state.counter.value);
     const dispatch = useDispatch();
     return (
         <div>

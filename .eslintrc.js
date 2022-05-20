@@ -4,10 +4,12 @@ module.exports = {
     root: true,
     parser: 'babel-eslint',
     extends: ['plugin:react/recommended', 'prettier'],
-    plugins: ['prettier', 'react-hooks', '@typescript-eslint'],
+    plugins: ['prettier', 'react-hooks', '@typescript-eslint', 'simple-import-sort'],
     rules: {
         'prettier/prettier': ['error'],
         'react-hooks/exhaustive-deps': 'warn',
+        'simple-import-sort/imports': 'error',
+        'simple-import-sort/exports': 'error',
     },
     settings: {
         react: {
@@ -25,6 +27,24 @@ module.exports = {
             files: ['*.ts', '*.tsx'],
             parserOptions: {
                 project: path.join(__dirname, 'tsconfig.json'),
+            },
+        },
+        {
+            files: ['*.js', '*.jsx', '*.ts', '*.tsx'],
+            rules: {
+                'simple-import-sort/imports': [
+                    'error',
+                    {
+                        groups: [
+                            ['^react', '^@?\\w'],
+                            ['^(@|models)(/.*|$)'],
+                            ['^\\u0000'],
+                            ['^(@|components)(/.*|$)'],
+                            ['^\\u0000'],
+                            ['^.+\\.?(less)$'],
+                        ],
+                    },
+                ],
             },
         },
     ],

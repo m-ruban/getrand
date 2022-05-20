@@ -1,11 +1,10 @@
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import { Provider } from 'react-redux';
+import express from 'express';
 import fs from 'fs';
 import path from 'path';
 
-import { Provider } from 'react-redux';
-import express from 'express';
-
-import React from 'react';
-import { renderToString } from 'react-dom/server';
 import { createStore } from 'models/store';
 
 const app = express();
