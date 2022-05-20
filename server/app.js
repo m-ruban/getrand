@@ -1,8 +1,12 @@
-const express = require('express');
-const fs = require('fs');
-const path = require('path');
-const React = require('react');
-const ReactDOMServer = require('react-dom/server');
+import fs from 'fs';
+import path from 'path';
+
+import { Provider } from 'react-redux';
+import express from 'express';
+
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import { createStore } from 'models/store';
 
 const app = express();
 
@@ -11,12 +15,22 @@ const { App } = require('../src/components/App');
 app.get(/\.(js|css|map|ico)$/, express.static(path.resolve(__dirname, '../dist')));
 
 app.use('*', async (req, res) => {
-    const view = ReactDOMServer.renderToString(<App />);
+    const store = createStore();
+    const view = renderToString(
+        <Provider store={store}>
+            <App />
+        </Provider>
+    );
+
+    const appWithStore = `<div id="app">${view}</div><script>window.__PRELOADED_STATE__ = ${JSON.stringify(
+        store.getState()
+    ).replace(/</g, '\\u003c')}</script>`;
+
     const styles = fs.readFileSync(path.resolve(__dirname, '../dist/main.css'), 'utf8');
 
     const html = fs
         .readFileSync(path.resolve(__dirname, '../dist/index.html'), { encoding: 'utf8' })
-        .replace('<div id="app"></div>', `<div id="app">${view}</div>`)
+        .replace('<div id="app"></div>', appWithStore)
         .replace('</head>', `<style>${styles}</style></head>`);
 
     res.contentType('text/html');

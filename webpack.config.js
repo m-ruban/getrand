@@ -4,7 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'development' === process.env.NODE_ENV ? 'development' : 'production',
-    entry: 'development' === process.env.NODE_ENV ? ['./src/index.dev.js'] : ['./src/index.prod.js'],
+    entry: 'development' === process.env.NODE_ENV ? ['./src/index.dev.tsx'] : ['./src/index.prod.tsx'],
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'build/[name].js',
@@ -36,6 +36,7 @@ module.exports = {
     resolve: {
         alias: {
             components: path.resolve(__dirname, './src/components'),
+            models: path.resolve(__dirname, './src/models'),
         },
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },
