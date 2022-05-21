@@ -14,6 +14,12 @@ const { App } = require('../src/components/App');
 
 app.get(/\.(js|css|map|ico)$/, express.static(path.resolve(__dirname, '../dist')));
 
+app.get(/\.(json)$/, async (req, res) => {
+    res.contentType('application/json');
+    res.status(200);
+    return res.send({ test: 1 });
+});
+
 app.use('*', async (req, res) => {
     const store = createStore();
     const appView = renderToString(
