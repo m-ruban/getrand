@@ -7,9 +7,9 @@ import { createStore } from 'models/store';
 import { App } from 'components/App';
 
 // @ts-ignore
-const store = createStore(window.__PRELOADED_STATE__);
+const store = createStore(window.__state__);
 // @ts-ignore
-delete window.__PRELOADED_STATE__;
+delete window.__state__;
 
 ReactDOM.hydrate(
     <Provider store={store}>
