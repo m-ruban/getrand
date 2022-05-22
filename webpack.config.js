@@ -17,6 +17,10 @@ module.exports = {
                 exclude: /node_modules/,
                 use: ['babel-loader'],
             },
+            {
+                test: /\.(woff(2)?|ttf|eot|svg)?$/,
+                use: ['file-loader'],
+            },
         ],
     },
     plugins: [
@@ -42,7 +46,7 @@ module.exports = {
             components: path.resolve(__dirname, './src/components'),
             models: path.resolve(__dirname, './src/models'),
         },
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.less'],
     },
     optimization: {
         splitChunks: {

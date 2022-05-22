@@ -39,6 +39,7 @@ module.exports = {
                     {
                         groups: [
                             ['^react', '^@?\\w'],
+                            ['^gg-ukit', '^@?\\w'],
                             ['^(@|models)(/.*|$)'],
                             ['^\\u0000'],
                             ['^(@|components)(/.*|$)'],

@@ -7,6 +7,7 @@ module.exports = merge(config, {
         rules: [
             {
                 test: /\.(css|less)$/i,
+                include: [/getrand\/src/, /gg-ukit/],
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,

@@ -3,7 +3,7 @@ import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createBrowserHistory } from 'history';
 
-import { createHistory, createStore } from 'models/store';
+import { createStore } from 'models/store';
 
 import { App } from 'components/App';
 

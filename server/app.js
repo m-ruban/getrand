@@ -12,7 +12,8 @@ import { createStore } from 'models/store';
 import { App } from 'components/App';
 
 const app = express();
-app.get(/\.(js|css|map|ico)$/, express.static(path.resolve(__dirname, '../dist')));
+
+app.get(/\.(js|css|map|ico|woff)$/, express.static(path.resolve(__dirname, '../dist')));
 
 app.get(/\.(json)$/, async (req, res) => {
     res.contentType('application/json');
@@ -31,12 +32,9 @@ app.use('*', async (req, res) => {
     const appHtml = `<div id="app">${appView}</div>`;
     const storeHtml = `<script>window.__state__ = ${serialize(store.getState())}</script>`;
 
-    const styles = fs.readFileSync(path.resolve(__dirname, '../dist/main.css'), 'utf8');
-
     const html = fs
         .readFileSync(path.resolve(__dirname, '../dist/index.html'), { encoding: 'utf8' })
-        .replace('<div id="app"></div>', appHtml + storeHtml)
-        .replace('</head>', `<style>${styles}</style></head>`);
+        .replace('<div id="app"></div>', appHtml + storeHtml);
 
     res.contentType('text/html');
     res.status(200);

@@ -9,7 +9,13 @@ const Main: FC<MainProp> = ({ title }) => {
         <div>
             <div>{title}</div>
             <div>
-                <a href="/counter">Counter</a>
+                <a href="/counter">counter</a>
+            </div>
+            <div>
+                <a href="/images">images</a>
+            </div>
+            <div>
+                <a href="/tip">tip</a>
             </div>
         </div>
     );

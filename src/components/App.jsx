@@ -2,9 +2,13 @@ import React from 'react';
 import { Route, Switch } from 'react-router';
 import { ConnectedRouter } from 'connected-react-router';
 
+import Images from 'components/Images';
 import Item from 'components/Item';
 import Main from 'components/Main';
+import TipExample from 'components/TipExample';
 
+import 'gg-ukit/styles/fonts.less';
+import 'gg-ukit/styles/defaults.less';
 import 'components/app.less';
 
 export class App extends React.Component {
@@ -30,10 +34,12 @@ export class App extends React.Component {
                             path="/counter"
                             render={() => (
                                 <div className="test">
-                                    <Item title="test" />
+                                    <Item title="counter" />
                                 </div>
                             )}
                         />
+                        <Route path="/images" render={() => <Images title="images" />} />
+                        <Route path="/tip" render={() => <TipExample title="tip" />} />
                         <Route render={() => <div>Miss</div>} />
                     </Switch>
                 </>

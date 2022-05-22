@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import Button from 'gg-ukit/components/Button';
+
 import { decrement, increment } from 'models/counter';
 import { RootStore } from 'models/reducers';
 
@@ -15,13 +17,9 @@ const Item: FC<ItemProp> = ({ title }) => {
         <div>
             <div>{title}</div>
             <div>
-                <button aria-label="Increment value" onClick={() => dispatch(increment())}>
-                    Increment
-                </button>
+                <Button onClick={() => dispatch(increment())}>Click</Button>
                 <span>{count}</span>
-                <button aria-label="Decrement value" onClick={() => dispatch(decrement())}>
-                    Decrement
-                </button>
+                <Button onClick={() => dispatch(decrement())}>Decrement</Button>
             </div>
             <div>
                 <a href="/">Main</a>
