@@ -12,5 +12,6 @@ module.exports = merge(config, {
     },
     devServer: {
         port: 8088,
+        historyApiFallback: true,
     },
 });

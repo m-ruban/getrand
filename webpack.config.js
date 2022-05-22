@@ -1,10 +1,11 @@
 const path = require('path');
+const { ProvidePlugin } = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'development' === process.env.NODE_ENV ? 'development' : 'production',
-    entry: 'development' === process.env.NODE_ENV ? ['./src/index.dev.tsx'] : ['./src/index.prod.tsx'],
+    entry: 'development' === process.env.NODE_ENV ? ['./src/index.dev.jsx'] : ['./src/index.prod.jsx'],
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'build/[name].js',
@@ -19,6 +20,9 @@ module.exports = {
         ],
     },
     plugins: [
+        new ProvidePlugin({
+            process: 'process/browser',
+        }),
         new HTMLWebpackPlugin({
             filename: 'index.html',
             template: path.resolve(__dirname, 'src/index.html'),

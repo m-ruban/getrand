@@ -3,15 +3,15 @@ import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import express from 'express';
 import fs from 'fs';
+import { createMemoryHistory } from 'history';
 import path from 'path';
 import serialize from 'serialize-javascript';
 
 import { createStore } from 'models/store';
 
+import { App } from 'components/App';
+
 const app = express();
-
-const { App } = require('../src/components/App');
-
 app.get(/\.(js|css|map|ico)$/, express.static(path.resolve(__dirname, '../dist')));
 
 app.get(/\.(json)$/, async (req, res) => {
@@ -21,10 +21,11 @@ app.get(/\.(json)$/, async (req, res) => {
 });
 
 app.use('*', async (req, res) => {
-    const store = createStore();
+    const history = createMemoryHistory({ initialEntries: [req.originalUrl], initialIndex: 0 });
+    const store = createStore(history);
     const appView = renderToString(
         <Provider store={store}>
-            <App />
+            <App history={history} />
         </Provider>
     );
     const appHtml = `<div id="app">${appView}</div>`;
@@ -43,5 +44,6 @@ app.use('*', async (req, res) => {
 });
 
 app.listen('9000', () => {
+    // eslint-disable-next-line no-console
     console.log('Express server started at http://localhost:9000');
 });

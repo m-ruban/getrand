@@ -6,6 +6,7 @@ module.exports = {
     extends: ['plugin:react/recommended', 'prettier'],
     plugins: ['prettier', 'react-hooks', '@typescript-eslint', 'simple-import-sort'],
     rules: {
+        'no-console': ['error'],
         'prettier/prettier': ['error'],
         'react-hooks/exhaustive-deps': 'warn',
         'simple-import-sort/imports': 'error',
@@ -24,6 +25,7 @@ module.exports = {
     overrides: [
         {
             parser: '@typescript-eslint/parser',
+            extends: ['plugin:react/recommended', 'prettier', 'plugin:@typescript-eslint/recommended'],
             files: ['*.ts', '*.tsx'],
             parserOptions: {
                 project: path.join(__dirname, 'tsconfig.json'),
