@@ -2,17 +2,18 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import axios from 'axios';
+import dotenv from 'dotenv';
 import express from 'express';
 import fs from 'fs';
 import { createMemoryHistory } from 'history';
 import path from 'path';
 import serialize from 'serialize-javascript';
 
-import counter from 'models/counter';
 import { createStore } from 'models/store';
 
 import { App } from 'components/App';
 
+dotenv.config();
 const app = express();
 
 app.get(/\.(js|css|map|ico|woff)$/, express.static(path.resolve(__dirname, '../dist')));
@@ -24,8 +25,8 @@ app.get(/\.(json)$/, async (req, res) => {
 });
 
 const auth = {
-    username: 'getrand',
-    password: 'secret',
+    username: process.env.BASE_AUTH_API_USER,
+    password: process.env.BASE_AUTH_API_SECRET,
 };
 
 app.use('*', async (req, res) => {
