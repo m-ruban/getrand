@@ -4,11 +4,12 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    mode: 'development' === process.env.NODE_ENV ? 'development' : 'production',
-    entry: 'development' === process.env.NODE_ENV ? ['./src/index.dev.jsx'] : ['./src/index.prod.jsx'],
+    mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
+    entry: process.env.NODE_ENV === 'development' ? './src/index.dev.jsx' : './src/index.prod.jsx',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'build/[name].js',
+        clean: true,
     },
     module: {
         rules: [
@@ -61,5 +62,5 @@ module.exports = {
             },
         },
     },
-    devtool: 'source-map',
+    devtool: process.env.NODE_ENV === 'development' ? 'source-map' : undefined,
 };

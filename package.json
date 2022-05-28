@@ -3,9 +3,11 @@
   "description": "GameSpirit.org ssr app",
   "version": "1.0.0",
   "scripts": {
-    "start": "NODE_ENV=development webpack serve --config ./webpack.config.client.js",
-    "build": "NODE_ENV=production webpack --config ./webpack.config.server.js",
-    "ssr": "yarn build && node server",
+    "dev": "NODE_ENV=development webpack serve --config ./webpack.config.dev.js",
+    "client": "NODE_ENV=production webpack --config ./webpack.config.client.js",
+    "ssr": "NODE_ENV=production webpack --config ./webpack.config.getrand.js",
+    "build": "yarn client && yarn ssr",
+    "getrand": "yarn client && yarn ssr && node dist/server",
     "ts-check": "tsc -p tsconfig.json --noEmit",
     "postinstall": "ln -sf $(pwd)/githooks/* .git/hooks || true"
   },
@@ -59,6 +61,7 @@
     "express": "^4.16.3",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^4.5.0",
+    "ignore-loader": "^0.1.2",
     "less": "^4.1.1",
     "less-loader": "7.3.0",
     "lint-staged": "^11.1.2",

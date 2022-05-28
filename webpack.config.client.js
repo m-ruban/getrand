@@ -1,3 +1,4 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { merge } = require('webpack-merge');
 const config = require('./webpack.config');
 
@@ -5,13 +6,21 @@ module.exports = merge(config, {
     module: {
         rules: [
             {
-                test: /\.less$/,
-                use: ['style-loader', 'css-loader', 'less-loader'],
+                test: /\.(css|less)$/i,
+                include: [/getrand\/src/, /gg-ukit/],
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                    },
+                    {
+                        loader: 'css-loader',
+                    },
+                    {
+                        loader: 'less-loader',
+                    },
+                ],
             },
         ],
     },
-    devServer: {
-        port: 8088,
-        historyApiFallback: true,
-    },
+    plugins: [new MiniCssExtractPlugin()],
 });
