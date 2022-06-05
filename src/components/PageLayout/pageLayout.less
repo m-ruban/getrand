@@ -1,0 +1,27 @@
+@import 'gg-ukit/styles/colors';
+
+.page-layout {
+    position: relative;
+    background-color: @minor;
+    z-index: 1;
+}
+
+.page-layout__top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    background-image: linear-gradient(@tertiary, @minor);
+    z-index: -1;
+}
+
+.page-layout__bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    background-image: linear-gradient(@minor, @tertiary);
+    z-index: -1;
+}

@@ -14,6 +14,8 @@
         "paths": {
             "components/*": ["./src/components/*"],
             "models/*": ["./src/models/*"],
+            "pages/*": ["./src/pages/*"],
+            "modules/*": ["./src/modules/*"]
         }
     }
 }

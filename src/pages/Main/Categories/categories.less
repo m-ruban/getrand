@@ -1,0 +1,55 @@
+@import 'gg-ukit/styles/screen';
+@import 'gg-ukit/styles/colors';
+
+@category-border: 2px solid #BD1C3D;
+@icon-height: 60px;
+
+.categories-scroller {
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.categories-list {
+    display: flex;
+    width: max-content;
+
+    @media @screen-gt-xs {
+        display: block;
+    }
+}
+
+.category-content {
+    display: flex;
+    align-items: center;
+    background-color: @tertiary;
+    border-radius: 4px;
+    padding: 15px 25px;
+    border-bottom: @category-border;
+}
+
+.category-icon-wrapper {
+    width: 50%;
+}
+
+.category-divider {
+    height: @icon-height - 15;
+    border-left: 2px solid #3a444d;
+    margin-left: 15px;
+    margin-right: 15px;
+
+    @media @screen-gt-xs {
+        margin-left: 0;
+    }
+}
+
+.category-icon {
+    height: @icon-height;
+}
+
+.category-title {
+    width: 50%;
+    text-transform: uppercase;
+}

@@ -9,7 +9,6 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'build/[name].js',
-        clean: true,
     },
     module: {
         rules: [
@@ -19,7 +18,7 @@ module.exports = {
                 use: ['babel-loader'],
             },
             {
-                test: /\.(woff(2)?|ttf|eot|svg)?$/,
+                test: /\.(woff(2)?|ttf|eot|svg|png)?$/,
                 use: ['file-loader'],
             },
         ],
@@ -46,6 +45,8 @@ module.exports = {
         alias: {
             components: path.resolve(__dirname, './src/components'),
             models: path.resolve(__dirname, './src/models'),
+            pages: path.resolve(__dirname, './src/pages'),
+            modules: path.resolve(__dirname, './src/modules'),
         },
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.less'],
     },

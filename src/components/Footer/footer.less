@@ -1,0 +1,71 @@
+@import 'gg-ukit/styles/colors';
+@import 'gg-ukit/styles/screen';
+
+@v-spacing: 25px;
+
+.footer-text() {
+    color: @secondary;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.footer-wrapper {
+    background-color: #1b1d1f;
+    padding-top: 50px;
+    padding-bottom: 70px;
+    margin-top: 100px;
+}
+
+.footer-logo {
+    display: none;
+    max-width: 100%;
+
+    @media @screen-gt-xs {
+        display: block;
+    }
+}
+
+.footer-about {
+    margin-bottom: @v-spacing;
+}
+
+.footer-about-content {
+    margin-bottom: 15px;
+    .footer-text();
+}
+
+.footer-links {
+    margin-bottom: @v-spacing;
+}
+
+.footer-link {
+    margin-bottom: 15px;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+.footer-to-top {
+    text-align: right;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    @media @screen-gt-xs {
+        text-align: center;
+    }
+}
+
+.footer-contacts {
+    margin-bottom: @v-spacing;
+}
+
+.footer-copyright {
+    background-color: #000;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    .footer-text();
+}

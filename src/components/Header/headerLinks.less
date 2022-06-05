@@ -1,0 +1,30 @@
+@import 'gg-ukit/styles/screen';
+@import 'gg-ukit/styles/colors';
+
+.header-menu-links-link {
+    display: none;
+    text-transform: uppercase;
+    margin-right: 30px;
+
+    a {
+        font-size: 20px;
+    }
+
+    @media @screen-gt-s {
+        display: block;
+    }
+}
+
+.header-menu-links-link__categories {
+    @media @screen-m {
+        margin-right: 0;
+    }
+}
+
+.header-menu-links-link__companies {
+    margin-right: 0;
+
+    @media @screen-m {
+        display: none;
+    }
+}

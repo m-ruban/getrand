@@ -1,0 +1,60 @@
+@import 'gg-ukit/styles/screen';
+@import './dimensions';
+
+.header-mobile-menu {
+    display: block;
+
+    @media @screen-gt-s {
+        display: none;
+    }
+}
+
+.header-mobile-menu-icon {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.header-mobile-menu-burger {
+    display: inline-block;
+    height: 40px;
+    width: 50px;
+    content: '';
+    background-size: cover;
+    background-image: url('./icons/burger.svg');
+}
+
+.header-mobile-menu-links {
+    max-height: 0;
+    overflow: hidden;
+
+    position: absolute;
+    background-color: #000;
+    width: 100%;
+    left: 0;
+    top: @header-menu-height;
+    z-index: 1;
+}
+
+.header-mobile-menu-links_show {
+    animation: show 1s ease forwards;
+}
+
+@keyframes show {
+    from {
+        max-height: 0;
+    }
+
+    to {
+        max-height: 695px;
+    }
+}
+
+.header-mobile-menu-links-link {
+    text-align: center;
+    margin-bottom: 25px;
+
+    a {
+        font-size: 20px;
+    }
+}

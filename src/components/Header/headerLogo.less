@@ -1,0 +1,48 @@
+@import 'gg-ukit/styles/colors';
+@import 'gg-ukit/styles/screen';
+
+.header-menu-logo-wrapper {
+    display: flex;
+}
+
+.header-menu-logo {
+    width: 105px;
+    height: 95px;
+}
+
+.header-menu-name-wrapper {
+    display: none;
+    margin-left: 15px;
+
+    @media (min-width: 550px) {
+        display: block;
+    }
+}
+
+.header-menu-name {
+    font-family: Montserrat, sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding-bottom: 6px;
+    color: @secondary;
+    border-bottom: 2px solid #bd1c3d;
+}
+
+.header-menu-name__spec-symbol {
+    color: #bd1c3d;
+    font-size: 40px;
+    position: relative;
+    top: 4px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.header-menu-slogan {
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: @secondary;
+    padding-top: 6px;
+    letter-spacing: 0.5px;
+}
