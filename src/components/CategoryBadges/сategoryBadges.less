@@ -1,47 +1,36 @@
 @import 'gg-ukit/styles/colors';
 
-.category-badges-scroller {
-    overflow: auto;
-
-    &::-webkit-scrollbar {
-        display: none;
-    }
-}
-
 .category-badges {
     display: flex;
     width: max-content;
 }
 
 .category-badge {
+    display: inline-flex;
     margin-right: 15px;
     background-color: #2e343a;
-    padding: 5px 15px;
+    padding: 8px 18px;
     font-family: 'Open Sans', sans-serif;
     border-radius: 5px;
     transition: background-color 300ms linear;
+    font-size: 14px;
+    color: #fff;
+    text-decoration: none;
 
     &:last-of-type {
         margin-right: 0;
     }
 
     &:hover {
-        cursor: pointer;
-        background-color: @primary-minor;
-    }
-
-    a {
-        font-size: 14px;
-        font-family: 'Open Sans', sans-serif;
-        color: #fff;
-        text-decoration: none;
-
-        &::first-letter {
-            text-transform: uppercase;
-        }
+        background-color: #404a53;
     }
 }
 
 .category-badge_alt {
     background-color: #404a53;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #566472;
+    }
 }

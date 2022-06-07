@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import Link from 'gg-ukit/components/Link';
+import Link, { LinkType } from 'gg-ukit/components/Link';
 
 import { ArticleSearch } from 'models/lastReviews';
 
@@ -30,7 +30,9 @@ const ArticleSidebarItem: FC<ArticleSidebarItemProps> = ({
             </div>
             <div className="article-sidebar-item-description">
                 <div>
-                    <Link href={articleLink(type === 'review' ? REVIEWS : GUIDES, keyword)}>{name}</Link>
+                    <Link type={LinkType.Promo} href={articleLink(type === 'review' ? REVIEWS : GUIDES, keyword)}>
+                        {name}
+                    </Link>
                 </div>
                 <div className="article-sidebar-item-categories">
                     <CategoryBadges categories={categories} alt />

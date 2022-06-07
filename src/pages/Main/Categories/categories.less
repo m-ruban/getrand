@@ -1,20 +1,28 @@
 @import 'gg-ukit/styles/screen';
 @import 'gg-ukit/styles/colors';
+@import 'gg-ukit/styles/columns';
 
 @category-border: 2px solid #BD1C3D;
 @icon-height: 60px;
 
 .categories-scroller {
-    overflow: auto;
-
-    &::-webkit-scrollbar {
-        display: none;
-    }
+    margin-right: @column-padding;
+    margin-left: @column-padding;
 }
 
 .categories-list {
     display: flex;
     width: max-content;
+
+    .gg-column {
+        &:first-of-type {
+            padding-left: 0;
+        }
+
+        &:last-of-type {
+            padding-right: 0;
+        }
+    }
 
     @media @screen-gt-xs {
         display: block;

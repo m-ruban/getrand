@@ -9,6 +9,8 @@ import { RootStore } from 'models/reducers';
 
 import { altIconImgSrc, categoryLink } from 'modules/links';
 
+import Scroller from 'components/Scroller';
+
 import 'pages/Main/Categories/categories.less';
 
 const Categories: FC = () => {
@@ -16,29 +18,31 @@ const Categories: FC = () => {
     return (
         <ColumnsWrapper>
             <div className="categories-scroller">
-                <div className="categories-list">
-                    {categories.map(({ id, code, alt_image, seo: { name, keyword } }) => {
-                        return (
-                            <Column key={id} l={3} m={4} s={3} xs={4}>
-                                <div className="category-content">
-                                    <div className="category-icon-wrapper">
-                                        <img
-                                            className="category-icon"
-                                            src={altIconImgSrc(alt_image)}
-                                            alt={`${name},${keyword}`}
-                                        />
+                <Scroller>
+                    <div className="categories-list">
+                        {categories.map(({ id, code, alt_image, seo: { name, keyword } }) => {
+                            return (
+                                <Column key={id} l={3} m={4} s={3} xs={4}>
+                                    <div className="category-content">
+                                        <div className="category-icon-wrapper">
+                                            <img
+                                                className="category-icon"
+                                                src={altIconImgSrc(alt_image)}
+                                                alt={`${name},${keyword}`}
+                                            />
+                                        </div>
+                                        <div className="category-divider" />
+                                        <div className="category-title">
+                                            <Link type={LinkType.Secondary} href={categoryLink(code)}>
+                                                {name}
+                                            </Link>
+                                        </div>
                                     </div>
-                                    <div className="category-divider" />
-                                    <div className="category-title">
-                                        <Link type={LinkType.Secondary} href={categoryLink(code)}>
-                                            {name}
-                                        </Link>
-                                    </div>
-                                </div>
-                            </Column>
-                        );
-                    })}
-                </div>
+                                </Column>
+                            );
+                        })}
+                    </div>
+                </Scroller>
             </div>
         </ColumnsWrapper>
     );

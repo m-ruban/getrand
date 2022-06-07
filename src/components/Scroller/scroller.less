@@ -1,0 +1,13 @@
+.scroller {
+    overflow: auto;
+    scrollbar-width: none;
+    user-select: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.scroller_active {
+    cursor: grabbing;
+}

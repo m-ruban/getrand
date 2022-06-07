@@ -5,6 +5,8 @@ import { Category } from 'models/mainCategories';
 
 import { categoryLink } from 'modules/links';
 
+import Scroller from 'components/Scroller';
+
 import 'components/CategoryBadges/сategoryBadges.less';
 
 interface CategoryBadgesProps {
@@ -14,17 +16,21 @@ interface CategoryBadgesProps {
 
 const CategoryBadges: FC<CategoryBadgesProps> = ({ categories, alt }) => {
     return (
-        <div className="category-badges-scroller">
+        <Scroller>
             <div className="category-badges">
                 {categories.map(({ id, code, seo: { name } }) => {
                     return (
-                        <div key={id} className={classnames('category-badge', { 'category-badge_alt': alt })}>
-                            <a href={categoryLink(code)}>{name}</a>
-                        </div>
+                        <a
+                            key={id}
+                            className={classnames('category-badge', { 'category-badge_alt': alt })}
+                            href={categoryLink(code)}
+                        >
+                            {name}
+                        </a>
                     );
                 })}
             </div>
-        </div>
+        </Scroller>
     );
 };
 

@@ -11,7 +11,7 @@ import { companyLink, imgFullSrc } from 'modules/links';
 
 import 'components/CompanySearchItem/companySearchItem.less';
 
-const CompanySearchItem: FC<Company> = ({ main_img, created, seo: { name, descr, keyword } }) => {
+const CompanySearchItem: FC<Company> = ({ main_img, created_iso, seo: { name, descr, keyword } }) => {
     return (
         <div className="company-search-item">
             <Column l={3} m={3} s={6} xs={4}>
@@ -25,7 +25,7 @@ const CompanySearchItem: FC<Company> = ({ main_img, created, seo: { name, descr,
                         {name}
                     </Link>
                 </div>
-                <Paragraph>Дата основания: {dateFormat(new Date(created))}</Paragraph>
+                <Paragraph>Дата основания: {dateFormat(new Date(created_iso))}</Paragraph>
                 <Paragraph>{descr}</Paragraph>
             </Column>
         </div>

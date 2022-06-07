@@ -5,7 +5,7 @@ import { Seo } from 'models/announce';
 export interface Company {
     id: number;
     main_img: string;
-    created: string;
+    created_iso: string;
     hasText: boolean;
     seo: Seo;
 }
