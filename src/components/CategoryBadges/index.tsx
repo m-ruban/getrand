@@ -7,7 +7,7 @@ import { categoryLink } from 'modules/links';
 
 import Scroller from 'components/Scroller';
 
-import 'components/CategoryBadges/сategoryBadges.less';
+import 'components/CategoryBadges/categoryBadges.less';
 
 interface CategoryBadgesProps {
     categories: Category[];
@@ -25,7 +25,7 @@ const CategoryBadges: FC<CategoryBadgesProps> = ({ categories, alt }) => {
                             className={classnames('category-badge', { 'category-badge_alt': alt })}
                             href={categoryLink(code)}
                         >
-                            {name}
+                            <span className="category-badge-text">{name}</span>
                         </a>
                     );
                 })}

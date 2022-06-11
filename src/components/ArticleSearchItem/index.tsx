@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 
+import Button, { ButtonKind } from 'gg-ukit/components/Button';
 import Column from 'gg-ukit/components/Column';
 import ArrowForward from 'gg-ukit/components/Icon/ArrowForward';
 import HoveredImage from 'gg-ukit/components/Image/HoveredImage';
@@ -32,10 +33,18 @@ const ArticleSearchItem: FC<ArticleSearchItemProps> = ({
                     <HoveredImage
                         src={imgSrc(keyword, main_img)}
                         alt={name}
-                        hoverView={<ArrowForward color={Colors.PrimaryMinor} scale={2} />}
-                        onHoverViewClick={() => {
-                            window.document.location.assign(articleLink(type === 'review' ? REVIEWS : GUIDES, keyword));
-                        }}
+                        hoverView={
+                            <Button
+                                kind={ButtonKind.Promo}
+                                onClick={() => {
+                                    window.document.location.assign(
+                                        articleLink(type === 'review' ? REVIEWS : GUIDES, keyword)
+                                    );
+                                }}
+                                icon={<ArrowForward color={Colors.Secondary} />}
+                                rounded
+                            />
+                        }
                     />
                 </div>
                 <div className="article-search-item-categories">
