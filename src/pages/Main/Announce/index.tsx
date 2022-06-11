@@ -13,6 +13,8 @@ import { RootStore } from 'models/reducers';
 
 import { articleLink, imgFullSrc } from 'modules/links';
 
+import CategoryBadges from 'components/CategoryBadges';
+
 import 'pages/Main/Announce/announce.less';
 
 const Announce: FC = () => {
@@ -23,12 +25,13 @@ const Announce: FC = () => {
     const title = useSelector((state: RootStore) => state.announce.short_name);
     const description = useSelector((state: RootStore) => state.announce.short_descr);
     const section = useSelector((state: RootStore) => state.announce.article.article_type_keyword);
+    const categories = useSelector((state: RootStore) => state.announce.article.categories);
     return (
         <ColumnsWrapper>
             <Column l={12} m={12} s={6} xs={4}>
                 <div className="announce">
                     <div className="announce-content">
-                        <div className="announce-info">
+                        <div className={classnames('announce-info', { 'announce-info_open': showDescription })}>
                             <div className="announce-title">
                                 <div>{title}</div>
                                 <div
@@ -42,20 +45,22 @@ const Announce: FC = () => {
                                 </div>
                             </div>
                             <div
-                                className={classnames('announce-description', {
-                                    'announce-description_show': showDescription,
+                                className={classnames('announce-description-and-categories', {
+                                    'announce-description-and-categories_show': showDescription,
                                 })}
                             >
-                                {description}
+                                <div className="announce-description">{description}</div>
+                                <CategoryBadges categories={categories} alt />
                             </div>
                             <div className="announce-link">
                                 <Link href={articleLink(section, keyword)}>Далее</Link>
                             </div>
-                            <div className="announce-mobile-link">
-                                <Link href={articleLink(section, keyword)}>Далее</Link>
+                            <div className="announce-mobile-link-wrapper">
+                                <div className="announce-mobile-link">
+                                    <Link href={articleLink(section, keyword)}>Далее</Link>
+                                </div>
                             </div>
                         </div>
-                        <div className="announce-overlay" />
                     </div>
                     <img className="announce-img" src={imgFullSrc(keyword, image)} alt={name} />
                 </div>

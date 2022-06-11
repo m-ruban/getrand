@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { Category } from 'models/mainCategories';
+
 export interface Seo {
     id: number;
     name: string;
@@ -18,6 +20,7 @@ export interface Article {
     age_limit: number;
     article_type_keyword: string;
     seo: Seo;
+    categories: Category[];
 }
 
 export interface Announce {
@@ -61,6 +64,7 @@ const initialState: Announce = {
             keyword: '',
             descr: '',
         },
+        categories: [],
     },
 };
 
