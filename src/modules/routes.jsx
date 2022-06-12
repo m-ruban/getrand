@@ -13,8 +13,18 @@ const routes = [
             '/api/v1/companies/?limit=4',
             '/api/v1/reviews/popular/',
             '/api/v1/walkthrough/popular/',
+            '/api/v1/meta-tags/?keyword=main',
         ],
-        getInitState: ([announce, categories, reviews, guides, companies, popularReviews, popularGuides]) => ({
+        getInitState: ([
+            announce,
+            categories,
+            reviews,
+            guides,
+            companies,
+            popularReviews,
+            popularGuides,
+            metaTags,
+        ]) => ({
             announce: announce.data,
             mainCategories: categories.data,
             lastReviews: reviews.data,
@@ -22,6 +32,7 @@ const routes = [
             lastCompanies: companies.data,
             popularReviews: popularReviews.data,
             popularGuides: popularGuides.data,
+            metaTags: metaTags.data,
         }),
     },
 ];

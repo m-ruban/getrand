@@ -14,6 +14,7 @@ import serialize from 'serialize-javascript';
 import { createStore } from 'models/store';
 
 import routes from 'modules/routes';
+import tags from 'modules/tags';
 
 import { App } from 'components/App';
 
@@ -69,6 +70,8 @@ app.use('*', async (req, res) => {
     const history = createMemoryHistory({ initialEntries: [req.originalUrl], initialIndex: 0 });
     const preloadedState = route.getInitState(api);
     const store = createStore(history, preloadedState);
+    const storeInstance = store.getState();
+    const { metaTags } = storeInstance;
 
     // render app
     const appView = renderToString(
@@ -77,12 +80,13 @@ app.use('*', async (req, res) => {
         </Provider>
     );
     const appHtml = `<div id="app">${appView}</div>`;
-    const storeHtml = `<script>window.__state__ = ${serialize(store.getState())}</script>`;
+    const storeHtml = `<script>window.__state__ = ${serialize(storeInstance)}</script>`;
 
     // inject html
     const html = fs
         .readFileSync(path.resolve(__dirname, '../index.html'), { encoding: 'utf8' })
-        .replace('<div id="app"></div>', appHtml + storeHtml);
+        .replace('<div id="app"></div>', appHtml + storeHtml)
+        .replace('<title />', tags(metaTags, req.originalUrl));
 
     res.contentType('text/html');
     res.status(200);

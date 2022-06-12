@@ -6,6 +6,7 @@ import lastCompanies from 'models/lastCompanies';
 import lastGuides from 'models/lastGuides';
 import lastReviews from 'models/lastReviews';
 import mainCategories from 'models/mainCategories';
+import metaTags from 'models/metaTags';
 import popularGuides from 'models/popularGuides';
 import popularReviews from 'models/popularReviews';
 
@@ -18,6 +19,7 @@ export const reducers = {
     lastCompanies,
     popularGuides,
     popularReviews,
+    metaTags,
     router: undefined,
 };
 
