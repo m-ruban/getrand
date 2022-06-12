@@ -25,7 +25,7 @@ const CategoryBadges: FC<CategoryBadgesProps> = ({ categories, alt }) => {
                             className={classnames('category-badge', { 'category-badge_alt': alt })}
                             href={categoryLink(code)}
                         >
-                            <span className="category-badge-text">{name}</span>
+                            {name}
                         </a>
                     );
                 })}

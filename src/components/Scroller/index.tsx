@@ -23,13 +23,15 @@ const Scroller: FC<ScrollerProps> = ({ children }) => {
 
     const onMouseLeaveOrUp = useCallback(() => {
         down.current = false;
-        list.current.classList.remove('scroller_active');
+        list.current.classList.remove('scroller_active', 'scroller_disable-events');
     }, []);
 
     const onMouseMove = useCallback((e: MouseEvent<HTMLDivElement>) => {
         if (!down.current) {
             return;
         }
+        list.current.classList.remove('scroller_active');
+        list.current.classList.add('scroller_disable-events');
         e.preventDefault();
         const x = e.pageX - list.current.offsetLeft;
         list.current.scrollLeft = left.current - (x - start.current) * SLIDE_SPEED;
