@@ -1,16 +1,28 @@
 import React, { FC } from 'react';
+import { useSelector } from 'react-redux';
+
+import { RootStore } from 'models/reducers';
+
+import { host, sectionLink } from 'modules/links';
 
 import 'components/Header/headerLogo.less';
 
 const HeaderLogo: FC = () => {
+    const pathname = useSelector((state: RootStore) => state.router.location.pathname);
+    const logo = <img className="header-menu-logo" src={`${host}/img/logo/golem.png`} alt="GameSpirit.org logo" />;
     return (
         <div className="header-menu-logo-wrapper">
             <div>
-                <img
-                    className="header-menu-logo"
-                    src="http://gamespirit.org/img/logo/golem.png"
-                    alt="GameSpirit.org logo"
-                />
+                {pathname === '/' && logo}
+                {pathname !== '/' && (
+                    <a href={sectionLink('')}>
+                        <img
+                            className="header-menu-logo"
+                            src="http://gamespirit.org/img/logo/golem.png"
+                            alt="GameSpirit.org logo"
+                        />
+                    </a>
+                )}
             </div>
             <div className="header-menu-name-wrapper">
                 <div className="header-menu-name">

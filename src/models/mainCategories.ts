@@ -7,6 +7,7 @@ export interface Category {
     icon: string;
     code: string;
     alt_image: string;
+    articles_count: number;
     seo: Seo;
 }
 

@@ -18,6 +18,7 @@ import 'components/ArticleSearchItem/articleSearchItem.less';
 
 interface ArticleSearchItemProps extends ArticleSearch {
     type: 'review' | 'guide';
+    short?: boolean;
 }
 
 const ArticleSearchItem: FC<ArticleSearchItemProps> = ({
@@ -25,9 +26,10 @@ const ArticleSearchItem: FC<ArticleSearchItemProps> = ({
     seo: { name, keyword, descr },
     categories,
     type,
+    short,
 }) => {
     return (
-        <Column l={type === 'review' ? 4 : 8} m={type === 'review' ? 4 : 8} s={type === 'review' ? 3 : 6} xs={4}>
+        <Column l={short ? 4 : 8} m={short ? 4 : 8} s={short ? 3 : 6} xs={4}>
             <div className="article-search-item">
                 <div className="article-search-item-image-wrapper">
                     <HoveredImage

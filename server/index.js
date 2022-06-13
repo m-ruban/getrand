@@ -59,7 +59,9 @@ app.use('*', async (req, res) => {
     const route = routes.find(({ path }) => path === matchedRoute.path);
     let api;
     try {
-        api = await Promise.all(route.api.map((url) => fetcher.get(`http://gamespirit.org${url}`, { auth })));
+        api = await Promise.all(
+            route.api(matchedRoute.params).map((url) => fetcher.get(`http://gamespirit.org${url}`, { auth }))
+        );
     } catch (error) {
         res.status(500);
         return res.send('api error');
@@ -69,6 +71,10 @@ app.use('*', async (req, res) => {
     // create state
     const history = createMemoryHistory({ initialEntries: [req.originalUrl], initialIndex: 0 });
     const preloadedState = route.getInitState(api);
+    // request state data
+    preloadedState.request = {
+        url: req.protocol + '://' + req.get('host'),
+    };
     const store = createStore(history, preloadedState);
     const storeInstance = store.getState();
     const { metaTags } = storeInstance;

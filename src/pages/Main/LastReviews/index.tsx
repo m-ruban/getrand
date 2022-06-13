@@ -16,7 +16,7 @@ const LastReviews: FC = () => {
             <H2 title="Последние обзоры" line={HeaderLine.TertiaryDimmed} combineColor />
             <ColumnContainer>
                 {lastReviews.map(({ id, ...props }) => {
-                    return <ArticleSearchItem key={id} type="review" id={id} {...props} />;
+                    return <ArticleSearchItem key={id} type="review" id={id} {...props} short />;
                 })}
             </ColumnContainer>
         </>

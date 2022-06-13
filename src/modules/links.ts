@@ -4,6 +4,8 @@ export const REVIEWS = 'reviews';
 
 export const GUIDES = 'walkthrough';
 
+const getRandPages = ['', 'reviews/'];
+
 export const articleLink = (section: string, keyword: string): string => {
     return `${host}/${section}/${keyword}/`;
 };
@@ -30,5 +32,8 @@ export const altIconImgSrc = (image: string): string => {
 };
 
 export const sectionLink = (path: string): string => {
+    if (getRandPages.includes(path)) {
+        return `/${path}`;
+    }
     return `${host}/${path}`;
 };

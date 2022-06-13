@@ -1,0 +1,37 @@
+@import 'gg-ukit/styles/colors';
+@import 'gg-ukit/styles/mixins';
+
+@sidebar-category-padding: 20px;
+
+.sidebar-categories {
+    padding: @sidebar-category-padding;
+}
+
+.sidebar-category {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #3a444d;
+    margin-bottom: @sidebar-category-padding;
+    padding-bottom: @sidebar-category-padding;
+
+    &:last-of-type {
+        border-bottom: 0;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+}
+
+.sidebar-category-icon {
+    height: 40px;
+}
+
+.sidebar-category-link {
+    margin-left: 15px;
+}
+
+.sidebar-category-count {
+    .basic-text();
+
+    margin-left: auto;
+    color: @secondary;
+}
