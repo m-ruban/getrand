@@ -1,15 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// TO DO delete interface
-interface Pagination {
-    selected: number;
-    prev: boolean;
-    start: number[];
-    middle: number[];
-    end: number[];
-    next: boolean;
+import { PagerProps } from 'gg-ukit/components/Pager';
+
+interface Pagination extends PagerProps {
     pathname: string;
-    search: string;
 }
 
 const initialState: Pagination = {
@@ -17,7 +11,7 @@ const initialState: Pagination = {
     prev: false,
     next: false,
     pathname: '',
-    search: '',
+    urlTemplate: '',
     middle: [],
     end: [],
     start: [],

@@ -1,7 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { Category } from 'models/mainCategories';
-
 export interface MetaTags {
     title: string;
     description: string;
