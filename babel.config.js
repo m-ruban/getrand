@@ -14,6 +14,6 @@ module.exports = {
         '@babel/plugin-transform-runtime',
         '@babel/transform-arrow-functions',
         '@babel/proposal-object-rest-spread',
-        ['babel-plugin-webpack-alias', { config: './webpack.config.js' }],
+        ['babel-plugin-webpack-alias', { config: './webpack.config.client.js' }],
     ],
 };

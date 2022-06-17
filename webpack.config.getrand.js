@@ -1,9 +1,9 @@
 const path = require('path');
 const { ProvidePlugin } = require('webpack');
-const { merge } = require('webpack-merge');
-const common = require('./webpack.config');
+const aliases = require('./aliases');
 
-const config = merge(common, {
+module.exports = {
+    mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
     target: 'node',
     entry: './server/index.js',
     output: {
@@ -35,12 +35,27 @@ const config = merge(common, {
             },
         ],
     },
-});
-
-config.plugins = [
-    new ProvidePlugin({
-        process: 'process/browser',
-    }),
-];
-
-module.exports = config;
+    plugins: [
+        new ProvidePlugin({
+            process: 'process/browser',
+        }),
+    ],
+    resolve: {
+        alias: aliases,
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.less'],
+    },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                default: false,
+                vendors: false,
+                vendor: {
+                    chunks: 'all',
+                    name: 'vendor',
+                    test: /node_modules/,
+                },
+            },
+        },
+    },
+    devtool: process.env.NODE_ENV === 'development' ? 'source-map' : undefined,
+};
