@@ -2,6 +2,7 @@ import { Reducer } from '@reduxjs/toolkit';
 
 import announce from 'models/announce';
 import breadcrumbs from 'models/breadcrumbs';
+import guides from 'models/guides';
 import lastCompanies from 'models/lastCompanies';
 import lastGuides from 'models/lastGuides';
 import lastReviews from 'models/lastReviews';
@@ -26,6 +27,7 @@ export const reducers = {
     reviews,
     pagination,
     request,
+    guides,
     router: undefined,
 };
 

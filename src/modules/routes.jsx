@@ -1,3 +1,4 @@
+import Guides from 'pages/Guides';
 import Main from 'pages/Main';
 import Reviews from 'pages/Reviews';
 
@@ -56,6 +57,31 @@ const routes = [
             popularReviews: popularReviews.data,
             popularGuides: popularGuides.data,
             reviews: reviews.data,
+            pagination: pagination.data,
+            metaTags: metaTags.data,
+            mainCategories: categories.data,
+        }),
+    },
+    {
+        path: '/walkthrough/:page?/',
+        exact: true,
+        component: Guides,
+        api: ({ page }) => {
+            return [
+                '/api/v1/walkthrough/breadcrumbs/',
+                '/api/v1/reviews/popular/',
+                '/api/v1/walkthrough/popular/',
+                `/api/v1/walkthrough/?limit=11&page=${page || 0}`,
+                `/api/v1/walkthrough/pagination/${page || 0}/`,
+                '/api/v1/meta-tags/?keyword=walkthrough',
+                '/api/v1/categories/?limit=4',
+            ];
+        },
+        getInitState: ([breadcrumbs, popularReviews, popularGuides, guides, pagination, metaTags, categories]) => ({
+            breadcrumbs: breadcrumbs.data,
+            popularReviews: popularReviews.data,
+            popularGuides: popularGuides.data,
+            guides: guides.data,
             pagination: pagination.data,
             metaTags: metaTags.data,
             mainCategories: categories.data,

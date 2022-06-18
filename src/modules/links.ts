@@ -4,7 +4,7 @@ export const REVIEWS = 'reviews';
 
 export const GUIDES = 'walkthrough';
 
-const getRandPages = ['', 'reviews/'];
+const getRandPages = ['', `${REVIEWS}/`, `${GUIDES}/`];
 
 export const articleLink = (section: string, keyword: string): string => {
     return `${host}/${section}/${keyword}/`;

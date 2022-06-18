@@ -12,9 +12,9 @@ import Pagination from 'components/Pagination';
 import Sidebar from 'components/Sidebar';
 import StickyContainer from 'components/StickyContainer';
 
-import ReviewList from 'pages/Reviews/ReviewList';
+import GuidesList from 'pages/Guides/GuidesList';
 
-const Reviews: FC = () => {
+const Guides: FC = () => {
     return (
         <PageLayout>
             <Header />
@@ -22,7 +22,7 @@ const Reviews: FC = () => {
             <ColumnsWrapper>
                 <StickyContainer>
                     <Column l={8} m={8} s={6} xs={4}>
-                        <ReviewList />
+                        <GuidesList />
                         <Pagination />
                         <Description />
                     </Column>
@@ -36,4 +36,4 @@ const Reviews: FC = () => {
     );
 };
 
-export default Reviews;
+export default Guides;
