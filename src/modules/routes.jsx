@@ -1,12 +1,15 @@
-import Guides from 'pages/Guides';
-import Main from 'pages/Main';
-import Reviews from 'pages/Reviews';
+import React from 'react';
+import loadable from '@loadable/component';
+
+const Main = loadable(() => import('pages/Main'));
+const Guides = loadable(() => import('pages/Guides'));
+const Reviews = loadable(() => import('pages/Reviews'));
 
 const routes = [
     {
         path: '/',
         exact: true,
-        component: Main,
+        component: () => <Main />,
         api: () => [
             '/api/v1/announce/',
             '/api/v1/categories/',
@@ -40,7 +43,7 @@ const routes = [
     {
         path: '/reviews/:page?/',
         exact: true,
-        component: Reviews,
+        component: () => <Reviews />,
         api: ({ page }) => {
             return [
                 '/api/v1/reviews/breadcrumbs/',
@@ -65,7 +68,7 @@ const routes = [
     {
         path: '/walkthrough/:page?/',
         exact: true,
-        component: Guides,
+        component: () => <Guides />,
         api: ({ page }) => {
             return [
                 '/api/v1/walkthrough/breadcrumbs/',
