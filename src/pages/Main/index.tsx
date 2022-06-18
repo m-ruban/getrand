@@ -1,55 +1,8 @@
-import React, { FC } from 'react';
-import StickyBox from 'react-sticky-box';
+import React, { ReactElement } from 'react';
+import loadable from '@loadable/component';
 
-import Column from 'gg-ukit/components/Column';
-import ColumnsWrapper from 'gg-ukit/components/ColumnsWrapper';
+const Main = loadable(() => import('pages/Main/Main.route'));
 
-import Footer from 'components/Footer';
-import Header from 'components/Header';
-import PageLayout from 'components/PageLayout';
-import SidebarColumn from 'components/SidebarColumn';
-import StickyContainer from 'components/StickyContainer';
+const MainRoute = (): ReactElement => <Main />;
 
-import Announce from 'pages/Main/Announce';
-import Categories from 'pages/Main/Categories';
-import LastCompanies from 'pages/Main/LastCompanies';
-import LastGuides from 'pages/Main/LastGuides';
-import LastReviews from 'pages/Main/LastReviews';
-import PopularGuides from 'pages/Main/PopularGuides';
-import PopularReviews from 'pages/Main/PopularReviews';
-import VSpacing from 'pages/Main/VSpacing';
-
-const Main: FC = () => {
-    return (
-        <PageLayout>
-            <Header />
-            <VSpacing />
-            <Announce />
-            <VSpacing />
-            <Categories />
-            <VSpacing />
-            <ColumnsWrapper>
-                <StickyContainer>
-                    <Column l={8} m={8} s={6} xs={4}>
-                        <LastReviews />
-                        <LastGuides />
-                        <LastCompanies />
-                    </Column>
-                    <Column l={4} m={4} s={6} xs={4}>
-                        <StickyBox>
-                            <SidebarColumn title="Топ обзоров">
-                                <PopularReviews />
-                            </SidebarColumn>
-                            <SidebarColumn title="Топ гайдов">
-                                <PopularGuides />
-                            </SidebarColumn>
-                        </StickyBox>
-                    </Column>
-                </StickyContainer>
-            </ColumnsWrapper>
-            <Footer />
-        </PageLayout>
-    );
-};
-
-export default Main;
+export default MainRoute;

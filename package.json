@@ -11,6 +11,8 @@
     "postinstall": "ln -sf $(pwd)/githooks/* .git/hooks || true"
   },
   "dependencies": {
+    "@loadable/component": "^5.15.2",
+    "@loadable/server": "^5.15.2",
     "@reduxjs/toolkit": "^1.8.1",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
@@ -38,6 +40,8 @@
     "@babel/register": "^7.12.1",
     "@babel/runtime": "^7.12.5",
     "@hh.ru/stylelint-config-hh": "~4.1.0",
+    "@loadable/babel-plugin": "^5.13.2",
+    "@loadable/webpack-plugin": "^5.15.2",
     "@typescript-eslint/eslint-plugin": "4.28.1",
     "@typescript-eslint/parser": "4.28.1",
     "babel-eslint": "^10.1.0",

@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { ProvidePlugin } = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const aliases = require('./aliases');
+const LoadablePlugin = require('@loadable/webpack-plugin');
 
 module.exports = {
     mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
@@ -47,9 +48,11 @@ module.exports = {
         new HTMLWebpackPlugin({
             filename: 'index.html',
             template: path.resolve(__dirname, 'src/index.html'),
-            minify: false,
+            minify: true,
+            inject: false,
         }),
         new MiniCssExtractPlugin(),
+        new LoadablePlugin(),
     ],
     resolve: {
         alias: aliases,
