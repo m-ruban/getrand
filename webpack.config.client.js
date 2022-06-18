@@ -24,7 +24,11 @@ module.exports = {
                 use: ['babel-loader'],
             },
             {
-                test: /\.(woff(2)?|ttf|eot|svg|png)?$/,
+                test: /\.svg$/,
+                use: ['file-loader', 'svgo-loader'],
+            },
+            {
+                test: /\.(woff(2)?|ttf|eot|png)?$/,
                 use: ['file-loader'],
             },
             {
