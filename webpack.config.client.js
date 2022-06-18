@@ -2,8 +2,11 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { ProvidePlugin } = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const aliases = require('./aliases');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const LoadablePlugin = require('@loadable/webpack-plugin');
+
+const aliases = require('./aliases');
 
 module.exports = {
     mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
@@ -51,7 +54,9 @@ module.exports = {
             minify: true,
             inject: false,
         }),
-        new MiniCssExtractPlugin(),
+        new MiniCssExtractPlugin({
+            filename: '[name].[chunkhash].css',
+        }),
         new LoadablePlugin(),
     ],
     resolve: {
@@ -59,6 +64,8 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.less'],
     },
     optimization: {
+        minimize: true,
+        minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
         splitChunks: {
             cacheGroups: {
                 default: false,

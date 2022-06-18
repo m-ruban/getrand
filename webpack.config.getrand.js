@@ -1,5 +1,7 @@
 const path = require('path');
 const { ProvidePlugin } = require('webpack');
+const TerserPlugin = require('terser-webpack-plugin');
+
 const aliases = require('./aliases');
 
 module.exports = {
@@ -45,6 +47,8 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.less'],
     },
     optimization: {
+        minimize: true,
+        minimizer: [new TerserPlugin()],
         splitChunks: {
             cacheGroups: {
                 default: false,
