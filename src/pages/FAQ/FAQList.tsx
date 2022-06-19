@@ -18,7 +18,7 @@ const FAQList: FC = () => {
                 {faqList.map(({ question, answer }) => {
                     return (
                         <div key={question} className="faq-list-item">
-                            <Collapse title={question}>
+                            <Collapse title={question} defaultShow>
                                 <div className="faq-list-item-content" dangerouslySetInnerHTML={{ __html: answer }} />
                             </Collapse>
                         </div>

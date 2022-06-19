@@ -7,6 +7,7 @@ const Reviews = loadable(() => import('pages/Reviews'));
 const Games = loadable(() => import('pages/Games'));
 const About = loadable(() => import('pages/About'));
 const FAQ = loadable(() => import('pages/FAQ'));
+const Companies = loadable(() => import('pages/Companies'));
 
 const routes = [
     {
@@ -18,7 +19,7 @@ const routes = [
             '/api/v1/categories/',
             '/api/v1/reviews/?limit=6',
             '/api/v1/walkthrough/?limit=4',
-            '/api/v1/companies/?limit=4',
+            '/api/v1/companies/popular/?limit=4',
             '/api/v1/reviews/popular/',
             '/api/v1/walkthrough/popular/',
             '/api/v1/meta-tags/?keyword=main',
@@ -159,6 +160,30 @@ const routes = [
                 mainCategories: categories.data,
                 metaTags: page.data.metaTags,
                 breadcrumbs: page.data.breadcrumbs,
+            };
+        },
+    },
+    {
+        path: '/companies/:page?/',
+        exact: true,
+        component: () => <Companies />,
+        api: ({ page }) => {
+            return [
+                '/api/v1/reviews/popular/',
+                '/api/v1/walkthrough/popular/',
+                '/api/v1/categories/?limit=4',
+                `/api/v1/companies/${page || 1}/?limit=10`,
+            ];
+        },
+        getInitState: ([popularReviews, popularGuides, categories, page]) => {
+            return {
+                popularReviews: popularReviews.data,
+                popularGuides: popularGuides.data,
+                mainCategories: categories.data,
+                companies: page.data.companies,
+                metaTags: page.data.metaTags,
+                breadcrumbs: page.data.breadcrumbs,
+                pagination: page.data.pagination,
             };
         },
     },

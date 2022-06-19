@@ -66,10 +66,7 @@ const About: FC = () => {
                                 </Column>
                             </div>
                         </ColumnContainer>
-                        <Paragraph>
-                            * в команду проекта берем только людей с именем &quot;Михаил&quot;, но можем сделать
-                            исключение
-                        </Paragraph>
+                        <Paragraph>* в команду проекта берем только людей с именем &quot;Михаил&quot;</Paragraph>
                     </Column>
                     <Column l={4} m={4} s={6} xs={4}>
                         <Sidebar />
