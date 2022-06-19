@@ -10,7 +10,7 @@ import PopularReviews from 'pages/Main/PopularReviews';
 const Sidebar: FC = () => {
     return (
         <StickyBox>
-            <SidebarColumn title="Категории">
+            <SidebarColumn title="Категории статей">
                 <SidebarCategories />
             </SidebarColumn>
             <SidebarColumn title="Топ обзоров">

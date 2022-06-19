@@ -7,6 +7,8 @@ export interface Seo {
     name: string;
     keyword: string;
     descr: string;
+    full_text?: string;
+    meta_keyword?: string;
 }
 
 export interface Article {

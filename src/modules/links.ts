@@ -4,7 +4,9 @@ export const REVIEWS = 'reviews';
 
 export const GUIDES = 'walkthrough';
 
-const getRandPages = ['', `${REVIEWS}/`, `${GUIDES}/`];
+export const EMPTY_IMAGE = 'http://gamespirit.org/img/content/no-image.png';
+
+const getRandPages = ['', `${REVIEWS}/`, `${GUIDES}/`, 'games/'];
 
 export const articleLink = (section: string, keyword: string): string => {
     return `${host}/${section}/${keyword}/`;

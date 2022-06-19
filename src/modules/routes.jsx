@@ -4,6 +4,7 @@ import loadable from '@loadable/component';
 const Main = loadable(() => import('pages/Main'));
 const Guides = loadable(() => import('pages/Guides'));
 const Reviews = loadable(() => import('pages/Reviews'));
+const Games = loadable(() => import('pages/Games'));
 
 const routes = [
     {
@@ -89,6 +90,30 @@ const routes = [
             metaTags: metaTags.data,
             mainCategories: categories.data,
         }),
+    },
+    {
+        path: '/games/:page?/',
+        exact: true,
+        component: () => <Games />,
+        api: ({ page }) => {
+            return [
+                '/api/v1/reviews/popular/',
+                '/api/v1/walkthrough/popular/',
+                '/api/v1/categories/?limit=4',
+                `/api/v1/games/${page || 1}/?limit=10`,
+            ];
+        },
+        getInitState: ([popularReviews, popularGuides, categories, page]) => {
+            return {
+                popularReviews: popularReviews.data,
+                popularGuides: popularGuides.data,
+                mainCategories: categories.data,
+                games: page.data.games,
+                breadcrumbs: page.data.breadcrumbs,
+                pagination: page.data.pagination,
+                metaTags: page.data.metaTags,
+            };
+        },
     },
 ];
 
