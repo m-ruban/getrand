@@ -13,6 +13,8 @@ import ColumnContainer from 'components/ColumnContainer';
 import Footer from 'components/Footer';
 import Header from 'components/Header';
 import PageLayout from 'components/PageLayout';
+import Sidebar from 'components/Sidebar';
+import StickyContainer from 'components/StickyContainer';
 
 import 'pages/About/about.less';
 
@@ -22,51 +24,57 @@ const About: FC = () => {
             <Header />
             <BreadcrumbList />
             <ColumnsWrapper>
-                <Column l={12} m={12} s={6} xs={4}>
-                    <H2 title="Команда проекта" line={HeaderLine.TertiaryDimmed} combineColor />
-                    <ColumnContainer>
-                        <div className="human">
-                            <Column l={3} m={3} s={2} xs={4}>
-                                <div className="human-logo-wrapper">
-                                    <img
-                                        className="human-logo"
-                                        src="http://gamespirit.org/image/icon/rb.png"
-                                        alt="rb032960"
-                                    />
-                                </div>
-                            </Column>
-                            <Column l={9} m={9} s={4} xs={4}>
-                                <Paragraph>Михаил</Paragraph>
-                                <Paragraph>Делаю дизайн, разрабатываю, иногда пишу</Paragraph>
-                                <Paragraph>
-                                    <Link href="http://gamespirit.org/users/DolanDuck/">Материалы</Link>
-                                </Paragraph>
-                            </Column>
-                        </div>
-                        <ArticleDivider />
-                        <div className="human">
-                            <Column l={3} m={3} s={2} xs={4}>
-                                <div className="human-logo-wrapper">
-                                    <img
-                                        className="human-logo"
-                                        src="http://gamespirit.org/image/icon/gg.png"
-                                        alt="godlike_goblin"
-                                    />
-                                </div>
-                            </Column>
-                            <Column l={9} m={9} s={4} xs={4}>
-                                <Paragraph>Михаил</Paragraph>
-                                <Paragraph>В основном, пишу игровые материалы</Paragraph>
-                                <Paragraph>
-                                    <Link href="http://gamespirit.org/users/folstaad/">Материалы</Link>
-                                </Paragraph>
-                            </Column>
-                        </div>
-                    </ColumnContainer>
-                    <Paragraph>
-                        * в команду проекта берем только людей с именем &quot;Михаил&quot;, но можем сделать исключение
-                    </Paragraph>
-                </Column>
+                <StickyContainer>
+                    <Column l={8} m={8} s={6} xs={4}>
+                        <H2 title="Команда проекта" line={HeaderLine.TertiaryDimmed} combineColor />
+                        <ColumnContainer>
+                            <div className="human">
+                                <Column l={3} m={3} s={2} xs={4}>
+                                    <div className="human-logo-wrapper">
+                                        <img
+                                            className="human-logo"
+                                            src="http://gamespirit.org/image/icon/rb.png"
+                                            alt="rb032960"
+                                        />
+                                    </div>
+                                </Column>
+                                <Column l={5} m={5} s={4} xs={4}>
+                                    <Paragraph>Михаил</Paragraph>
+                                    <Paragraph>Делаю дизайн, разрабатываю, иногда пишу</Paragraph>
+                                    <Paragraph>
+                                        <Link href="http://gamespirit.org/users/DolanDuck/">Материалы</Link>
+                                    </Paragraph>
+                                </Column>
+                            </div>
+                            <ArticleDivider />
+                            <div className="human">
+                                <Column l={3} m={3} s={2} xs={4}>
+                                    <div className="human-logo-wrapper">
+                                        <img
+                                            className="human-logo"
+                                            src="http://gamespirit.org/image/icon/gg.png"
+                                            alt="godlike_goblin"
+                                        />
+                                    </div>
+                                </Column>
+                                <Column l={5} m={5} s={4} xs={4}>
+                                    <Paragraph>Михаил</Paragraph>
+                                    <Paragraph>В основном, пишу игровые материалы</Paragraph>
+                                    <Paragraph>
+                                        <Link href="http://gamespirit.org/users/folstaad/">Материалы</Link>
+                                    </Paragraph>
+                                </Column>
+                            </div>
+                        </ColumnContainer>
+                        <Paragraph>
+                            * в команду проекта берем только людей с именем &quot;Михаил&quot;, но можем сделать
+                            исключение
+                        </Paragraph>
+                    </Column>
+                    <Column l={4} m={4} s={6} xs={4}>
+                        <Sidebar />
+                    </Column>
+                </StickyContainer>
             </ColumnsWrapper>
             <Footer />
         </PageLayout>

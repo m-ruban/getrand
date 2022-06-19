@@ -7,6 +7,8 @@ import BreadcrumbList from 'components/BreadcrumbList';
 import Footer from 'components/Footer';
 import Header from 'components/Header';
 import PageLayout from 'components/PageLayout';
+import Sidebar from 'components/Sidebar';
+import StickyContainer from 'components/StickyContainer';
 
 import FAQList from 'pages/FAQ/FAQList';
 
@@ -16,9 +18,14 @@ const FAQ: FC = () => {
             <Header />
             <BreadcrumbList />
             <ColumnsWrapper>
-                <Column l={12} m={12} s={6} xs={4}>
-                    <FAQList />
-                </Column>
+                <StickyContainer>
+                    <Column l={8} m={8} s={6} xs={4}>
+                        <FAQList />
+                    </Column>
+                    <Column l={4} m={4} s={6} xs={4}>
+                        <Sidebar />
+                    </Column>
+                </StickyContainer>
             </ColumnsWrapper>
             <Footer />
         </PageLayout>

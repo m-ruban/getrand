@@ -122,10 +122,18 @@ const routes = [
         exact: true,
         component: () => <FAQ />,
         api: () => {
-            return ['/api/v1/faq/'];
+            return [
+                '/api/v1/reviews/popular/',
+                '/api/v1/walkthrough/popular/',
+                '/api/v1/categories/?limit=4',
+                '/api/v1/faq/',
+            ];
         },
-        getInitState: ([page]) => {
+        getInitState: ([popularReviews, popularGuides, categories, page]) => {
             return {
+                popularReviews: popularReviews.data,
+                popularGuides: popularGuides.data,
+                mainCategories: categories.data,
                 faq: page.data.faq,
                 metaTags: page.data.metaTags,
                 breadcrumbs: page.data.breadcrumbs,
@@ -137,10 +145,18 @@ const routes = [
         exact: true,
         component: () => <About />,
         api: () => {
-            return ['/api/v1/about/'];
+            return [
+                '/api/v1/reviews/popular/',
+                '/api/v1/walkthrough/popular/',
+                '/api/v1/categories/?limit=4',
+                '/api/v1/about/',
+            ];
         },
-        getInitState: ([page]) => {
+        getInitState: ([popularReviews, popularGuides, categories, page]) => {
             return {
+                popularReviews: popularReviews.data,
+                popularGuides: popularGuides.data,
+                mainCategories: categories.data,
                 metaTags: page.data.metaTags,
                 breadcrumbs: page.data.breadcrumbs,
             };
