@@ -49,6 +49,9 @@ const Footer: FC = () => {
                                     <div className="footer-link">
                                         <Link href="https://www.patreon.com/gamespirit">Patreon</Link>
                                     </div>
+                                    <div className="footer-link">
+                                        <Link href={sectionLink('faq/')}>FAQ</Link>
+                                    </div>
                                 </div>
                             </Column>
                             <Column l={4} m={4} s={5} xs={4}>

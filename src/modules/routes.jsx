@@ -5,6 +5,8 @@ const Main = loadable(() => import('pages/Main'));
 const Guides = loadable(() => import('pages/Guides'));
 const Reviews = loadable(() => import('pages/Reviews'));
 const Games = loadable(() => import('pages/Games'));
+const About = loadable(() => import('pages/About'));
+const FAQ = loadable(() => import('pages/FAQ'));
 
 const routes = [
     {
@@ -112,6 +114,35 @@ const routes = [
                 breadcrumbs: page.data.breadcrumbs,
                 pagination: page.data.pagination,
                 metaTags: page.data.metaTags,
+            };
+        },
+    },
+    {
+        path: '/faq/',
+        exact: true,
+        component: () => <FAQ />,
+        api: () => {
+            return ['/api/v1/faq/'];
+        },
+        getInitState: ([page]) => {
+            return {
+                faq: page.data.faq,
+                metaTags: page.data.metaTags,
+                breadcrumbs: page.data.breadcrumbs,
+            };
+        },
+    },
+    {
+        path: '/about/',
+        exact: true,
+        component: () => <About />,
+        api: () => {
+            return ['/api/v1/about/'];
+        },
+        getInitState: ([page]) => {
+            return {
+                metaTags: page.data.metaTags,
+                breadcrumbs: page.data.breadcrumbs,
             };
         },
     },

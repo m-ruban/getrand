@@ -6,7 +6,7 @@ export const GUIDES = 'walkthrough';
 
 export const EMPTY_IMAGE = 'http://gamespirit.org/img/content/no-image.png';
 
-const getRandPages = ['', `${REVIEWS}/`, `${GUIDES}/`, 'games/'];
+const getRandPages = ['', `${REVIEWS}/`, `${GUIDES}/`, 'games/', 'faq/', 'about/'];
 
 export const articleLink = (section: string, keyword: string): string => {
     return `${host}/${section}/${keyword}/`;

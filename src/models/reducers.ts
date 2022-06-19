@@ -2,6 +2,7 @@ import { Reducer } from '@reduxjs/toolkit';
 
 import announce from 'models/announce';
 import breadcrumbs from 'models/breadcrumbs';
+import faq from 'models/faq';
 import games from 'models/games';
 import guides from 'models/guides';
 import lastCompanies from 'models/lastCompanies';
@@ -30,6 +31,7 @@ export const reducers = {
     request,
     guides,
     games,
+    faq,
     router: undefined,
 };
 
