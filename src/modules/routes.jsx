@@ -8,6 +8,7 @@ const Games = loadable(() => import('pages/Games'));
 const About = loadable(() => import('pages/About'));
 const FAQ = loadable(() => import('pages/FAQ'));
 const Companies = loadable(() => import('pages/Companies'));
+const Article = loadable(() => import('pages/Article'));
 
 const routes = [
     {
@@ -45,7 +46,7 @@ const routes = [
         }),
     },
     {
-        path: '/reviews/:page?/',
+        path: '/reviews/:page([0-9]+)?/',
         exact: true,
         component: () => <Reviews />,
         api: ({ page }) => {
@@ -70,7 +71,7 @@ const routes = [
         }),
     },
     {
-        path: '/walkthrough/:page?/',
+        path: '/walkthrough/:page([0-9]+)?/',
         exact: true,
         component: () => <Guides />,
         api: ({ page }) => {
@@ -95,7 +96,7 @@ const routes = [
         }),
     },
     {
-        path: '/games/:page?/',
+        path: '/games/:page([0-9]+)?/',
         exact: true,
         component: () => <Games />,
         api: ({ page }) => {
@@ -164,7 +165,7 @@ const routes = [
         },
     },
     {
-        path: '/companies/:page?/',
+        path: '/companies/:page([0-9]+)?/',
         exact: true,
         component: () => <Companies />,
         api: ({ page }) => {
@@ -186,6 +187,27 @@ const routes = [
                 pagination: page.data.pagination,
             };
         },
+    },
+    {
+        path: '/reviews/:keyword([a-zA-Z0-9-]+)/',
+        exact: true,
+        component: () => <Article />,
+        api: ({ keyword }) => {
+            return [
+                '/api/v1/reviews/popular/',
+                '/api/v1/walkthrough/popular/',
+                '/api/v1/categories/?limit=4',
+                `/api/v1/reviews/${keyword}/`,
+            ];
+        },
+        getInitState: ([popularReviews, popularGuides, categories, page]) => ({
+            popularReviews: popularReviews.data,
+            popularGuides: popularGuides.data,
+            mainCategories: categories.data,
+            article: page.data.article,
+            metaTags: page.data.metaTags,
+            breadcrumbs: page.data.breadcrumbs,
+        }),
     },
 ];
 

@@ -8,65 +8,22 @@ import Paragraph from 'gg-ukit/components/Paragraph';
 
 import { Game as GameProps } from 'models/games';
 
-import dateFormat from 'modules/date-format';
-import { articleLink, EMPTY_IMAGE, imgFullSrc } from 'modules/links';
+import { articleLink } from 'modules/links';
 
 import CategoryBadges from 'components/CategoryBadges';
-import ColumnContainer from 'components/ColumnContainer';
+import GameSearchItem from 'components/GameSearchItem';
 
 import 'components/Game/game.less';
 
-const Game: FC<GameProps> = ({
-    main_img,
-    release_date_iso,
-    seo: { name, descr, keyword },
-    developer,
-    publisher,
-    categories,
-    articles,
-}) => {
+const Game: FC<GameProps> = ({ categories, articles, ...gameProps }) => {
     return (
         <Column l={8} m={8} s={6} xs={4}>
-            <div className="game">
-                <ColumnContainer>
-                    <Column l={3} m={3} s={2} xs={4}>
-                        <div className="game-image-wrapper">
-                            <img
-                                className="game-image"
-                                src={main_img ? imgFullSrc(keyword, main_img) : EMPTY_IMAGE}
-                                alt={name}
-                            />
-                        </div>
-                    </Column>
-                    <Column l={5} m={5} s={4} xs={4}>
-                        <div className="game-info">
-                            <table className="game-info-table">
-                                <tr>
-                                    <td>Название:</td>
-                                    <td>{name}</td>
-                                </tr>
-                                <tr>
-                                    <td>Разработчик:</td>
-                                    <td>{developer.seo.name}</td>
-                                </tr>
-                                <tr>
-                                    <td>Издатель:</td>
-                                    <td>{publisher.seo.name}</td>
-                                </tr>
-                                <tr>
-                                    <td>Релиз:</td>
-                                    <td>{dateFormat(new Date(release_date_iso))}</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </Column>
-                </ColumnContainer>
-            </div>
+            <GameSearchItem {...gameProps} />
             <div className="game-categories">
                 <CategoryBadges categories={categories} />
             </div>
             <div>
-                <Paragraph>{descr}</Paragraph>
+                <Paragraph>{gameProps.seo.descr}</Paragraph>
             </div>
             <div className="game-articles">
                 <H3 title="Материалы" />

@@ -1,0 +1,44 @@
+@import 'gg-ukit/styles/mixins';
+@import 'gg-ukit/styles/colors';
+
+@table-padding: 8px 10px;
+@table-border: 1px solid @tertiary-dimmed;
+
+.table-result {
+    width: 100%;
+
+    th {
+        .basic-text();
+
+        font-family: Montserrat, sans-serif;
+        color: @secondary;
+        text-transform: uppercase;
+        text-align: left;
+        border: @table-border;
+        padding: @table-padding;
+    }
+
+    td {
+        .basic-text();
+
+        border: @table-border;
+        padding: @table-padding;
+    }
+}
+
+.table-result-pluses {
+    background-color: @tertiary-dimmed;
+}
+
+.table-result-minuses {
+    background-color: @tertiary-dimmed;
+}
+
+.table-result-item {
+    display: flex;
+    align-items: center;
+
+    .table-result-item-text {
+        margin-left: 5px;
+    }
+}

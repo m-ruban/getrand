@@ -9,7 +9,7 @@ export const EMPTY_IMAGE = 'http://gamespirit.org/img/content/no-image.png';
 const getRandPages = ['', `${REVIEWS}/`, `${GUIDES}/`, 'games/', 'faq/', 'about/', 'companies/'];
 
 export const articleLink = (section: string, keyword: string): string => {
-    return `${host}/${section}/${keyword}/`;
+    return `/${section}/${keyword}/`;
 };
 
 export const imgFullSrc = (keyword: string, image: string): string => {
@@ -19,6 +19,10 @@ export const imgFullSrc = (keyword: string, image: string): string => {
 export const imgSrc = (keyword: string, image: string, isOld = false): string => {
     const prefix = isOld ? '' : 'preload_';
     return `${host}/image/${keyword}/${prefix}${image}`;
+};
+
+export const gallerySrcImg = (path: string): string => {
+    return `${host}${path}`;
 };
 
 export const categoryLink = (path: string): string => {

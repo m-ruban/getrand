@@ -1,6 +1,7 @@
 import { Reducer } from '@reduxjs/toolkit';
 
 import announce from 'models/announce';
+import article from 'models/article';
 import breadcrumbs from 'models/breadcrumbs';
 import companies from 'models/companies';
 import faq from 'models/faq';
@@ -19,6 +20,7 @@ import reviews from 'models/reviews';
 
 export const reducers = {
     announce,
+    article,
     mainCategories,
     lastReviews,
     lastGuides,

@@ -5,4 +5,5 @@ module.exports = {
     models: path.resolve(__dirname, './src/models'),
     pages: path.resolve(__dirname, './src/pages'),
     modules: path.resolve(__dirname, './src/modules'),
+    hooks: path.resolve(__dirname, './src/hooks'),
 };

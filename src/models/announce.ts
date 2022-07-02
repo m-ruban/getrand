@@ -2,6 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { Category } from 'models/mainCategories';
 
+interface RenderTreeElement {
+    component: string;
+    props: Record<string, never>;
+    render: string;
+    children: RenderTreeElement[];
+}
+
 export interface Seo {
     id: number;
     name: string;
@@ -9,6 +16,7 @@ export interface Seo {
     descr: string;
     full_text?: string;
     meta_keyword?: string;
+    render_tree?: RenderTreeElement;
 }
 
 export interface Article {

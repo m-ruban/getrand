@@ -4,7 +4,7 @@ import { Article, Seo } from 'models/announce';
 import { Company } from 'models/lastCompanies';
 import { Category } from 'models/mainCategories';
 
-export interface Game {
+export interface GameSearchItem {
     id: number;
     release_date: string;
     public: number;
@@ -12,10 +12,13 @@ export interface Game {
     rating: number;
     release_date_iso: string;
     seo: Seo;
-    categories: Category[];
-    articles: Article[];
     developer: Company;
     publisher: Company;
+}
+
+export interface Game extends GameSearchItem {
+    categories: Category[];
+    articles: Article[];
 }
 
 const initialState: Game[] = [];
