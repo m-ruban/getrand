@@ -23,6 +23,14 @@ export const ListItem: FC<{ children: ReactNode }> = ({ children }) => {
     return <li>{children}</li>;
 };
 
+export const Tr: FC<{ children: ReactNode }> = ({ children }) => {
+    return <tr>{children}</tr>;
+};
+
+export const Td: FC<{ children: ReactNode }> = ({ children }) => {
+    return <td>{children}</td>;
+};
+
 export const H2T2Content: FC<{ children: string; hash: string }> = ({ children, hash }) => {
     return (
         <div id={hash}>

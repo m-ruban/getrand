@@ -27,16 +27,20 @@ export const TableResult: FC<TableResultProps> = ({ pluses, minuses }) => {
                     return (
                         <tr key={plus + minus}>
                             <td>
-                                <div className="table-result-item">
-                                    <Like color="#738697" />
-                                    <span className="table-result-item-text">{plus}</span>
-                                </div>
+                                {plus && (
+                                    <div className="table-result-item">
+                                        <Like color="#738697" />
+                                        <span className="table-result-item-text">{plus}</span>
+                                    </div>
+                                )}
                             </td>
                             <td>
-                                <div className="table-result-item">
-                                    <Dislike color="#738697" />
-                                    <span className="table-result-item-text">{minus}</span>
-                                </div>
+                                {minus && (
+                                    <div className="table-result-item">
+                                        <Dislike color="#738697" />
+                                        <span className="table-result-item-text">{minus}</span>
+                                    </div>
+                                )}
                             </td>
                         </tr>
                     );

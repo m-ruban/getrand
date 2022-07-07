@@ -4,7 +4,7 @@ import { Article as ArticleShort } from 'models/announce';
 import { Game } from 'models/games';
 import { Category } from 'models/mainCategories';
 
-interface Author {
+export interface Author {
     id: number;
     name: string;
 }
@@ -15,6 +15,8 @@ export interface Article extends ArticleShort {
     redactor: Author;
     games: Game[];
     categories: Category[];
+    children: ArticleShort[];
+    parent?: ArticleShort;
 }
 
 const initialState: Article = {
@@ -51,6 +53,7 @@ const initialState: Article = {
     },
     games: [],
     categories: [],
+    children: [],
 };
 
 export const slice = createSlice({

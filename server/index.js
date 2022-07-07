@@ -6,7 +6,7 @@ import render from './render';
 const app = express();
 
 // hide server bundle
-app.get(/server/, async (req, res) => {
+app.get(/\/server\/.*/, async (req, res) => {
     res.status(404);
     return res.send('Not found');
 });

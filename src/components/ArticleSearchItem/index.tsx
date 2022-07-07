@@ -27,13 +27,14 @@ const ArticleSearchItem: FC<ArticleSearchItemProps> = ({
     categories,
     type,
     short,
+    is_old,
 }) => {
     return (
         <Column l={short ? 4 : 8} m={short ? 4 : 8} s={short ? 3 : 6} xs={4}>
             <div className="article-search-item">
                 <div className="article-search-item-image-wrapper">
                     <HoveredImage
-                        src={imgSrc(keyword, main_img)}
+                        src={imgSrc(keyword, main_img, is_old)}
                         alt={name}
                         hoverView={
                             <Button

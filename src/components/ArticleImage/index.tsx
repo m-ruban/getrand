@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import Button, { ButtonKind } from 'gg-ukit/components/Button';
 import SearchAdd from 'gg-ukit/components/Icon/SearchAdd';
 import Image, { BasicImageProps } from 'gg-ukit/components/Image';
-import FramedImage from 'gg-ukit/components/Image/FramedImage';
+import FramedImage, { FramedImageKind } from 'gg-ukit/components/Image/FramedImage';
 import Modal from 'gg-ukit/components/Modal';
 import Colors from 'gg-ukit/modules/colors';
 
@@ -14,9 +14,10 @@ import useZoom, { EMPTY_IMG } from 'hooks/useZoom';
 interface ArticleImageProps extends BasicImageProps {
     preview: string;
     note: string;
+    kind?: FramedImageKind;
 }
 
-const ArticleImage: FC<ArticleImageProps> = ({ src, alt, preview, note = '' }) => {
+const ArticleImage: FC<ArticleImageProps> = ({ src, alt, preview, kind, note = '' }) => {
     const [zoom, setZoom] = useZoom();
     return (
         <>
@@ -32,6 +33,7 @@ const ArticleImage: FC<ArticleImageProps> = ({ src, alt, preview, note = '' }) =
                 alt={alt}
                 src={gallerySrcImg(preview)}
                 note={note}
+                kind={kind}
                 hoverView={
                     <Button
                         kind={ButtonKind.Promo}

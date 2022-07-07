@@ -55,7 +55,7 @@ const routes = [
                 '/api/v1/reviews/popular/',
                 '/api/v1/walkthrough/popular/',
                 `/api/v1/reviews/?limit=11&page=${page || 0}`,
-                `/api/v1/reviews/pagination/${page || 0}/`,
+                `/api/v1/reviews/pagination/${page || 0}/?limit=11`,
                 '/api/v1/meta-tags/?keyword=reviews',
                 '/api/v1/categories/?limit=4',
             ];
@@ -80,7 +80,7 @@ const routes = [
                 '/api/v1/reviews/popular/',
                 '/api/v1/walkthrough/popular/',
                 `/api/v1/walkthrough/?limit=11&page=${page || 0}`,
-                `/api/v1/walkthrough/pagination/${page || 0}/`,
+                `/api/v1/walkthrough/pagination/${page || 0}/?limit=11`,
                 '/api/v1/meta-tags/?keyword=walkthrough',
                 '/api/v1/categories/?limit=4',
             ];

@@ -11,9 +11,20 @@ import Gallery from 'components/Gallery';
 import { GameSearchItemAdapter } from 'components/GameSearchItem';
 import Iframe from 'components/Iframe';
 import Section from 'components/Section';
+import Table from 'components/Table';
 import Table2Content from 'components/Table2Content';
 import TableResult from 'components/TableResult';
-import { Bold, H2T2Content, Italic, LinkAdapter, ListItem, Strike, Underline } from 'components/TreeElement/BasicTags';
+import {
+    Bold,
+    H2T2Content,
+    Italic,
+    LinkAdapter,
+    ListItem,
+    Strike,
+    Td,
+    Tr,
+    Underline,
+} from 'components/TreeElement/BasicTags';
 
 export default {
     a: LinkAdapter,
@@ -26,6 +37,11 @@ export default {
     section: Section,
     p: Paragraph,
     b: Bold,
+    strong: Bold,
+    strike: Strike,
+    table: Table,
+    tr: Tr,
+    td: Td,
     i: Italic,
     s: Strike,
     u: Underline,
@@ -38,6 +54,7 @@ export default {
     iframe: Iframe,
     note: Note,
     list: List,
+    ul: List,
     li: ListItem,
     result: TableResult,
     customHoveredImg: ArticleImage,
