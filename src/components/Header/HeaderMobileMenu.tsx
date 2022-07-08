@@ -2,6 +2,7 @@ import React, { FC, useState } from 'react';
 import classnames from 'classnames';
 
 import DeclineAlt from 'gg-ukit/components/Icon/DeclineAlt';
+import MenuDotAlt from 'gg-ukit/components/Icon/MenuDotAlt';
 import Link, { LinkType } from 'gg-ukit/components/Link';
 import Colors from 'gg-ukit/modules/colors';
 
@@ -21,7 +22,7 @@ const HeaderMobileMenu: FC = () => {
                     setShow(!show);
                 }}
             >
-                {!show && <div className="header-mobile-menu-burger" />}
+                {!show && <MenuDotAlt scale={2} color={Colors.Secondary} />}
                 {show && <DeclineAlt scale={2} color={Colors.Secondary} />}
             </div>
             <div className={classnames('header-mobile-menu-links', { 'header-mobile-menu-links_show': show })}>

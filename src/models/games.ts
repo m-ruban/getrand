@@ -9,6 +9,7 @@ export interface GameSearchItem {
     release_date: string;
     public: number;
     main_img: string;
+    preview_main_img: string;
     rating: number;
     release_date_iso: string;
     seo: Seo;

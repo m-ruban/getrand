@@ -1,7 +1,13 @@
+@import 'gg-ukit/styles/screen';
+
 .gallery-wrapper {
     margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
+    display: block;
+
+    @media @screen-gt-s {
+        display: flex;
+        justify-content: center;
+    }
 }
 
 .gallery {

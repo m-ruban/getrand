@@ -1,6 +1,11 @@
 import React, { FC } from 'react';
 
 import Column from 'gg-ukit/components/Column';
+import Calendar from 'gg-ukit/components/Icon/Calendar';
+import Commandline from 'gg-ukit/components/Icon/Commandline';
+import Desktop from 'gg-ukit/components/Icon/Desktop';
+import DocumentTextAlt from 'gg-ukit/components/Icon/DocumentTextAlt';
+import Colors from 'gg-ukit/modules/colors';
 
 import { GameSearchItem as GameSearchItemProps } from 'models/games';
 
@@ -14,7 +19,7 @@ import 'components/GameSearchItem/gameSearchItem.less';
 export const GameSearchItemAdapter: FC<{ game: GameSearchItemProps }> = ({ game }) => <GameSearchItem {...game} />;
 
 const GameSearchItem: FC<GameSearchItemProps> = ({
-    main_img,
+    preview_main_img,
     release_date_iso,
     seo: { name, keyword },
     developer,
@@ -27,7 +32,7 @@ const GameSearchItem: FC<GameSearchItemProps> = ({
                     <div className="game-search-item-image-wrapper">
                         <img
                             className="game-search-item-image"
-                            src={main_img ? imgFullSrc(keyword, main_img) : EMPTY_IMAGE}
+                            src={preview_main_img ? imgFullSrc(keyword, preview_main_img) : EMPTY_IMAGE}
                             alt={name}
                         />
                     </div>
@@ -36,19 +41,39 @@ const GameSearchItem: FC<GameSearchItemProps> = ({
                     <div className="game-search-item-image-info">
                         <table className="game-search-item-info-table">
                             <tr>
-                                <td>Название:</td>
+                                <td>
+                                    <div className="game-search-item-info-title">Название:</div>
+                                    <div className="game-search-item-info-icon">
+                                        <DocumentTextAlt scale={1} color={Colors.Secondary} />
+                                    </div>
+                                </td>
                                 <td>{name}</td>
                             </tr>
                             <tr>
-                                <td>Разработчик:</td>
+                                <td>
+                                    <div className="game-search-item-info-title">Разработчик:</div>
+                                    <div className="game-search-item-info-icon">
+                                        <Commandline scale={1} color={Colors.Secondary} />
+                                    </div>
+                                </td>
                                 <td>{developer.seo.name}</td>
                             </tr>
                             <tr>
-                                <td>Издатель:</td>
+                                <td>
+                                    <div className="game-search-item-info-title">Издатель:</div>
+                                    <div className="game-search-item-info-icon">
+                                        <Desktop scale={1} color={Colors.Secondary} />
+                                    </div>
+                                </td>
                                 <td>{publisher.seo.name}</td>
                             </tr>
                             <tr>
-                                <td>Релиз:</td>
+                                <td>
+                                    <div className="game-search-item-info-title">Релиз:</div>
+                                    <div className="game-search-item-info-icon">
+                                        <Calendar scale={1} color={Colors.Secondary} />
+                                    </div>
+                                </td>
                                 <td>{dateFormat(new Date(release_date_iso))}</td>
                             </tr>
                         </table>
