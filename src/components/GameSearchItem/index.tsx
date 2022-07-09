@@ -44,7 +44,7 @@ const GameSearchItem: FC<GameSearchItemProps> = ({
                                 <td>
                                     <div className="game-search-item-info-title">Название:</div>
                                     <div className="game-search-item-info-icon">
-                                        <DocumentTextAlt scale={1} color={Colors.Secondary} />
+                                        <DocumentTextAlt color={Colors.Secondary} />
                                     </div>
                                 </td>
                                 <td>{name}</td>
@@ -53,7 +53,7 @@ const GameSearchItem: FC<GameSearchItemProps> = ({
                                 <td>
                                     <div className="game-search-item-info-title">Разработчик:</div>
                                     <div className="game-search-item-info-icon">
-                                        <Commandline scale={1} color={Colors.Secondary} />
+                                        <Commandline color={Colors.Secondary} />
                                     </div>
                                 </td>
                                 <td>{developer.seo.name}</td>
@@ -62,7 +62,7 @@ const GameSearchItem: FC<GameSearchItemProps> = ({
                                 <td>
                                     <div className="game-search-item-info-title">Издатель:</div>
                                     <div className="game-search-item-info-icon">
-                                        <Desktop scale={1} color={Colors.Secondary} />
+                                        <Desktop color={Colors.Secondary} />
                                     </div>
                                 </td>
                                 <td>{publisher.seo.name}</td>
@@ -71,7 +71,7 @@ const GameSearchItem: FC<GameSearchItemProps> = ({
                                 <td>
                                     <div className="game-search-item-info-title">Релиз:</div>
                                     <div className="game-search-item-info-icon">
-                                        <Calendar scale={1} color={Colors.Secondary} />
+                                        <Calendar color={Colors.Secondary} />
                                     </div>
                                 </td>
                                 <td>{dateFormat(new Date(release_date_iso))}</td>

@@ -1,33 +1,44 @@
 @import 'gg-ukit/styles/screen';
+@import 'gg-ukit/styles/mixins';
 
-@v-spacing: 10px;
+@game-margin: 15px;
 
 .company-search-item {
     margin-bottom: 30px;
 }
 
-.company-search-item-image-wrapper {
-    width: 100%;
-    height: 140px;
-    margin-bottom: @v-spacing * 2;
+.company-search-item-info {
+    display: flex;
+    margin-bottom: @game-margin;
+}
 
-    @media @screen-gt-s {
-        margin-bottom: 0;
-    }
+.company-search-item-image-wrapper {
+    display: flex;
+    align-items: center;
+    max-width: 170px;
+    margin-right: @game-margin;
 }
 
 .company-search-item-image {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 4px;
 }
 
 .company-search-item-title {
     text-transform: uppercase;
-    margin-bottom: @v-spacing;
+    margin-bottom: 10px;
 
     a {
         font-size: 18px;
     }
+}
+
+.company-search-item-date {
+    .basic-text();
+
+    display: flex;
+    align-items: center;
+}
+
+.company-search-item-description {
+    .basic-text();
 }
