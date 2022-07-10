@@ -19,13 +19,15 @@ import tags from 'modules/tags';
 import { App } from 'components/App';
 
 const fetcher = axios.create({ adapter });
-
 dotenv.config({ path: './.env' });
 
+// request config
+const timeout = process.env.TIMEOUT ? Number(process.env.TIMEOUT) : 2000;
 const auth = {
     username: process.env.BASE_AUTH_API_USER,
     password: process.env.BASE_AUTH_API_SECRET,
 };
+const retries = 3;
 
 const render = async (req, res) => {
     // match path
@@ -40,12 +42,28 @@ const render = async (req, res) => {
 
     // get requirements for current request
     const route = routes.find(({ path }) => path === matchedRoute.path);
-    let api;
-    try {
-        api = await Promise.all(
-            route.api(matchedRoute.params).map((url) => fetcher.get(`http://gamespirit.org${url}`, { auth }))
-        );
-    } catch (error) {
+
+    // try get api data
+    let api = [];
+    let attempt = 1;
+    let failed = true;
+    while (attempt <= retries) {
+        try {
+            api = await Promise.all(
+                route
+                    .api(matchedRoute.params)
+                    .map((url) => fetcher.get(`http://gamespirit.org${url}`, { auth, timeout }))
+            );
+            failed = false;
+            break;
+        } catch (error) {
+            // eslint-disable-next-line no-console
+            console.log(`WARN: request failed on attempt ${attempt}`);
+            attempt++;
+        }
+    }
+
+    if (failed) {
         res.status(500);
         return res.send('api error');
     }

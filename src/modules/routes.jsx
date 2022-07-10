@@ -15,34 +15,16 @@ const routes = [
         path: '/',
         exact: true,
         component: () => <Main />,
-        api: () => [
-            '/api/v1/announce/',
-            '/api/v1/categories/',
-            '/api/v1/reviews/?limit=6',
-            '/api/v1/walkthrough/?limit=4',
-            '/api/v1/companies/popular/?limit=4',
-            '/api/v1/reviews/popular/',
-            '/api/v1/walkthrough/popular/',
-            '/api/v1/meta-tags/?keyword=main',
-        ],
-        getInitState: ([
-            announce,
-            categories,
-            reviews,
-            guides,
-            companies,
-            popularReviews,
-            popularGuides,
-            metaTags,
-        ]) => ({
-            announce: announce.data,
-            mainCategories: categories.data,
-            lastReviews: reviews.data,
-            lastGuides: guides.data,
-            lastCompanies: companies.data,
-            popularReviews: popularReviews.data,
-            popularGuides: popularGuides.data,
-            metaTags: metaTags.data,
+        api: () => ['/api/v1/main/', '/api/v1/populars/'],
+        getInitState: ([page, populars]) => ({
+            announce: page.data.announce,
+            mainCategories: page.data.categories,
+            lastReviews: page.data.reviews,
+            lastGuides: page.data.guides,
+            lastCompanies: page.data.companies,
+            popularReviews: populars.data.reviews,
+            popularGuides: populars.data.guides,
+            metaTags: page.data.metaTags,
         }),
     },
     {
@@ -50,24 +32,16 @@ const routes = [
         exact: true,
         component: () => <Reviews />,
         api: ({ page }) => {
-            return [
-                '/api/v1/reviews/breadcrumbs/',
-                '/api/v1/reviews/popular/',
-                '/api/v1/walkthrough/popular/',
-                `/api/v1/reviews/?limit=11&page=${page || 0}`,
-                `/api/v1/reviews/pagination/${page || 0}/?limit=11`,
-                '/api/v1/meta-tags/?keyword=reviews',
-                '/api/v1/categories/?limit=4',
-            ];
+            return [`/api/v1/reviews/new/${page || 0}/?limit=11`, '/api/v1/populars/?categories=true'];
         },
-        getInitState: ([breadcrumbs, popularReviews, popularGuides, reviews, pagination, metaTags, categories]) => ({
-            breadcrumbs: breadcrumbs.data,
-            popularReviews: popularReviews.data,
-            popularGuides: popularGuides.data,
-            reviews: reviews.data,
-            pagination: pagination.data,
-            metaTags: metaTags.data,
-            mainCategories: categories.data,
+        getInitState: ([page, populars]) => ({
+            breadcrumbs: page.data.breadcrumbs,
+            reviews: page.data.articles,
+            pagination: page.data.pagination,
+            metaTags: page.data.metaTags,
+            mainCategories: populars.data.categories,
+            popularReviews: populars.data.reviews,
+            popularGuides: populars.data.guides,
         }),
     },
     {
@@ -75,24 +49,16 @@ const routes = [
         exact: true,
         component: () => <Guides />,
         api: ({ page }) => {
-            return [
-                '/api/v1/walkthrough/breadcrumbs/',
-                '/api/v1/reviews/popular/',
-                '/api/v1/walkthrough/popular/',
-                `/api/v1/walkthrough/?limit=11&page=${page || 0}`,
-                `/api/v1/walkthrough/pagination/${page || 0}/?limit=11`,
-                '/api/v1/meta-tags/?keyword=walkthrough',
-                '/api/v1/categories/?limit=4',
-            ];
+            return [`/api/v1/walkthrough/new/${page || 0}/?limit=11`, '/api/v1/populars/?categories=true'];
         },
-        getInitState: ([breadcrumbs, popularReviews, popularGuides, guides, pagination, metaTags, categories]) => ({
-            breadcrumbs: breadcrumbs.data,
-            popularReviews: popularReviews.data,
-            popularGuides: popularGuides.data,
-            guides: guides.data,
-            pagination: pagination.data,
-            metaTags: metaTags.data,
-            mainCategories: categories.data,
+        getInitState: ([page, populars]) => ({
+            breadcrumbs: page.data.breadcrumbs,
+            guides: page.data.articles,
+            pagination: page.data.pagination,
+            metaTags: page.data.metaTags,
+            mainCategories: populars.data.categories,
+            popularReviews: populars.data.reviews,
+            popularGuides: populars.data.guides,
         }),
     },
     {
@@ -100,18 +66,13 @@ const routes = [
         exact: true,
         component: () => <Games />,
         api: ({ page }) => {
-            return [
-                '/api/v1/reviews/popular/',
-                '/api/v1/walkthrough/popular/',
-                '/api/v1/categories/?limit=4',
-                `/api/v1/games/${page || 1}/?limit=10`,
-            ];
+            return [`/api/v1/games/${page || 1}/?limit=10`, '/api/v1/populars/?categories=true'];
         },
-        getInitState: ([popularReviews, popularGuides, categories, page]) => {
+        getInitState: ([page, populars]) => {
             return {
-                popularReviews: popularReviews.data,
-                popularGuides: popularGuides.data,
-                mainCategories: categories.data,
+                mainCategories: populars.data.categories,
+                popularReviews: populars.data.reviews,
+                popularGuides: populars.data.guides,
                 games: page.data.games,
                 breadcrumbs: page.data.breadcrumbs,
                 pagination: page.data.pagination,
@@ -124,18 +85,13 @@ const routes = [
         exact: true,
         component: () => <FAQ />,
         api: () => {
-            return [
-                '/api/v1/reviews/popular/',
-                '/api/v1/walkthrough/popular/',
-                '/api/v1/categories/?limit=4',
-                '/api/v1/faq/',
-            ];
+            return ['/api/v1/faq/', '/api/v1/populars/?categories=true'];
         },
-        getInitState: ([popularReviews, popularGuides, categories, page]) => {
+        getInitState: ([page, populars]) => {
             return {
-                popularReviews: popularReviews.data,
-                popularGuides: popularGuides.data,
-                mainCategories: categories.data,
+                mainCategories: populars.data.categories,
+                popularReviews: populars.data.reviews,
+                popularGuides: populars.data.guides,
                 faq: page.data.faq,
                 metaTags: page.data.metaTags,
                 breadcrumbs: page.data.breadcrumbs,
@@ -147,18 +103,13 @@ const routes = [
         exact: true,
         component: () => <About />,
         api: () => {
-            return [
-                '/api/v1/reviews/popular/',
-                '/api/v1/walkthrough/popular/',
-                '/api/v1/categories/?limit=4',
-                '/api/v1/about/',
-            ];
+            return ['/api/v1/about/', '/api/v1/populars/?categories=true'];
         },
-        getInitState: ([popularReviews, popularGuides, categories, page]) => {
+        getInitState: ([page, populars]) => {
             return {
-                popularReviews: popularReviews.data,
-                popularGuides: popularGuides.data,
-                mainCategories: categories.data,
+                mainCategories: populars.data.categories,
+                popularReviews: populars.data.reviews,
+                popularGuides: populars.data.guides,
                 metaTags: page.data.metaTags,
                 breadcrumbs: page.data.breadcrumbs,
             };
@@ -169,18 +120,13 @@ const routes = [
         exact: true,
         component: () => <Companies />,
         api: ({ page }) => {
-            return [
-                '/api/v1/reviews/popular/',
-                '/api/v1/walkthrough/popular/',
-                '/api/v1/categories/?limit=4',
-                `/api/v1/companies/${page || 1}/?limit=10`,
-            ];
+            return [`/api/v1/companies/${page || 1}/?limit=10`, '/api/v1/populars/?categories=true'];
         },
-        getInitState: ([popularReviews, popularGuides, categories, page]) => {
+        getInitState: ([page, populars]) => {
             return {
-                popularReviews: popularReviews.data,
-                popularGuides: popularGuides.data,
-                mainCategories: categories.data,
+                mainCategories: populars.data.categories,
+                popularReviews: populars.data.reviews,
+                popularGuides: populars.data.guides,
                 companies: page.data.companies,
                 metaTags: page.data.metaTags,
                 breadcrumbs: page.data.breadcrumbs,
@@ -193,17 +139,12 @@ const routes = [
         exact: true,
         component: () => <Article />,
         api: ({ keyword }) => {
-            return [
-                '/api/v1/reviews/popular/',
-                '/api/v1/walkthrough/popular/',
-                '/api/v1/categories/?limit=4',
-                `/api/v1/reviews/${keyword}/`,
-            ];
+            return [`/api/v1/reviews/${keyword}/`, '/api/v1/populars/?categories=true'];
         },
-        getInitState: ([popularReviews, popularGuides, categories, page]) => ({
-            popularReviews: popularReviews.data,
-            popularGuides: popularGuides.data,
-            mainCategories: categories.data,
+        getInitState: ([page, populars]) => ({
+            mainCategories: populars.data.categories,
+            popularReviews: populars.data.reviews,
+            popularGuides: populars.data.guides,
             article: page.data.article,
             metaTags: page.data.metaTags,
             breadcrumbs: page.data.breadcrumbs,
