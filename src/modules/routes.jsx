@@ -32,7 +32,7 @@ const routes = [
         exact: true,
         component: () => <Reviews />,
         api: ({ page }) => {
-            return [`/api/v1/reviews/new/${page || 0}/?limit=11`, '/api/v1/populars/?categories=true'];
+            return [`/api/v1/reviews/${page || 0}/?limit=11`, '/api/v1/populars/?categories=true'];
         },
         getInitState: ([page, populars]) => ({
             breadcrumbs: page.data.breadcrumbs,
@@ -49,7 +49,7 @@ const routes = [
         exact: true,
         component: () => <Guides />,
         api: ({ page }) => {
-            return [`/api/v1/walkthrough/new/${page || 0}/?limit=11`, '/api/v1/populars/?categories=true'];
+            return [`/api/v1/walkthrough/${page || 0}/?limit=11`, '/api/v1/populars/?categories=true'];
         },
         getInitState: ([page, populars]) => ({
             breadcrumbs: page.data.breadcrumbs,
