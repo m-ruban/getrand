@@ -56,7 +56,7 @@ const GameSearchItem: FC<GameSearchItemProps> = ({
                                         <Commandline color={Colors.Secondary} />
                                     </div>
                                 </td>
-                                <td>{developer.seo.name}</td>
+                                <td>{developer?.seo?.name || ''}</td>
                             </tr>
                             <tr>
                                 <td>
@@ -65,7 +65,7 @@ const GameSearchItem: FC<GameSearchItemProps> = ({
                                         <Desktop color={Colors.Secondary} />
                                     </div>
                                 </td>
-                                <td>{publisher.seo.name}</td>
+                                <td>{publisher?.seo?.name || ''}</td>
                             </tr>
                             <tr>
                                 <td>

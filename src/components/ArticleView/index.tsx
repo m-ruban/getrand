@@ -11,6 +11,7 @@ import Authors from 'components/ArticleView/Authors';
 import ParentLink from 'components/ArticleView/ParentLink';
 import RelatedArticles from 'components/ArticleView/RelatedArticles';
 import CategoryBadges from 'components/CategoryBadges';
+import Keywords from 'components/Keywords';
 import TreeElement from 'components/TreeElement';
 
 import 'components/ArticleView/articleView.less';
@@ -28,7 +29,7 @@ const ArticleView: FC = () => {
             <RelatedArticles articles={children} />
             <div>
                 <Authors redactor={redactor} author={autor} />
-                {meta_keyword && <Paragraph>Ключевые слова: {meta_keyword.split(',').join(', ')}</Paragraph>}
+                <Keywords keywords={meta_keyword} />
             </div>
             {parent && <ParentLink {...parent} />}
         </div>

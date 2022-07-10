@@ -30,7 +30,7 @@ export const categoryLink = (path: string): string => {
 };
 
 export const companyLink = (path: string): string => {
-    return `${host}/companies/${path}/`;
+    return `/companies/${path}/`;
 };
 
 export const altIconImgSrc = (image: string): string => {

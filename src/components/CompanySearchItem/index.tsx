@@ -1,14 +1,13 @@
 import React, { FC } from 'react';
 
 import Column from 'gg-ukit/components/Column';
-import Calendar from 'gg-ukit/components/Icon/Calendar';
 import Link, { LinkType } from 'gg-ukit/components/Link';
-import Paragraph from 'gg-ukit/components/Paragraph';
 
 import { Company } from 'models/lastCompanies';
 
-import dateFormat from 'modules/date-format';
 import { companyLink, imgFullSrc } from 'modules/links';
+
+import CreatedDate from 'components/CompanySearchItem/CreatedDate';
 
 import 'components/CompanySearchItem/companySearchItem.less';
 
@@ -26,10 +25,7 @@ const CompanySearchItem: FC<Company> = ({ main_img, created_iso, seo: { name, de
                                 {name}
                             </Link>
                         </div>
-                        <div className="company-search-item-date">
-                            <Calendar color="#738697" />
-                            &nbsp;{dateFormat(new Date(created_iso))}
-                        </div>
+                        <CreatedDate created_iso={created_iso} />
                     </div>
                 </div>
                 <div className="company-search-item-description">{descr}</div>

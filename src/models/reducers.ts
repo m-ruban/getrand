@@ -4,6 +4,7 @@ import announce from 'models/announce';
 import article from 'models/article';
 import breadcrumbs from 'models/breadcrumbs';
 import companies from 'models/companies';
+import company from 'models/company';
 import faq from 'models/faq';
 import games from 'models/games';
 import guides from 'models/guides';
@@ -21,6 +22,7 @@ import reviews from 'models/reviews';
 export const reducers = {
     announce,
     article,
+    company,
     mainCategories,
     lastReviews,
     lastGuides,

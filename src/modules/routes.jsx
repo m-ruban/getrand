@@ -9,6 +9,7 @@ const About = loadable(() => import('pages/About'));
 const FAQ = loadable(() => import('pages/FAQ'));
 const Companies = loadable(() => import('pages/Companies'));
 const Article = loadable(() => import('pages/Article'));
+const Company = loadable(() => import('pages/Company'));
 
 const routes = [
     {
@@ -146,6 +147,22 @@ const routes = [
             popularReviews: populars.data.reviews,
             popularGuides: populars.data.guides,
             article: page.data.article,
+            metaTags: page.data.metaTags,
+            breadcrumbs: page.data.breadcrumbs,
+        }),
+    },
+    {
+        path: '/companies/:keyword([a-zA-Z0-9-]+)/',
+        exact: true,
+        component: () => <Company />,
+        api: ({ keyword }) => {
+            return [`/api/v1/companies/${keyword}/`, '/api/v1/populars/?categories=true'];
+        },
+        getInitState: ([page, populars]) => ({
+            mainCategories: populars.data.categories,
+            popularReviews: populars.data.reviews,
+            popularGuides: populars.data.guides,
+            company: page.data.company,
             metaTags: page.data.metaTags,
             breadcrumbs: page.data.breadcrumbs,
         }),
