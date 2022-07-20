@@ -19,11 +19,8 @@ import 'pages/Main/Announce/announce.less';
 
 const Announce: FC = () => {
     const [showDescription, setShowDescription] = useState<boolean>(false);
-    const image = useSelector((state: RootStore) => state.announce.basic_image);
-    const name = useSelector((state: RootStore) => state.announce.short_name);
+    const { basic_image, short_name, short_descr } = useSelector((state: RootStore) => state.announce);
     const keyword = useSelector((state: RootStore) => state.announce.article.seo.keyword);
-    const title = useSelector((state: RootStore) => state.announce.short_name);
-    const description = useSelector((state: RootStore) => state.announce.short_descr);
     const section = useSelector((state: RootStore) => state.announce.article.article_type_keyword);
     const categories = useSelector((state: RootStore) => state.announce.article.categories);
     return (
@@ -33,7 +30,9 @@ const Announce: FC = () => {
                     <div className="announce-content">
                         <div className={classnames('announce-info', { 'announce-info_open': showDescription })}>
                             <div className="announce-title">
-                                <div>{title}</div>
+                                <div>
+                                    <h1>{short_name}</h1>
+                                </div>
                                 <div
                                     className="announce-title-icon"
                                     onClick={() => {
@@ -49,7 +48,7 @@ const Announce: FC = () => {
                                     'announce-description-and-categories_show': showDescription,
                                 })}
                             >
-                                <div className="announce-description">{description}</div>
+                                <div className="announce-description">{short_descr}</div>
                                 <CategoryBadges categories={categories} alt />
                             </div>
                             <div className="announce-link">
@@ -62,7 +61,7 @@ const Announce: FC = () => {
                             </div>
                         </div>
                     </div>
-                    <img className="announce-img" src={imgFullSrc(keyword, image)} alt={name} />
+                    <img className="announce-img" src={imgFullSrc(keyword, basic_image)} alt={short_name} />
                 </div>
             </Column>
         </ColumnsWrapper>

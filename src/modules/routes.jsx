@@ -33,7 +33,7 @@ const routes = [
         exact: true,
         component: () => <Reviews />,
         api: ({ page }) => {
-            return [`/api/v1/reviews/${page || 0}/?limit=11`, '/api/v1/populars/?categories=true'];
+            return [`/api/v1/reviews/${page || 0}/?limit=10`, '/api/v1/populars/?categories=true'];
         },
         getInitState: ([page, populars]) => ({
             breadcrumbs: page.data.breadcrumbs,
@@ -50,7 +50,7 @@ const routes = [
         exact: true,
         component: () => <Guides />,
         api: ({ page }) => {
-            return [`/api/v1/walkthrough/${page || 0}/?limit=11`, '/api/v1/populars/?categories=true'];
+            return [`/api/v1/walkthrough/${page || 0}/?limit=10`, '/api/v1/populars/?categories=true'];
         },
         getInitState: ([page, populars]) => ({
             breadcrumbs: page.data.breadcrumbs,
@@ -141,6 +141,22 @@ const routes = [
         component: () => <Article />,
         api: ({ keyword }) => {
             return [`/api/v1/reviews/${keyword}/`, '/api/v1/populars/?categories=true'];
+        },
+        getInitState: ([page, populars]) => ({
+            mainCategories: populars.data.categories,
+            popularReviews: populars.data.reviews,
+            popularGuides: populars.data.guides,
+            article: page.data.article,
+            metaTags: page.data.metaTags,
+            breadcrumbs: page.data.breadcrumbs,
+        }),
+    },
+    {
+        path: '/walkthrough/:keyword([a-zA-Z0-9-]+)/',
+        exact: true,
+        component: () => <Article />,
+        api: ({ keyword }) => {
+            return [`/api/v1/walkthrough/${keyword}/`, '/api/v1/populars/?categories=true'];
         },
         getInitState: ([page, populars]) => ({
             mainCategories: populars.data.categories,

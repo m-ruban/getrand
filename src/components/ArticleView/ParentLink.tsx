@@ -5,16 +5,20 @@ import Paragraph from 'gg-ukit/components/Paragraph';
 
 import { Article as ArticleShort } from 'models/announce';
 
-import { articleLink, REVIEWS } from 'modules/links';
+import { articleLink } from 'modules/links';
 
 import Section from 'components/Section';
 
-const ParentLink: FC<ArticleShort> = ({ seo: { name, keyword } }) => {
+interface ParentLinkProps extends ArticleShort {
+    type: string;
+}
+
+const ParentLink: FC<ParentLinkProps> = ({ seo: { name, keyword }, type }) => {
     return (
         <Section>
             <Paragraph>
                 Статья является частью цикла{' '}
-                <Link type={LinkType.Secondary} href={articleLink(REVIEWS, keyword)}>
+                <Link type={LinkType.Secondary} href={articleLink(type, keyword)}>
                     {name}
                 </Link>
             </Paragraph>

@@ -14,7 +14,7 @@ const SidebarColumn: FC<SidebarColumnProps> = ({ title, children }) => {
     return (
         <div className="sidebar-column">
             <div className="sidebar-column-header">
-                <H2 title={title} line={HeaderLine.Secondary} combineColor />
+                <H2 title={title} line={HeaderLine.TertiaryDimmed} combineColor />
             </div>
             <div className="sidebar-column-content">{children}</div>
         </div>

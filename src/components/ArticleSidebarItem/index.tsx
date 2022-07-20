@@ -38,7 +38,6 @@ const ArticleSidebarItem: FC<ArticleSidebarItemProps> = ({
                     <CategoryBadges categories={categories} alt />
                 </div>
             </div>
-            <div />
         </div>
     );
 };

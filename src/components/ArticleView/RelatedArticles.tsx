@@ -6,14 +6,14 @@ import List from 'gg-ukit/components/List';
 
 import { Article as ArticleShort } from 'models/announce';
 
-import { articleLink, REVIEWS } from 'modules/links';
+import { articleLink } from 'modules/links';
 
 import Section from 'components/Section';
 import { ListItem } from 'components/TreeElement/BasicTags';
 
 import 'components/ArticleView/articleView.less';
 
-const RelatedArticles: FC<{ articles: ArticleShort[] }> = ({ articles }) => {
+const RelatedArticles: FC<{ articles: ArticleShort[]; type: string }> = ({ articles, type }) => {
     if (articles.length === 0) {
         return null;
     }
@@ -24,7 +24,7 @@ const RelatedArticles: FC<{ articles: ArticleShort[] }> = ({ articles }) => {
                 {articles.map(({ id, seo: { name, keyword } }) => {
                     return (
                         <ListItem key={id}>
-                            <Link type={LinkType.Secondary} href={articleLink(REVIEWS, keyword)}>
+                            <Link type={LinkType.Secondary} href={articleLink(type, keyword)}>
                                 {name}
                             </Link>
                         </ListItem>

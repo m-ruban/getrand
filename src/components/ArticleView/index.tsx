@@ -17,7 +17,9 @@ import TreeElement from 'components/TreeElement';
 import 'components/ArticleView/articleView.less';
 
 const ArticleView: FC = () => {
-    const { seo, categories, redactor, autor, children, parent } = useSelector((state: RootStore) => state.article);
+    const { seo, categories, redactor, autor, children, parent, article_type_keyword } = useSelector(
+        (state: RootStore) => state.article
+    );
     const { name, render_tree, meta_keyword } = seo;
     return (
         <div>
@@ -26,12 +28,12 @@ const ArticleView: FC = () => {
                 <CategoryBadges categories={categories} />
             </div>
             <TreeElement treeElement={render_tree} />
-            <RelatedArticles articles={children} />
+            <RelatedArticles articles={children} type={article_type_keyword} />
             <div>
                 <Authors redactor={redactor} author={autor} />
                 <Keywords keywords={meta_keyword} />
             </div>
-            {parent && <ParentLink {...parent} />}
+            {parent && <ParentLink {...parent} type={article_type_keyword} />}
         </div>
     );
 };
