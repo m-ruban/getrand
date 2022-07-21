@@ -1,15 +1,27 @@
+@import 'gg-ukit/styles/screen';
+
 .header-icons {
-    height: 40px;
+    height: 50px;
     display: flex;
     align-items: center;
+
+    @media @screen-gt-xs {
+        height: 40px;
+    }
 }
 
 .header-icon {
     display: inline-block;
-    height: 19px;
-    width: 19px;
     content: '';
-    margin-right: 20px;
+    height: 24px;
+    width: 24px;
+    margin-right: 25px;
+
+    @media @screen-gt-xs {
+        height: 19px;
+        width: 19px;
+        margin-right: 20px;
+    }
 }
 
 .header-icon_steam {

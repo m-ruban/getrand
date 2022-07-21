@@ -8,6 +8,8 @@ import { LinkType } from 'gg-ukit/components/Link';
 
 import { RootStore } from 'models/reducers';
 
+import Scroller from 'components/Scroller';
+
 import 'components/BreadcrumbList/breadcrumbList.less';
 
 const BreadcrumbList: FC = () => {
@@ -15,12 +17,14 @@ const BreadcrumbList: FC = () => {
     return (
         <ColumnsWrapper>
             <Column l={12} m={12} s={6} xs={4}>
-                <div className="breadcrumb-list">
-                    <Breadcrumbs
-                        linkType={LinkType.Secondary}
-                        links={breadcrumbs.map(({ name, link }) => ({ title: name, href: link }))}
-                    />
-                </div>
+                <Scroller>
+                    <div className="breadcrumb-list">
+                        <Breadcrumbs
+                            linkType={LinkType.Secondary}
+                            links={breadcrumbs.map(({ name, link }) => ({ title: name, href: link }))}
+                        />
+                    </div>
+                </Scroller>
             </Column>
         </ColumnsWrapper>
     );
