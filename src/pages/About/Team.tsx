@@ -19,14 +19,14 @@ const Team: FC = () => {
                 <div className="human">
                     <Column l={3} m={3} s={2} xs={4}>
                         <div className="human-logo-wrapper">
-                            <img className="human-logo" src="http://gamespirit.org/image/icon/rb.png" alt="rb032960" />
+                            <img className="human-logo" src="http://gamespirit.org/image/icon/rb.jpg" alt="rb032960" />
                         </div>
                     </Column>
                     <Column l={5} m={5} s={4} xs={4}>
                         <Paragraph>Михаил</Paragraph>
-                        <Paragraph>Делаю дизайн, разрабатываю, иногда пишу</Paragraph>
+                        <Paragraph>Ворчу, делаю дизайн, разрабатываю, иногда пишу</Paragraph>
                         <Paragraph>
-                            <Link href="http://gamespirit.org/users/DolanDuck/">Материалы</Link>
+                            <Link href="/users/DolanDuck/">Материалы</Link>
                         </Paragraph>
                     </Column>
                 </div>
@@ -36,16 +36,16 @@ const Team: FC = () => {
                         <div className="human-logo-wrapper">
                             <img
                                 className="human-logo"
-                                src="http://gamespirit.org/image/icon/gg.png"
+                                src="http://gamespirit.org/image/icon/gg.jpg"
                                 alt="godlike_goblin"
                             />
                         </div>
                     </Column>
                     <Column l={5} m={5} s={4} xs={4}>
                         <Paragraph>Михаил</Paragraph>
-                        <Paragraph>В основном, пишу игровые материалы</Paragraph>
+                        <Paragraph>Пишу игровые материалы</Paragraph>
                         <Paragraph>
-                            <Link href="http://gamespirit.org/users/folstaad/">Материалы</Link>
+                            <Link href="/users/Folstaad/">Материалы</Link>
                         </Paragraph>
                     </Column>
                 </div>

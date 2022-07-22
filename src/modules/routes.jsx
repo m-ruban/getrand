@@ -10,6 +10,7 @@ const FAQ = loadable(() => import('pages/FAQ'));
 const Companies = loadable(() => import('pages/Companies'));
 const Article = loadable(() => import('pages/Article'));
 const Company = loadable(() => import('pages/Company'));
+const UserArticles = loadable(() => import('pages/UserArticles'));
 
 const routes = [
     {
@@ -181,6 +182,23 @@ const routes = [
             company: page.data.company,
             metaTags: page.data.metaTags,
             breadcrumbs: page.data.breadcrumbs,
+        }),
+    },
+    {
+        path: '/users/:login([a-zA-Z0-9-]+)/:page([0-9]+)?/',
+        exact: true,
+        component: () => <UserArticles />,
+        api: ({ login, page }) => {
+            return [`/api/v1/users/${login}/${page || 1}/?limit=10`, '/api/v1/populars/?categories=true'];
+        },
+        getInitState: ([page, populars]) => ({
+            breadcrumbs: page.data.breadcrumbs,
+            userArticles: page.data.articles,
+            pagination: page.data.pagination,
+            metaTags: page.data.metaTags,
+            mainCategories: populars.data.categories,
+            popularReviews: populars.data.reviews,
+            popularGuides: populars.data.guides,
         }),
     },
 ];
