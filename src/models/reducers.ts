@@ -2,7 +2,9 @@ import { Reducer } from '@reduxjs/toolkit';
 
 import announce from 'models/announce';
 import article from 'models/article';
+import articles from 'models/articles';
 import breadcrumbs from 'models/breadcrumbs';
+import classifications from 'models/classifications';
 import companies from 'models/companies';
 import company from 'models/company';
 import faq from 'models/faq';
@@ -18,12 +20,13 @@ import popularGuides from 'models/popularGuides';
 import popularReviews from 'models/popularReviews';
 import request from 'models/request';
 import reviews from 'models/reviews';
-import userArticles from 'models/userArticles';
 
 export const reducers = {
     announce,
     article,
+    articles,
     company,
+    classifications,
     mainCategories,
     lastReviews,
     lastGuides,
@@ -39,7 +42,6 @@ export const reducers = {
     games,
     faq,
     companies,
-    userArticles,
     router: undefined,
 };
 

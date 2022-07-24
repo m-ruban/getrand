@@ -11,6 +11,30 @@ const Companies = loadable(() => import('pages/Companies'));
 const Article = loadable(() => import('pages/Article'));
 const Company = loadable(() => import('pages/Company'));
 const UserArticles = loadable(() => import('pages/UserArticles'));
+const CategoryArticles = loadable(() => import('pages/CategoryArticles'));
+const Classifications = loadable(() => import('pages/Classifications'));
+
+const pageRe = ':page([0-9]+)?';
+const lvlRe = '([a-zA-Z0-9-]+)';
+const basicCategoryPage = {
+    exact: true,
+    component: () => <CategoryArticles />,
+    api: ({ page, ...path }) => {
+        return [
+            `/api/v1/categories-tree/articles/?path=${Object.values(path).join('.')}&page=${page || 1}&limit=10`,
+            '/api/v1/populars/?categories=true',
+        ];
+    },
+    getInitState: ([page, populars]) => ({
+        breadcrumbs: page.data.breadcrumbs,
+        articles: page.data.articles,
+        pagination: page.data.pagination,
+        metaTags: page.data.metaTags,
+        mainCategories: populars.data.categories,
+        popularReviews: populars.data.reviews,
+        popularGuides: populars.data.guides,
+    }),
+};
 
 const routes = [
     {
@@ -30,7 +54,7 @@ const routes = [
         }),
     },
     {
-        path: '/reviews/:page([0-9]+)?/',
+        path: `/reviews/${pageRe}/`,
         exact: true,
         component: () => <Reviews />,
         api: ({ page }) => {
@@ -47,7 +71,7 @@ const routes = [
         }),
     },
     {
-        path: '/walkthrough/:page([0-9]+)?/',
+        path: `/walkthrough/${pageRe}/`,
         exact: true,
         component: () => <Guides />,
         api: ({ page }) => {
@@ -64,7 +88,7 @@ const routes = [
         }),
     },
     {
-        path: '/games/:page([0-9]+)?/',
+        path: `/games/${pageRe}/`,
         exact: true,
         component: () => <Games />,
         api: ({ page }) => {
@@ -118,7 +142,7 @@ const routes = [
         },
     },
     {
-        path: '/companies/:page([0-9]+)?/',
+        path: `/companies/${pageRe}/`,
         exact: true,
         component: () => <Companies />,
         api: ({ page }) => {
@@ -185,7 +209,7 @@ const routes = [
         }),
     },
     {
-        path: '/users/:login([a-zA-Z0-9-]+)/:page([0-9]+)?/',
+        path: `/users/:login([a-zA-Z0-9-]+)/${pageRe}/`,
         exact: true,
         component: () => <UserArticles />,
         api: ({ login, page }) => {
@@ -193,8 +217,36 @@ const routes = [
         },
         getInitState: ([page, populars]) => ({
             breadcrumbs: page.data.breadcrumbs,
-            userArticles: page.data.articles,
+            articles: page.data.articles,
             pagination: page.data.pagination,
+            metaTags: page.data.metaTags,
+            mainCategories: populars.data.categories,
+            popularReviews: populars.data.reviews,
+            popularGuides: populars.data.guides,
+        }),
+    },
+    {
+        path: `/categories/:lvl1${lvlRe}/${pageRe}/`,
+        ...basicCategoryPage,
+    },
+    {
+        path: `/categories/:lvl1${lvlRe}/:lvl2${lvlRe}/${pageRe}/`,
+        ...basicCategoryPage,
+    },
+    {
+        path: `/categories/:lvl1${lvlRe}/:lvl2${lvlRe}/:lvl3${lvlRe}/${pageRe}/`,
+        ...basicCategoryPage,
+    },
+    {
+        path: `/categories/`,
+        exact: true,
+        component: () => <Classifications />,
+        api: () => {
+            return [`/api/v1/categories-tree/`, '/api/v1/populars/?categories=true'];
+        },
+        getInitState: ([page, populars]) => ({
+            breadcrumbs: page.data.breadcrumbs,
+            classifications: page.data.classifications,
             metaTags: page.data.metaTags,
             mainCategories: populars.data.categories,
             popularReviews: populars.data.reviews,

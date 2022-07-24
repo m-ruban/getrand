@@ -5,7 +5,7 @@ import { ArticleSearch } from 'models/lastReviews';
 const initialState: ArticleSearch[] = [];
 
 export const slice = createSlice({
-    name: 'userArticles',
+    name: 'articles',
     initialState,
     reducers: {},
 });

@@ -13,7 +13,7 @@ import Pagination from 'components/Pagination';
 import Sidebar from 'components/Sidebar';
 import StickyContainer from 'components/StickyContainer';
 
-const UserArticles: FC = () => {
+const CategoryArticles: FC = () => {
     return (
         <PageLayout>
             <Header />
@@ -35,4 +35,4 @@ const UserArticles: FC = () => {
     );
 };
 
-export default UserArticles;
+export default CategoryArticles;

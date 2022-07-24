@@ -11,7 +11,7 @@ import ColumnContainer from 'components/ColumnContainer';
 
 const ArticleList: FC = () => {
     const title = useSelector((state: RootStore) => state.metaTags.title);
-    const articles = useSelector((state: RootStore) => state.userArticles);
+    const articles = useSelector((state: RootStore) => state.articles);
     return (
         <>
             <H2 title={title} line={HeaderLine.TertiaryDimmed} />

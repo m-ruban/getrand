@@ -16,11 +16,9 @@ const HeaderLinks: FC = () => {
                 return (
                     <div
                         key={href}
-                        className={classnames(
-                            'header-menu-links-link',
-                            { 'header-menu-links-link__categories': href === 'categories/' },
-                            { 'header-menu-links-link__companies': href === 'companies/' }
-                        )}
+                        className={classnames('header-menu-links-link', {
+                            'header-menu-links-link__companies': href === 'companies/',
+                        })}
                     >
                         <Link type={LinkType.Secondary} href={sectionLink(href)}>
                             {title}
