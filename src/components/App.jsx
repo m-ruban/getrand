@@ -4,6 +4,8 @@ import { ConnectedRouter } from 'connected-react-router';
 
 import routes from 'modules/routes';
 
+import NotFound from 'pages/NotFound';
+
 import 'gg-ukit/styles/fonts.less';
 import 'gg-ukit/styles/defaults.less';
 
@@ -20,7 +22,7 @@ export class App extends React.Component {
                         {routes.map(({ path, exact, component }) => {
                             return <Route key={path} path={path} exact={exact} render={component} />;
                         })}
-                        <Route render={() => <div>Miss</div>} />
+                        <Route render={() => <NotFound />} />
                     </Switch>
                 </>
             </ConnectedRouter>

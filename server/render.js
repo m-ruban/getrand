@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
@@ -13,7 +14,7 @@ import serialize from 'serialize-javascript';
 
 import { createStore } from 'models/store';
 
-import routes from 'modules/routes';
+import routes, { route404 } from 'modules/routes';
 import tags from 'modules/tags';
 
 import { App } from 'components/App';
@@ -30,42 +31,60 @@ const auth = {
 const retries = 3;
 
 const render = async (req, res) => {
-    // match path
-    const matchedRoute = matchPath(req.originalUrl, {
+    // try match path
+    let errorCode = 0;
+    let matchedRoute = matchPath(req.originalUrl, {
         path: routes.map(({ path }) => path),
         exact: true,
     });
+
     if (!matchedRoute) {
-        res.status(404);
-        return res.send('404');
+        errorCode = 404;
+        matchedRoute = {
+            path: '/not-found/',
+            url: '/not-found/',
+            isExact: false,
+            params: {},
+        };
+        console.log(`WARN: 404 on client ${req.originalUrl}`);
     }
 
     // get requirements for current request
-    const route = routes.find(({ path }) => path === matchedRoute.path);
+    let route = routes.find(({ path }) => path === matchedRoute.path) || route404;
 
     // try get api data
     let api = [];
     let attempt = 1;
-    let failed = true;
-    while (attempt <= retries) {
-        try {
-            api = await Promise.all(
-                route
-                    .api(matchedRoute.params)
-                    .map((url) => fetcher.get(`http://gamespirit.org${url}`, { auth, timeout }))
-            );
-            failed = false;
-            break;
-        } catch (error) {
-            // eslint-disable-next-line no-console
-            console.log(`WARN: request failed on attempt ${attempt}`);
-            attempt++;
+    const requests = route.api(matchedRoute.params);
+    let failed = requests.length > 0;
+    if (requests.length > 0) {
+        while (attempt <= retries) {
+            try {
+                api = await Promise.all(
+                    requests.map((url) => fetcher.get(`http://gamespirit.org${url}`, { auth, timeout }))
+                );
+                failed = false;
+                break;
+            } catch (error) {
+                // retry request if timeout work
+                if (error.code === 'ECONNABORTED') {
+                    console.log(`WARN: request failed on attempt ${attempt}`);
+                    attempt++;
+                    continue;
+                }
+
+                // try to save code and break while
+                errorCode = error.request.res?.statusCode;
+                break;
+            }
         }
     }
 
-    if (failed) {
-        res.status(500);
-        return res.send('api error');
+    // something going wrong
+    if (failed || errorCode) {
+        res.status(errorCode);
+        console.log(`WARN: something going wrong ${errorCode}`);
+        return res.send(`something going wrong ${errorCode}`);
     }
 
     // basic on api request

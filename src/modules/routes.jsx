@@ -13,6 +13,7 @@ const Company = loadable(() => import('pages/Company'));
 const UserArticles = loadable(() => import('pages/UserArticles'));
 const CategoryArticles = loadable(() => import('pages/CategoryArticles'));
 const Classifications = loadable(() => import('pages/Classifications'));
+const NotFound = loadable(() => import('pages/NotFound'));
 
 const pageRe = ':page([0-9]+)?';
 const lvlRe = '([a-zA-Z0-9-]+)';
@@ -34,6 +35,13 @@ const basicCategoryPage = {
         popularReviews: populars.data.reviews,
         popularGuides: populars.data.guides,
     }),
+};
+
+export const route404 = {
+    path: '/not-found/',
+    component: () => <NotFound />,
+    api: () => [],
+    getInitState: () => ({}),
 };
 
 const routes = [
