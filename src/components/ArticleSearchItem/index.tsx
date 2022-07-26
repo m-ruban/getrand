@@ -33,22 +33,9 @@ const ArticleSearchItem: FC<ArticleSearchItemProps> = ({
         <Column l={short ? 4 : 8} m={short ? 4 : 8} s={short ? 3 : 6} xs={4}>
             <div className="article-search-item">
                 <div className="article-search-item-image-wrapper">
-                    <HoveredImage
-                        src={imgSrc(keyword, main_img, is_old)}
-                        alt={name}
-                        hoverView={
-                            <Button
-                                kind={ButtonKind.Promo}
-                                onClick={() => {
-                                    window.document.location.assign(
-                                        articleLink(type === 'review' ? REVIEWS : GUIDES, keyword)
-                                    );
-                                }}
-                                icon={<ArrowForward color={Colors.Secondary} />}
-                                rounded
-                            />
-                        }
-                    />
+                    <a href={articleLink(type === 'review' ? REVIEWS : GUIDES, keyword)}>
+                        <img className="article-search-item-image" src={imgSrc(keyword, main_img, is_old)} alt={name} />
+                    </a>
                 </div>
                 <div className="article-search-item-categories">
                     <CategoryBadges categories={categories} />
