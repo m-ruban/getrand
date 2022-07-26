@@ -3,6 +3,9 @@
   "description": "GameSpirit.org ssr app",
   "version": "1.0.0",
   "scripts": {
+    "dev-client": "NODE_ENV=development webpack --config ./webpack.config.client.js",
+    "dev-ssr": "NODE_ENV=development webpack --config ./webpack.config.getrand.js",
+    "dev-build": "yarn dev-client && yarn dev-ssr",
     "client": "NODE_ENV=production webpack --config ./webpack.config.client.js",
     "ssr": "NODE_ENV=production webpack --config ./webpack.config.getrand.js",
     "build": "yarn client && yarn ssr",

@@ -7,7 +7,7 @@ import Desktop from 'gg-ukit/components/Icon/Desktop';
 import DocumentTextAlt from 'gg-ukit/components/Icon/DocumentTextAlt';
 import Colors from 'gg-ukit/modules/colors';
 
-import { GameSearchItem as GameSearchItemProps } from 'models/games';
+import { GameSearchItem as GameProps } from 'models/games';
 
 import dateFormat from 'modules/date-format';
 import { EMPTY_IMAGE, imgFullSrc } from 'modules/links';
@@ -16,7 +16,11 @@ import ColumnContainer from 'components/ColumnContainer';
 
 import 'components/GameSearchItem/gameSearchItem.less';
 
-export const GameSearchItemAdapter: FC<{ game: GameSearchItemProps }> = ({ game }) => <GameSearchItem {...game} />;
+interface GameSearchItemProps extends GameProps {
+    loading?: 'eager' | 'lazy';
+}
+
+export const GameSearchItemAdapter: FC<{ game: GameProps }> = ({ game }) => <GameSearchItem {...game} />;
 
 const GameSearchItem: FC<GameSearchItemProps> = ({
     preview_main_img,
@@ -24,6 +28,7 @@ const GameSearchItem: FC<GameSearchItemProps> = ({
     seo: { name, keyword },
     developer,
     publisher,
+    loading = 'eager',
 }) => {
     return (
         <div className="game-search-item">
@@ -34,6 +39,7 @@ const GameSearchItem: FC<GameSearchItemProps> = ({
                             className="game-search-item-image"
                             src={preview_main_img ? imgFullSrc(keyword, preview_main_img) : EMPTY_IMAGE}
                             alt={name}
+                            loading={loading}
                         />
                     </div>
                 </Column>

@@ -19,7 +19,7 @@ const LastGuides: FC = () => {
                 {lastGuides.map(({ id, ...props }, index) => {
                     return (
                         <Fragment key={id}>
-                            <ArticleSearchItem type="guide" id={id} {...props} />
+                            <ArticleSearchItem type="guide" id={id} {...props} loading="lazy" />
                             {index !== lastGuides.length - 1 && <ArticleDivider />}
                         </Fragment>
                     );

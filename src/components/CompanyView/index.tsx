@@ -52,7 +52,7 @@ const CompanyView: FC = () => {
                 <>
                     <H2 title="Разработанные игры" line={HeaderLine.TertiaryDimmed} combineColor />
                     {developed_games.map(({ id, ...gameProps }) => {
-                        return <GameSearchItem key={id} id={id} {...gameProps} />;
+                        return <GameSearchItem key={id} id={id} {...gameProps} loading="lazy" />;
                     })}
                 </>
             )}

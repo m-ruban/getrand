@@ -15,8 +15,17 @@ const ReviewList: FC = () => {
         <>
             <H2 title="Обзоры игр" line={HeaderLine.TertiaryDimmed} combineColor />
             <ColumnContainer>
-                {reviewList.map(({ id, ...props }) => {
-                    return <ArticleSearchItem key={id} type="review" id={id} {...props} short />;
+                {reviewList.map(({ id, ...props }, index) => {
+                    return (
+                        <ArticleSearchItem
+                            key={id}
+                            type="review"
+                            id={id}
+                            {...props}
+                            loading={index < 3 ? 'eager' : 'lazy'}
+                            short
+                        />
+                    );
                 })}
             </ColumnContainer>
         </>

@@ -19,7 +19,7 @@ const LastCompanies: FC = () => {
                 {lastCompanies.map(({ id, ...props }, index) => {
                     return (
                         <Fragment key={id}>
-                            <CompanySearchItem id={id} {...props} />
+                            <CompanySearchItem id={id} {...props} loading="lazy" />
                             {index !== lastCompanies.length - 1 && <ArticleDivider />}
                         </Fragment>
                     );

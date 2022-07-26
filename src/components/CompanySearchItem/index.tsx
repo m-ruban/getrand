@@ -11,13 +11,27 @@ import CreatedDate from 'components/CompanySearchItem/CreatedDate';
 
 import 'components/CompanySearchItem/companySearchItem.less';
 
-const CompanySearchItem: FC<Company> = ({ main_img, created_iso, seo: { name, descr, keyword } }) => {
+interface CompanySearchItemProps extends Company {
+    loading?: 'eager' | 'lazy';
+}
+
+const CompanySearchItem: FC<CompanySearchItemProps> = ({
+    main_img,
+    loading = 'eager',
+    created_iso,
+    seo: { name, descr, keyword },
+}) => {
     return (
         <Column l={8} m={8} s={6} xs={4}>
             <div className="company-search-item">
                 <div className="company-search-item-info">
                     <div className="company-search-item-image-wrapper">
-                        <img className="company-search-item-image" src={imgFullSrc(keyword, main_img)} alt={name} />
+                        <img
+                            className="company-search-item-image"
+                            src={imgFullSrc(keyword, main_img)}
+                            alt={name}
+                            loading={loading}
+                        />
                     </div>
                     <div>
                         <div className="company-search-item-title">

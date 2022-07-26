@@ -61,6 +61,7 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: '[name].[chunkhash].css',
+            ignoreOrder: true,
         }),
         new LoadablePlugin(),
     ],

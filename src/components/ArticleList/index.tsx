@@ -16,7 +16,7 @@ const ArticleList: FC = () => {
         <>
             <H2 title={title} line={HeaderLine.TertiaryDimmed} />
             <ColumnContainer>
-                {articles.map(({ id, article_type_keyword: type, ...props }) => {
+                {articles.map(({ id, article_type_keyword: type, ...props }, index) => {
                     return (
                         <ArticleSearchItem
                             key={id}
@@ -24,6 +24,7 @@ const ArticleList: FC = () => {
                             type={type == 'walkthrough' ? 'guide' : 'review'}
                             article_type_keyword={type}
                             {...props}
+                            loading={index < 3 ? 'eager' : 'lazy'}
                             short
                         />
                     );

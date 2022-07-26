@@ -19,7 +19,7 @@ const GameList: FC = () => {
                 {games.map(({ id, ...props }, index) => {
                     return (
                         <Fragment key={id}>
-                            <Game id={id} {...props} />
+                            <Game id={id} loading={index < 2 ? 'eager' : 'lazy'} {...props} />
                             {index !== games.length - 1 && <ArticleDivider />}
                         </Fragment>
                     );

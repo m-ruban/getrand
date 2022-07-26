@@ -19,7 +19,7 @@ const CompanyList: FC = () => {
                 {companies.map(({ id, ...props }, index) => {
                     return (
                         <Fragment key={id}>
-                            <CompanySearchItem id={id} {...props} />
+                            <CompanySearchItem id={id} {...props} loading={index < 3 ? 'eager' : 'lazy'} />
                             {index !== companies.length - 1 && <ArticleDivider />}
                         </Fragment>
                     );

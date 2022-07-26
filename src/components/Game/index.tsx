@@ -6,7 +6,7 @@ import Link, { LinkType } from 'gg-ukit/components/Link';
 import List from 'gg-ukit/components/List';
 import Paragraph from 'gg-ukit/components/Paragraph';
 
-import { Game as GameProps } from 'models/games';
+import { Game as GameModelProps } from 'models/games';
 
 import { articleLink } from 'modules/links';
 
@@ -15,10 +15,14 @@ import GameSearchItem from 'components/GameSearchItem';
 
 import 'components/Game/game.less';
 
-const Game: FC<GameProps> = ({ categories, articles, ...gameProps }) => {
+interface GameProps extends GameModelProps {
+    loading?: 'eager' | 'lazy';
+}
+
+const Game: FC<GameProps> = ({ categories, articles, loading, ...gameProps }) => {
     return (
         <Column l={8} m={8} s={6} xs={4}>
-            <GameSearchItem {...gameProps} />
+            <GameSearchItem {...gameProps} loading={loading} />
             <div className="game-categories">
                 <CategoryBadges categories={categories} />
             </div>
