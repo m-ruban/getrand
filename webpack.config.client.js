@@ -72,14 +72,26 @@ module.exports = {
     optimization: {
         minimize: true,
         minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
+        runtimeChunk: {
+            name: 'runtime',
+        },
         splitChunks: {
+            chunks: 'all',
+            minSize: 20000,
+            maxAsyncRequests: 30,
+            maxInitialRequests: 30,
             cacheGroups: {
-                default: false,
-                vendors: false,
-                vendor: {
+                gg: {
+                    name: 'gg',
+                    test: (entry) => entry.context && entry.context.match(/gg-ukit/),
                     chunks: 'all',
+                    priority: 3,
+                },
+                vendor: {
                     name: 'vendor',
                     test: /node_modules/,
+                    chunks: 'all',
+                    priority: 2,
                 },
             },
         },
