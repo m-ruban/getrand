@@ -5,6 +5,8 @@ export interface MetaTags {
     description: string;
     keywords: string;
     seo_descr: string;
+    shortTitle: string;
+    canonical: string;
 }
 
 const initialState: MetaTags = {
@@ -12,6 +14,8 @@ const initialState: MetaTags = {
     description: '',
     keywords: '',
     seo_descr: '',
+    shortTitle: '',
+    canonical: '',
 };
 
 export const slice = createSlice({

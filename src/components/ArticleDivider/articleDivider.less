@@ -1,8 +1,15 @@
 @import 'gg-ukit/styles/columns';
+@import 'gg-ukit/styles/screen';
 
 .article-divider {
     margin-bottom: 30px;
     margin-left: @column-padding;
     margin-right: @column-padding;
     border-bottom: 1px solid #2c333b;
+}
+
+.article-divider_xs-only {
+    @media @screen-gt-xs {
+        display: none;
+    }
 }

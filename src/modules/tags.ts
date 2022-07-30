@@ -2,7 +2,7 @@ import { MetaTags } from 'models/metaTags';
 
 import { host } from 'modules/links';
 
-const tags = ({ title, description, keywords }: MetaTags, path: string): string => {
+const tags = ({ title, description, keywords, canonical }: MetaTags, path: string): string => {
     const tags = [
         `<title>${title}</title>`,
         `<meta name="description" lang="ru" content="${description}" />`,
@@ -11,6 +11,7 @@ const tags = ({ title, description, keywords }: MetaTags, path: string): string 
         `<meta property="og:description" content="${description}" />`,
         `<meta property="og:image" content="${host}/img/logo/golem.png" />`,
         `<meta property="og:url" content="${host}${path}" />`,
+        `<link rel="canonical" href="${host}${canonical}" />`,
     ];
     return tags.join('');
 };
