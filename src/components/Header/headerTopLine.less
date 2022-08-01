@@ -1,0 +1,64 @@
+@import 'gg-ukit/styles/screen';
+
+.header-top-line-wrapper {
+    height: 55px;
+    display: flex;
+    align-items: center;
+
+    @media @screen-gt-xs {
+        height: 40px;
+    }
+}
+
+.header-top-line-site {
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+
+    @media (min-width: 550px) {
+        display: none;
+    }
+}
+
+.header-top-line-site__spec-symbol {
+    font-size: 20px;
+    position: relative;
+    top: 1px;
+}
+
+.header-top-line-icons {
+    margin-left: auto;
+
+    @media @screen-gt-xs {
+        margin-left: 0;
+    }
+}
+
+.header-icon {
+    display: inline-block;
+    content: '';
+    height: 25px;
+    width: 25px;
+    margin-right: 23px;
+
+    @media @screen-gt-xs {
+        height: 19px;
+        width: 19px;
+        margin-right: 20px;
+    }
+}
+
+.header-icon_steam {
+    background-image: url('./icons/steam.svg');
+}
+
+.header-icon_patreon {
+    background-image: url('./icons/patreon.svg');
+    margin-right: 0;
+}
+
+.header-icon_zen {
+    background-image: url('./icons/zen.svg');
+}

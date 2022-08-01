@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 
-import HeaderIcons from 'components/Header/HeaderIcons';
 import HeaderMenu from 'components/Header/HeaderMenu';
+import HeaderTopLine from 'components/Header/HeaderTopLine';
 
 const Header: FC = () => {
     return (
         <div>
-            <HeaderIcons />
+            <HeaderTopLine />
             <HeaderMenu />
         </div>
     );
