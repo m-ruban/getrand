@@ -5,6 +5,7 @@ import { H2 } from 'gg-ukit/components/Header';
 import { HeaderLine } from 'gg-ukit/components/Header/BasicHeader';
 import LinkAlt from 'gg-ukit/components/Icon/LinkAlt';
 import LocationPinCircle from 'gg-ukit/components/Icon/LocationPinCircle';
+import { ImageLoad } from 'gg-ukit/components/Image';
 import Link, { LinkType } from 'gg-ukit/components/Link';
 import Paragraph from 'gg-ukit/components/Paragraph';
 
@@ -13,6 +14,7 @@ import { RootStore } from 'models/reducers';
 import CreatedDate from 'components/CompanySearchItem/CreatedDate';
 import GameSearchItem from 'components/GameSearchItem';
 import Keywords from 'components/Keywords';
+import SectionHeader from 'components/SectionHeader';
 import TreeElement from 'components/TreeElement';
 
 import 'components/CompanyView/companyView.less';
@@ -23,7 +25,7 @@ const CompanyView: FC = () => {
     // TODO render published_games after merge
     return (
         <div>
-            <H2 title={name} line={HeaderLine.TertiaryDimmed} />
+            <SectionHeader title={name} />
             <Paragraph>
                 <CreatedDate created_iso={created_iso} />
             </Paragraph>
@@ -52,7 +54,7 @@ const CompanyView: FC = () => {
                 <>
                     <H2 title="Разработанные игры" line={HeaderLine.TertiaryDimmed} combineColor />
                     {developed_games.map(({ id, ...gameProps }) => {
-                        return <GameSearchItem key={id} id={id} {...gameProps} loading="lazy" />;
+                        return <GameSearchItem key={id} id={id} {...gameProps} loading={ImageLoad.Lazy} />;
                     })}
                 </>
             )}

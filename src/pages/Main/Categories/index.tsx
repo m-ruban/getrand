@@ -4,12 +4,11 @@ import { useSelector } from 'react-redux';
 import Column from 'gg-ukit/components/Column';
 import ColumnsWrapper from 'gg-ukit/components/ColumnsWrapper';
 import Link, { LinkType } from 'gg-ukit/components/Link';
+import Scroller from 'gg-ukit/components/Scroller';
 
 import { RootStore } from 'models/reducers';
 
 import { altIconImgSrc, categoryLink } from 'modules/links';
-
-import Scroller from 'components/Scroller';
 
 import 'pages/Main/Categories/categories.less';
 

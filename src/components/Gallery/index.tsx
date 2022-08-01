@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 import Button, { ButtonKind } from 'gg-ukit/components/Button';
 import SearchAdd from 'gg-ukit/components/Icon/SearchAdd';
 import Image, { BasicImageProps } from 'gg-ukit/components/Image';
+import { ImageLoad } from 'gg-ukit/components/Image';
 import HoveredImage from 'gg-ukit/components/Image/HoveredImage';
 import Modal from 'gg-ukit/components/Modal';
 import Slider from 'gg-ukit/components/Slider';
@@ -44,6 +45,7 @@ const Gallery: FC<GalleryProps> = ({ slides, note }) => {
                                 <HoveredImage
                                     alt={alt}
                                     src={gallerySrcImg(preview)}
+                                    loading={ImageLoad.Lazy}
                                     hoverView={
                                         <Button
                                             kind={ButtonKind.Promo}
@@ -56,7 +58,7 @@ const Gallery: FC<GalleryProps> = ({ slides, note }) => {
                                     }
                                 />
                             ),
-                            preview: <Image alt={alt} src={gallerySrcImg(preview)} />,
+                            preview: <Image alt={alt} src={gallerySrcImg(preview)} loading={ImageLoad.Lazy} />,
                         };
                     })}
                 />

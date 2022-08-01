@@ -5,6 +5,7 @@ import Calendar from 'gg-ukit/components/Icon/Calendar';
 import Commandline from 'gg-ukit/components/Icon/Commandline';
 import Desktop from 'gg-ukit/components/Icon/Desktop';
 import DocumentTextAlt from 'gg-ukit/components/Icon/DocumentTextAlt';
+import { ImageLoad } from 'gg-ukit/components/Image';
 import Colors from 'gg-ukit/modules/colors';
 
 import { GameSearchItem as GameProps } from 'models/games';
@@ -17,7 +18,7 @@ import ColumnContainer from 'components/ColumnContainer';
 import 'components/GameSearchItem/gameSearchItem.less';
 
 interface GameSearchItemProps extends GameProps {
-    loading?: 'eager' | 'lazy';
+    loading?: ImageLoad;
 }
 
 export const GameSearchItemAdapter: FC<{ game: GameProps }> = ({ game }) => <GameSearchItem {...game} />;
@@ -28,7 +29,7 @@ const GameSearchItem: FC<GameSearchItemProps> = ({
     seo: { name, keyword },
     developer,
     publisher,
-    loading = 'eager',
+    loading = ImageLoad.Eager,
 }) => {
     return (
         <div className="game-search-item">

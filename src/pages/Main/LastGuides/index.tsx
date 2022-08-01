@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { H2 } from 'gg-ukit/components/Header';
 import { HeaderLine } from 'gg-ukit/components/Header/BasicHeader';
+import { ImageLoad } from 'gg-ukit/components/Image';
 
 import { RootStore } from 'models/reducers';
 
@@ -19,7 +20,7 @@ const LastGuides: FC = () => {
                 {lastGuides.map(({ id, ...props }, index) => {
                     return (
                         <Fragment key={id}>
-                            <ArticleSearchItem type="guide" id={id} {...props} loading="lazy" />
+                            <ArticleSearchItem type="guide" id={id} {...props} loading={ImageLoad.Lazy} />
                             {index !== lastGuides.length - 1 && <ArticleDivider />}
                         </Fragment>
                     );

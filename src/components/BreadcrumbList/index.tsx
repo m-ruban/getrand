@@ -5,10 +5,9 @@ import Breadcrumbs from 'gg-ukit/components/Breadcrumbs';
 import Column from 'gg-ukit/components/Column';
 import ColumnsWrapper from 'gg-ukit/components/ColumnsWrapper';
 import { LinkType } from 'gg-ukit/components/Link';
+import Scroller from 'gg-ukit/components/Scroller';
 
 import { RootStore } from 'models/reducers';
-
-import Scroller from 'components/Scroller';
 
 import 'components/BreadcrumbList/breadcrumbList.less';
 

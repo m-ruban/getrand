@@ -1,20 +1,19 @@
 import React, { FC } from 'react';
 
 import Column from 'gg-ukit/components/Column';
-import { H2 } from 'gg-ukit/components/Header';
-import { HeaderLine } from 'gg-ukit/components/Header/BasicHeader';
 import Link from 'gg-ukit/components/Link';
 import Paragraph from 'gg-ukit/components/Paragraph';
 
 import ArticleDivider from 'components/ArticleDivider';
 import ColumnContainer from 'components/ColumnContainer';
+import SectionHeader from 'components/SectionHeader';
 
 import 'pages/About/about.less';
 
 const Team: FC = () => {
     return (
         <>
-            <H2 title="Команда проекта" line={HeaderLine.TertiaryDimmed} combineColor />
+            <SectionHeader title="Команда проекта" combineColor />
             <ColumnContainer>
                 <div className="human">
                     <Column l={3} m={3} s={2} xs={4}>

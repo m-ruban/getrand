@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 
 import Column from 'gg-ukit/components/Column';
+import { ImageLoad } from 'gg-ukit/components/Image';
 import Link, { LinkType } from 'gg-ukit/components/Link';
 import Paragraph from 'gg-ukit/components/Paragraph';
 
@@ -15,7 +16,7 @@ import 'components/ArticleSearchItem/articleSearchItem.less';
 interface ArticleSearchItemProps extends ArticleSearch {
     type: 'review' | 'guide';
     short?: boolean;
-    loading?: 'eager' | 'lazy';
+    loading?: ImageLoad;
 }
 
 const ArticleSearchItem: FC<ArticleSearchItemProps> = ({
@@ -25,7 +26,7 @@ const ArticleSearchItem: FC<ArticleSearchItemProps> = ({
     type,
     short,
     is_old,
-    loading = 'eager',
+    loading = ImageLoad.Eager,
 }) => {
     return (
         <Column l={short ? 4 : 8} m={short ? 4 : 8} s={short ? 3 : 6} xs={4}>

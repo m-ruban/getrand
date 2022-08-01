@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 
 import Column from 'gg-ukit/components/Column';
+import { ImageLoad } from 'gg-ukit/components/Image';
 import Link, { LinkType } from 'gg-ukit/components/Link';
 
 import { Company } from 'models/lastCompanies';
@@ -12,12 +13,12 @@ import CreatedDate from 'components/CompanySearchItem/CreatedDate';
 import 'components/CompanySearchItem/companySearchItem.less';
 
 interface CompanySearchItemProps extends Company {
-    loading?: 'eager' | 'lazy';
+    loading?: ImageLoad;
 }
 
 const CompanySearchItem: FC<CompanySearchItemProps> = ({
     main_img,
-    loading = 'eager',
+    loading = ImageLoad.Eager,
     created_iso,
     seo: { name, descr, keyword },
 }) => {

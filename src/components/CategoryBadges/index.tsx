@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import classnames from 'classnames';
 
+import Scroller from 'gg-ukit/components/Scroller';
+
 import { Category } from 'models/mainCategories';
 
 import { categoryLink } from 'modules/links';
-
-import Scroller from 'components/Scroller';
 
 import 'components/CategoryBadges/categoryBadges.less';
 

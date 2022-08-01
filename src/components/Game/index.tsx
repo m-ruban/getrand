@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 
 import Column from 'gg-ukit/components/Column';
 import { H3 } from 'gg-ukit/components/Header';
+import { ImageLoad } from 'gg-ukit/components/Image';
 import Link, { LinkType } from 'gg-ukit/components/Link';
 import List from 'gg-ukit/components/List';
 import Paragraph from 'gg-ukit/components/Paragraph';
@@ -16,7 +17,7 @@ import GameSearchItem from 'components/GameSearchItem';
 import 'components/Game/game.less';
 
 interface GameProps extends GameModelProps {
-    loading?: 'eager' | 'lazy';
+    loading?: ImageLoad;
 }
 
 const Game: FC<GameProps> = ({ categories, articles, loading, ...gameProps }) => {
