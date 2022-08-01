@@ -16,7 +16,7 @@ const SidebarCategories: FC = () => {
             {categories.map(({ id, code, alt_image, articles_count, seo: { name, keyword } }) => {
                 return (
                     <div key={id} className="sidebar-category">
-                        <div>
+                        <div className="sidebar-category-icon-wrapper">
                             <img
                                 className="sidebar-category-icon"
                                 src={altIconImgSrc(alt_image)}
