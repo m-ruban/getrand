@@ -26,6 +26,7 @@ const basicCategoryPage = {
             '/api/v1/populars/?categories=true',
         ];
     },
+    vkWidget: false,
     getInitState: ([page, populars]) => ({
         breadcrumbs: page.data.breadcrumbs,
         articles: page.data.articles,
@@ -41,6 +42,7 @@ export const route404 = {
     path: '/not-found/',
     component: () => <NotFound />,
     api: () => [],
+    vkWidget: false,
     getInitState: () => ({}),
 };
 
@@ -50,6 +52,7 @@ const routes = [
         exact: true,
         component: () => <Main />,
         api: () => ['/api/v1/main/', '/api/v1/populars/'],
+        vkWidget: false,
         getInitState: ([page, populars]) => ({
             announce: page.data.announce,
             mainCategories: page.data.categories,
@@ -68,6 +71,7 @@ const routes = [
         api: ({ page }) => {
             return [`/api/v1/reviews/${page || 0}/?limit=10`, '/api/v1/populars/?categories=true'];
         },
+        vkWidget: false,
         getInitState: ([page, populars]) => ({
             breadcrumbs: page.data.breadcrumbs,
             reviews: page.data.articles,
@@ -85,6 +89,7 @@ const routes = [
         api: ({ page }) => {
             return [`/api/v1/walkthrough/${page || 0}/?limit=10`, '/api/v1/populars/?categories=true'];
         },
+        vkWidget: false,
         getInitState: ([page, populars]) => ({
             breadcrumbs: page.data.breadcrumbs,
             guides: page.data.articles,
@@ -102,6 +107,7 @@ const routes = [
         api: ({ page }) => {
             return [`/api/v1/games/${page || 1}/?limit=10`, '/api/v1/populars/?categories=true'];
         },
+        vkWidget: false,
         getInitState: ([page, populars]) => {
             return {
                 mainCategories: populars.data.categories,
@@ -121,6 +127,7 @@ const routes = [
         api: () => {
             return ['/api/v1/faq/', '/api/v1/populars/?categories=true'];
         },
+        vkWidget: false,
         getInitState: ([page, populars]) => {
             return {
                 mainCategories: populars.data.categories,
@@ -139,6 +146,7 @@ const routes = [
         api: () => {
             return ['/api/v1/about/', '/api/v1/populars/?categories=true'];
         },
+        vkWidget: false,
         getInitState: ([page, populars]) => {
             return {
                 mainCategories: populars.data.categories,
@@ -156,6 +164,7 @@ const routes = [
         api: ({ page }) => {
             return [`/api/v1/companies/${page || 1}/?limit=10`, '/api/v1/populars/?categories=true'];
         },
+        vkWidget: false,
         getInitState: ([page, populars]) => {
             return {
                 mainCategories: populars.data.categories,
@@ -175,6 +184,7 @@ const routes = [
         api: ({ keyword }) => {
             return [`/api/v1/reviews/${keyword}/`, '/api/v1/populars/?categories=true'];
         },
+        vkWidget: true,
         getInitState: ([page, populars]) => ({
             mainCategories: populars.data.categories,
             popularReviews: populars.data.reviews,
@@ -191,6 +201,7 @@ const routes = [
         api: ({ keyword }) => {
             return [`/api/v1/walkthrough/${keyword}/`, '/api/v1/populars/?categories=true'];
         },
+        vkWidget: true,
         getInitState: ([page, populars]) => ({
             mainCategories: populars.data.categories,
             popularReviews: populars.data.reviews,
@@ -207,6 +218,7 @@ const routes = [
         api: ({ keyword }) => {
             return [`/api/v1/companies/${keyword}/`, '/api/v1/populars/?categories=true'];
         },
+        vkWidget: true,
         getInitState: ([page, populars]) => ({
             mainCategories: populars.data.categories,
             popularReviews: populars.data.reviews,
@@ -223,6 +235,7 @@ const routes = [
         api: ({ login, page }) => {
             return [`/api/v1/users/${login}/${page || 1}/?limit=10`, '/api/v1/populars/?categories=true'];
         },
+        vkWidget: false,
         getInitState: ([page, populars]) => ({
             breadcrumbs: page.data.breadcrumbs,
             articles: page.data.articles,
@@ -249,6 +262,7 @@ const routes = [
         path: `/categories/`,
         exact: true,
         component: () => <Classifications />,
+        vkWidget: false,
         api: () => {
             return [`/api/v1/categories-tree/`, '/api/v1/populars/?categories=true'];
         },

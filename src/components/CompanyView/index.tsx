@@ -11,9 +11,11 @@ import Paragraph from 'gg-ukit/components/Paragraph';
 
 import { RootStore } from 'models/reducers';
 
+import Comments from 'components/Comments';
 import CreatedDate from 'components/CompanySearchItem/CreatedDate';
 import GameSearchItem from 'components/GameSearchItem';
 import Keywords from 'components/Keywords';
+import Like from 'components/Like';
 import SectionHeader from 'components/SectionHeader';
 import TreeElement from 'components/TreeElement';
 
@@ -49,6 +51,7 @@ const CompanyView: FC = () => {
                 </Paragraph>
             )}
             <TreeElement treeElement={render_tree} />
+            <Like />
             <Keywords keywords={meta_keyword} />
             {developed_games.length > 0 && (
                 <>
@@ -58,6 +61,7 @@ const CompanyView: FC = () => {
                     })}
                 </>
             )}
+            <Comments />
         </div>
     );
 };

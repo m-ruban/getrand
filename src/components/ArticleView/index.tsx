@@ -7,7 +7,9 @@ import Authors from 'components/ArticleView/Authors';
 import ParentLink from 'components/ArticleView/ParentLink';
 import RelatedArticles from 'components/ArticleView/RelatedArticles';
 import CategoryBadges from 'components/CategoryBadges';
+import Comments from 'components/Comments';
 import Keywords from 'components/Keywords';
+import Like from 'components/Like';
 import SectionHeader from 'components/SectionHeader';
 import TreeElement from 'components/TreeElement';
 
@@ -25,12 +27,14 @@ const ArticleView: FC = () => {
                 <CategoryBadges categories={categories} />
             </div>
             <TreeElement treeElement={render_tree} />
+            <Like />
             <RelatedArticles articles={children} type={article_type_keyword} />
             <div>
                 <Authors redactor={redactor} author={autor} />
                 <Keywords keywords={meta_keyword} />
             </div>
             {parent && <ParentLink {...parent} type={article_type_keyword} />}
+            <Comments />
         </div>
     );
 };
