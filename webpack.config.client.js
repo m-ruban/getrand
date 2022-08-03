@@ -5,6 +5,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const LoadablePlugin = require('@loadable/webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const aliases = require('./aliases');
 
@@ -64,6 +65,9 @@ module.exports = {
             ignoreOrder: true,
         }),
         new LoadablePlugin(),
+        new CopyPlugin({
+            patterns: [{ from: 'src/raw', to: 'raw' }],
+        }),
     ],
     resolve: {
         alias: aliases,
