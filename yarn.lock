@@ -2162,7 +2162,7 @@ copy-anything@^2.0.1:
   dependencies:
     is-what "^3.14.1"
 
-copy-webpack-plugin@10:
+copy-webpack-plugin@10.2.4:
   version "10.2.4"
   resolved "https://registry.yarnpkg.com/copy-webpack-plugin/-/copy-webpack-plugin-10.2.4.tgz#6c854be3fdaae22025da34b9112ccf81c63308fe"
   integrity sha512-xFVltahqlsRcyyJqQbDY6EYTtyQZF9rf+JPjwHObLdPFMEISqkFkr7mFoVOC6BfYS/dNThyoQKvziugm+OnwBg==
@@ -3211,10 +3211,10 @@ get-symbol-description@^1.0.0:
     call-bind "^1.0.2"
     get-intrinsic "^1.1.1"
 
-gg-ukit@1.0.15:
-  version "1.0.15"
-  resolved "https://registry.yarnpkg.com/gg-ukit/-/gg-ukit-1.0.15.tgz#94f37808affbff4b214790885c4b504d2fbf4eca"
-  integrity sha512-+7Hprwizb2fLO82Pew14U0ev5fZzod1NDnLav5l9tqshtmGWRI2QMHX1SxAw2pU5LXJ/4X+hI1mg/9wxVJfH6A==
+gg-ukit@1.0.16:
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/gg-ukit/-/gg-ukit-1.0.16.tgz#134e2d32b3732a902b2586aa40351dc1f357f29b"
+  integrity sha512-0pmRbXMj0iPvhAUdecKsRHS4cNPISNIhAhMLa9CHm2p2un+E5P3WK7X3OubH2nJ5RqZfVH2RVLZBJacDPvuX8w==
   dependencies:
     classnames "^2.3.1"
     react "^17.0.2"

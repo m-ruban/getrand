@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 
 import 'components/Comments/comments.less';
 
@@ -12,4 +12,4 @@ const Comments: FC = () => {
     );
 };
 
-export default Comments;
+export default memo(Comments);

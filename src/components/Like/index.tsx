@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 
 import 'components/Like/like.less';
 
@@ -12,4 +12,4 @@ const Like: FC = () => {
     );
 };
 
-export default Like;
+export default memo(Like);

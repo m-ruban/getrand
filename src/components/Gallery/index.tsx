@@ -13,6 +13,8 @@ import { gallerySrcImg } from 'modules/links';
 
 import useZoom, { EMPTY_IMG } from 'hooks/useZoom';
 
+import ModalImage from 'components/ModalImage';
+
 import 'components/Gallery/gallery.less';
 
 interface GalleryImage extends BasicImageProps {
@@ -35,7 +37,7 @@ const Gallery: FC<GalleryProps> = ({ slides, note }) => {
                         setZoom({ show: false, img: { ...EMPTY_IMG } });
                     }}
                 >
-                    <Image {...zoom.img} src={gallerySrcImg(zoom.img.src)} />
+                    <ModalImage alt={zoom.img.alt} src={gallerySrcImg(zoom.img.src)} />
                 </Modal>
                 <Slider
                     note={note}
