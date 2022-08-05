@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 
+import { ImageLoad } from 'gg-ukit/components/Image';
 import Link, { LinkType } from 'gg-ukit/components/Link';
 
 import { ArticleSearch } from 'models/lastReviews';
@@ -25,7 +26,12 @@ const ArticleSidebarItem: FC<ArticleSidebarItemProps> = ({
         <div className="article-sidebar-item">
             <div>
                 <div className="article-sidebar-item-image-wrapper">
-                    <img className="article-sidebar-item-image" src={imgSrc(keyword, main_img, is_old)} alt={name} />
+                    <img
+                        className="article-sidebar-item-image"
+                        src={imgSrc(keyword, main_img, is_old)}
+                        alt={name}
+                        loading={ImageLoad.Lazy}
+                    />
                 </div>
             </div>
             <div className="article-sidebar-item-description">
