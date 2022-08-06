@@ -4,6 +4,8 @@ import Column from 'gg-ukit/components/Column';
 import Link from 'gg-ukit/components/Link';
 import Paragraph from 'gg-ukit/components/Paragraph';
 
+import { host } from 'modules/links';
+
 import ArticleDivider from 'components/ArticleDivider';
 import ColumnContainer from 'components/ColumnContainer';
 import SectionHeader from 'components/SectionHeader';
@@ -18,7 +20,7 @@ const Team: FC = () => {
                 <div className="human">
                     <Column l={3} m={3} s={2} xs={4}>
                         <div className="human-logo-wrapper">
-                            <img className="human-logo" src="http://gamespirit.org/image/icon/rb.jpg" alt="rb032960" />
+                            <img className="human-logo" src={`${host}/image/icon/rb.jpg`} alt="rb032960" />
                         </div>
                     </Column>
                     <Column l={5} m={5} s={4} xs={4}>
@@ -33,11 +35,7 @@ const Team: FC = () => {
                 <div className="human">
                     <Column l={3} m={3} s={2} xs={4}>
                         <div className="human-logo-wrapper">
-                            <img
-                                className="human-logo"
-                                src="http://gamespirit.org/image/icon/gg.jpg"
-                                alt="godlike_goblin"
-                            />
+                            <img className="human-logo" src={`${host}/image/icon/gg.jpg`} alt="godlike_goblin" />
                         </div>
                     </Column>
                     <Column l={5} m={5} s={4} xs={4}>

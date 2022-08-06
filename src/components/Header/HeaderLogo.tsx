@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 
 import { sectionLink } from 'modules/links';
+import { host } from 'modules/links';
 
 import 'components/Header/headerLogo.less';
 
@@ -9,11 +10,7 @@ const HeaderLogo: FC = () => {
         <div className="header-menu-logo-wrapper">
             <div>
                 <a href={sectionLink('')}>
-                    <img
-                        className="header-menu-logo"
-                        src="http://gamespirit.org/img/logo/golem.png"
-                        alt="GameSpirit.org logo"
-                    />
+                    <img className="header-menu-logo" src={`${host}/img/logo/golem.png`} alt="GameSpirit.org logo" />
                 </a>
             </div>
             <div className="header-menu-name-wrapper">

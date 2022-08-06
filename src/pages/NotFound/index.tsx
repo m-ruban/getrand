@@ -5,6 +5,8 @@ import ColumnsWrapper from 'gg-ukit/components/ColumnsWrapper';
 import Link, { LinkType } from 'gg-ukit/components/Link';
 import Paragraph from 'gg-ukit/components/Paragraph';
 
+import { host } from 'modules/links';
+
 import Footer from 'components/Footer';
 import Header from 'components/Header';
 import PageLayout from 'components/PageLayout';
@@ -32,11 +34,7 @@ const NotFound: FC = () => {
                             и попробуйте еще раз.
                         </Paragraph>
                         <div>
-                            <img
-                                className="not-found-img"
-                                src="http://gamespirit.org/image/icon/not_found.jpeg"
-                                alt="404"
-                            />
+                            <img className="not-found-img" src={`${host}/image/icon/not_found.jpeg`} alt="404" />
                         </div>
                     </div>
                 </Column>

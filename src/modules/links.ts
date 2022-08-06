@@ -1,10 +1,10 @@
-export const host = 'http://gamespirit.org';
+export const host = 'https://gamespirit.org';
 
 export const REVIEWS = 'reviews';
 
 export const GUIDES = 'walkthrough';
 
-export const EMPTY_IMAGE = 'http://gamespirit.org/img/content/no-image.png';
+export const EMPTY_IMAGE = `${host}/img/content/no-image.png`;
 
 const getRandPages = ['', `${REVIEWS}/`, `${GUIDES}/`, 'games/', 'faq/', 'about/', 'companies/', 'categories/'];
 

@@ -7,6 +7,7 @@ import ArrowUpAlt2 from 'gg-ukit/components/Icon/ArrowUpAlt2';
 import Link from 'gg-ukit/components/Link';
 import Colors from 'gg-ukit/modules/colors';
 
+import { host } from 'modules/links';
 import { sectionLink } from 'modules/links';
 
 import ColumnContainer from 'components/ColumnContainer';
@@ -23,7 +24,7 @@ const Footer: FC = () => {
                             <Column l={2} m={2} s={2} xs={4}>
                                 <img
                                     className="footer-logo"
-                                    src="http://gamespirit.org/img/logo/golem.png"
+                                    src={`${host}/img/logo/golem.png`}
                                     alt="GameSpirit.org logo"
                                 />
                             </Column>

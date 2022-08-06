@@ -14,6 +14,7 @@ import serialize from 'serialize-javascript';
 
 import { createStore } from 'models/store';
 
+import { host } from 'modules/links';
 import routes, { route404 } from 'modules/routes';
 import tags from 'modules/tags';
 
@@ -60,9 +61,7 @@ const render = async (req, res) => {
     if (requests.length > 0) {
         while (attempt <= retries) {
             try {
-                api = await Promise.all(
-                    requests.map((url) => fetcher.get(`http://gamespirit.org${url}`, { auth, timeout }))
-                );
+                api = await Promise.all(requests.map((url) => fetcher.get(`${host}${url}`, { auth, timeout })));
                 failed = false;
                 break;
             } catch (error) {
