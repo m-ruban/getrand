@@ -92,7 +92,7 @@ const render = async (req, res) => {
     const preloadedState = route.getInitState(api);
     // request state data
     preloadedState.request = {
-        url: req.protocol + '://' + req.get('host'),
+        url: 'https://' + req.get('host'),
     };
     const store = createStore(history, preloadedState);
     const storeInstance = store.getState();
