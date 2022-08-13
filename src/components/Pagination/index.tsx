@@ -8,12 +8,16 @@ import { RootStore } from 'models/reducers';
 
 import 'components/Pagination/pagination.less';
 
-const Pagination: FC = () => {
+interface PaginationProps {
+    template?: string;
+}
+
+const Pagination: FC<PaginationProps> = ({ template = `/${PAGE_TEMPLATE}/` }) => {
     const url = useSelector((state: RootStore) => state.request.url);
     const { pathname, ...pagerProps } = useSelector((state: RootStore) => state.pagination);
     return (
         <div className="pagination-wrapper">
-            <Pager {...pagerProps} urlTemplate={`${url}/${pathname}/${PAGE_TEMPLATE}/`} />
+            <Pager {...pagerProps} urlTemplate={`${url}/${pathname}${template}`} />
         </div>
     );
 };

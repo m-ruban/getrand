@@ -20,6 +20,7 @@ import popularGuides from 'models/popularGuides';
 import popularReviews from 'models/popularReviews';
 import request from 'models/request';
 import reviews from 'models/reviews';
+import searchCriteria from 'models/searchCriteria';
 
 export const reducers = {
     announce,
@@ -42,6 +43,7 @@ export const reducers = {
     games,
     faq,
     companies,
+    searchCriteria,
     router: undefined,
 };
 

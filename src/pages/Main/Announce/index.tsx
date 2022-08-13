@@ -14,6 +14,8 @@ import { RootStore } from 'models/reducers';
 import { articleLink, imgFullSrc } from 'modules/links';
 
 import CategoryBadges from 'components/CategoryBadges';
+import SearchForm from 'components/SearchForm';
+import SearchInput from 'components/SearchInput';
 
 import 'pages/Main/Announce/announce.less';
 
@@ -27,6 +29,13 @@ const Announce: FC = () => {
         <ColumnsWrapper>
             <Column l={12} m={12} s={6} xs={4}>
                 <div className="announce">
+                    <div className="announce-search">
+                        <div className="announce-search-input">
+                            <SearchForm>
+                                <SearchInput />
+                            </SearchForm>
+                        </div>
+                    </div>
                     <div className="announce-content">
                         <div className={classnames('announce-info', { 'announce-info_open': showDescription })}>
                             <div className="announce-title">

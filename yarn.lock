@@ -3211,10 +3211,10 @@ get-symbol-description@^1.0.0:
     call-bind "^1.0.2"
     get-intrinsic "^1.1.1"
 
-gg-ukit@1.0.16:
-  version "1.0.16"
-  resolved "https://registry.yarnpkg.com/gg-ukit/-/gg-ukit-1.0.16.tgz#134e2d32b3732a902b2586aa40351dc1f357f29b"
-  integrity sha512-0pmRbXMj0iPvhAUdecKsRHS4cNPISNIhAhMLa9CHm2p2un+E5P3WK7X3OubH2nJ5RqZfVH2RVLZBJacDPvuX8w==
+gg-ukit@1.0.17:
+  version "1.0.17"
+  resolved "https://registry.yarnpkg.com/gg-ukit/-/gg-ukit-1.0.17.tgz#8db77ac4a63fa9ce4a15c931a536c26def561de3"
+  integrity sha512-9FeupTAMSjpIcCTQLtt1rcAd4ErENqARI9r+wwGnK7eClo3lGZCr5gD6yjc8s5tCH+RN4mxLRgfZTBWnRfPTTA==
   dependencies:
     classnames "^2.3.1"
     react "^17.0.2"

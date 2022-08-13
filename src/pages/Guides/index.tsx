@@ -3,6 +3,8 @@ import React, { FC } from 'react';
 import Column from 'gg-ukit/components/Column';
 import ColumnsWrapper from 'gg-ukit/components/ColumnsWrapper';
 
+import { SearchType } from 'models/searchCriteria';
+
 import BreadcrumbList from 'components/BreadcrumbList';
 import Description from 'components/Description';
 import Footer from 'components/Footer';
@@ -27,7 +29,7 @@ const Guides: FC = () => {
                         <Description />
                     </Column>
                     <Column l={4} m={4} s={6} xs={4}>
-                        <Sidebar />
+                        <Sidebar searchType={SearchType.WalkThrough} showSearchForm />
                     </Column>
                 </StickyContainer>
             </ColumnsWrapper>

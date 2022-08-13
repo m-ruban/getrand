@@ -12,8 +12,11 @@ const Article = loadable(() => import('pages/Article'));
 const Company = loadable(() => import('pages/Company'));
 const UserArticles = loadable(() => import('pages/UserArticles'));
 const CategoryArticles = loadable(() => import('pages/CategoryArticles'));
+const Search = loadable(() => import('pages/Search'));
 const Classifications = loadable(() => import('pages/Classifications'));
 const NotFound = loadable(() => import('pages/NotFound'));
+
+import { param2str } from 'modules/query';
 
 const pageRe = ':page([0-9]+)?';
 const lvlRe = '([a-zA-Z0-9-]+)';
@@ -39,7 +42,6 @@ const basicCategoryPage = {
 };
 
 export const route404 = {
-    path: '/not-found/',
     component: () => <NotFound />,
     api: () => [],
     vkWidget: false,
@@ -247,6 +249,30 @@ const routes = [
         }),
     },
     {
+        path: `/search/`,
+        exact: false,
+        component: () => <Search />,
+        api: (_, { query, type, page }) => {
+            const types = param2str('type', type);
+            const params = [`query=${encodeURI(query || '')}`, `page=${page || 1}`, 'limit=10'];
+            if (types) {
+                params.push(types);
+            }
+            return [`/api/v1/search/?${params.join('&')}`, '/api/v1/populars/?categories=true'];
+        },
+        vkWidget: false,
+        getInitState: ([page, populars]) => ({
+            breadcrumbs: page.data.breadcrumbs,
+            articles: page.data.articles,
+            pagination: page.data.pagination,
+            metaTags: page.data.metaTags,
+            mainCategories: populars.data.categories,
+            popularReviews: populars.data.reviews,
+            popularGuides: populars.data.guides,
+            searchCriteria: page.data.searchCriteria,
+        }),
+    },
+    {
         path: `/categories/:lvl1${lvlRe}/${pageRe}/`,
         ...basicCategoryPage,
     },
@@ -275,6 +301,7 @@ const routes = [
             popularGuides: populars.data.guides,
         }),
     },
+    route404,
 ];
 
 export default routes;
