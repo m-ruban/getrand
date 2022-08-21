@@ -10,7 +10,7 @@ const HeaderLogo: FC = () => {
         <div className="header-menu-logo-wrapper">
             <div>
                 <a href={sectionLink('')}>
-                    <img src={`${host}/img/logo/golem.png`} alt="GameSpirit.org logo" width="105" height="95" />
+                    <img src={`${host}/img/logo/golem.png`} alt="GameSpirit.org logo" width="105" height="90" />
                 </a>
             </div>
             <div className="header-menu-name-wrapper">
