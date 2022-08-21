@@ -25,7 +25,8 @@ const Categories: FC = () => {
                                     <div className="category-content">
                                         <div className="category-icon-wrapper">
                                             <img
-                                                className="category-icon"
+                                                height="60"
+                                                width="60"
                                                 src={altIconImgSrc(alt_image)}
                                                 alt={`${name},${keyword}`}
                                             />
