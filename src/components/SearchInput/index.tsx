@@ -26,7 +26,12 @@ const SearchInput: FC = () => {
                     }}
                     rounded
                 />
-                <Button kind={ButtonKind.Promo} icon={<Search color={Colors.Secondary} />} rounded />
+                <Button
+                    kind={ButtonKind.Promo}
+                    icon={<Search color={Colors.Secondary} />}
+                    aria-label="Поиск по сайту"
+                    rounded
+                />
             </GroupControl>
         </>
     );
