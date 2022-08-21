@@ -12,7 +12,12 @@ app.get(/\/server\/.*/, async (req, res) => {
 });
 
 // some static
-app.get(/\.(js|css|map|ico|woff|svg)$/, express.static(path.resolve(__dirname, '../')));
+app.get(
+    /\.(js|css|map|woff|svg)$/,
+    express.static(path.resolve(__dirname, '../'), {
+        maxAge: 3600000 * 24 * 30, // 30d
+    })
+);
 
 // api redirects
 app.get(/\.(json)$/, async (req, res) => {
