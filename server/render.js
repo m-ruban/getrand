@@ -100,7 +100,7 @@ const render = async (req, res) => {
 
     // loadable
     const statsFile = path.resolve(__dirname, '../loadable-stats.json');
-    const extractor = new ChunkExtractor({ statsFile });
+    const extractor = new ChunkExtractor({ statsFile, outputPath: path.resolve(__dirname, '../') });
 
     // render app
     const appView = renderToString(
@@ -111,9 +111,9 @@ const render = async (req, res) => {
         </ChunkExtractorManager>
     );
 
+    // calc static
     const scriptTags = extractor.getScriptTags();
-    const styleTags = extractor.getStyleTags();
-
+    const styleTags = await extractor.getInlineStyleTags();
     const appHtml = `<div id="app">${appView}</div>`;
     const storeHtml = `<script>window.__state__ = ${serialize(storeInstance)}</script>`;
     const encoding = { encoding: 'utf8' };
