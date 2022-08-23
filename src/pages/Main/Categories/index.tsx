@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 import Column from 'gg-ukit/components/Column';
 import ColumnsWrapper from 'gg-ukit/components/ColumnsWrapper';
+import { ImageLoad } from 'gg-ukit/components/Image';
 import Link, { LinkType } from 'gg-ukit/components/Link';
 import Scroller from 'gg-ukit/components/Scroller';
 
@@ -19,7 +20,7 @@ const Categories: FC = () => {
             <div className="categories-scroller">
                 <Scroller>
                     <div className="categories-list">
-                        {categories.map(({ id, code, alt_image, seo: { name, keyword } }) => {
+                        {categories.map(({ id, code, alt_image, seo: { name, keyword } }, index) => {
                             return (
                                 <Column key={id} l={3} m={4} s={3} xs={4}>
                                     <div className="category-content">
@@ -29,6 +30,7 @@ const Categories: FC = () => {
                                                 width="60"
                                                 src={altIconImgSrc(alt_image)}
                                                 alt={`${name},${keyword}`}
+                                                loading={index > 3 ? ImageLoad.Lazy : ImageLoad.Eager}
                                             />
                                         </div>
                                         <div className="category-divider" />
