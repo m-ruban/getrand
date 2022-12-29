@@ -48,6 +48,11 @@ const Team: FC = () => {
                 </div>
             </ColumnContainer>
             <Paragraph>* в команду проекта берем только людей с именем &quot;Михаил&quot;</Paragraph>
+            <Paragraph>
+                Нам всегда нужны авторы игрового контента, примеры материалов можно прислать на
+                <Link href="mailto:gamespirit.org@gmail.com">gamespirit.org@gmail.com</Link> с пометкой
+                &quot;автор&quot;
+            </Paragraph>
         </>
     );
 };
