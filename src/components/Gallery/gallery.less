@@ -11,5 +11,10 @@
 }
 
 .gallery {
-    max-width: 650px;
+    min-width: 100%;
+
+    @media @screen-gt-s {
+        min-width: 600px;
+        max-width: 650px;
+    }
 }
