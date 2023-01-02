@@ -1,12 +1,15 @@
 import { Fragment } from 'react';
 
+import Collapse from 'gg-ukit/components/Collapse';
 import { H1, H2, H3, H4 } from 'gg-ukit/components/Header';
 import List from 'gg-ukit/components/List';
 import Note from 'gg-ukit/components/Note';
 import Paragraph from 'gg-ukit/components/Paragraph';
-import Tooltip from 'gg-ukit/components/Tooltip';
 
 import ArticleImage from 'components/ArticleImage';
+import ArticleModal from 'components/ArticleModal';
+import ArticleSheet from 'components/ArticleSheet';
+import ArticleTooltip from 'components/ArticleTooltip';
 import Gallery from 'components/Gallery';
 import { GameSearchItemAdapter } from 'components/GameSearchItem';
 import Iframe from 'components/Iframe';
@@ -35,11 +38,14 @@ export default {
     h2li: H2T2Content,
     fragment: Fragment,
     section: Section,
+    spoiler: Collapse,
     p: Paragraph,
     b: Bold,
     strong: Bold,
     strike: Strike,
     table: Table,
+    modal: ArticleModal,
+    pmodal: Paragraph,
     tr: Tr,
     td: Td,
     i: Italic,
@@ -49,7 +55,9 @@ export default {
     gallery: Gallery,
     mygallery: Gallery,
     game: GameSearchItemAdapter,
-    tooltip: Tooltip,
+    tooltip: ArticleTooltip,
+    sheet: ArticleSheet,
+    psheet: Paragraph,
     center: Fragment,
     iframe: Iframe,
     note: Note,
@@ -58,4 +66,5 @@ export default {
     li: ListItem,
     result: TableResult,
     customHoveredImg: ArticleImage,
+    ggimg: ArticleImage,
 };
