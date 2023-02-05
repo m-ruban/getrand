@@ -14,6 +14,7 @@ import lastCompanies from 'models/lastCompanies';
 import lastGuides from 'models/lastGuides';
 import lastReviews from 'models/lastReviews';
 import mainCategories from 'models/mainCategories';
+import matchedParams from 'models/matchedParams';
 import metaTags from 'models/metaTags';
 import pagination from 'models/pagination';
 import popularGuides from 'models/popularGuides';
@@ -44,6 +45,7 @@ export const reducers = {
     faq,
     companies,
     searchCriteria,
+    matchedParams,
     router: undefined,
 };
 

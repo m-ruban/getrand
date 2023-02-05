@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { PagerProps } from 'gg-ukit/components/Pager';
 
@@ -20,7 +20,13 @@ const initialState: Pagination = {
 export const slice = createSlice({
     name: 'pagination',
     initialState,
-    reducers: {},
+    reducers: {
+        setPagination: (_, { payload }: PayloadAction<Pagination>) => {
+            return { ...payload };
+        },
+    },
 });
+
+export const { setPagination } = slice.actions;
 
 export default slice.reducer;
