@@ -6,4 +6,5 @@ module.exports = {
     pages: path.resolve(__dirname, './src/pages'),
     modules: path.resolve(__dirname, './src/modules'),
     hooks: path.resolve(__dirname, './src/hooks'),
+    server: path.resolve(__dirname, './server'),
 };
