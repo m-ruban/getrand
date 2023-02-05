@@ -6,6 +6,7 @@ import routes from 'modules/routes';
 
 import 'gg-ukit/styles/fonts.less';
 import 'gg-ukit/styles/defaults.less';
+import 'components/app.less';
 
 export class App extends React.Component {
     constructor(props) {
