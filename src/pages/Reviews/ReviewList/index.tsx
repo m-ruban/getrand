@@ -1,8 +1,6 @@
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-// import axios from 'axios';
-// import { ArticleSearch } from 'models/lastReviews';
 import { RootStore } from 'models/reducers';
 
 import elementObserver from 'modules/elementObserver';
