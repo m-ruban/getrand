@@ -1,7 +1,8 @@
 import express from 'express';
 import path from 'path';
 
-import render from './render';
+import render from 'server/render';
+import { articlesByIds, articlesByType } from 'server/shards/reviews';
 
 const app = express();
 
@@ -19,12 +20,9 @@ app.get(
     })
 );
 
-// api redirects
-app.get(/\.(json)$/, async (req, res) => {
-    res.contentType('application/json');
-    res.status(200);
-    return res.send({ test: 1 });
-});
+// shards
+app.use('/shards/reviews/', articlesByType);
+app.use('/shards/reviews-by-ids/', articlesByIds);
 
 // ssr root
 app.use('*', render);

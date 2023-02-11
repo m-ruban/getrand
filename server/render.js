@@ -4,9 +4,6 @@ import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { matchPath } from 'react-router';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
-import axios from 'axios';
-import adapter from 'axios/lib/adapters/http';
-import dotenv from 'dotenv';
 import fs from 'fs';
 import { createMemoryHistory } from 'history';
 import path from 'path';
@@ -18,18 +15,11 @@ import { host } from 'modules/links';
 import routes, { route404 } from 'modules/routes';
 import tags from 'modules/tags';
 
+import fetcher from 'server/fetcher';
+
 import { App } from 'components/App';
 
-const fetcher = axios.create({ adapter });
-dotenv.config({ path: './.env' });
-
-// request config
-const timeout = process.env.TIMEOUT ? Number(process.env.TIMEOUT) : 2000;
-const auth = {
-    username: process.env.BASE_AUTH_API_USER,
-    password: process.env.BASE_AUTH_API_SECRET,
-};
-const retries = 3;
+const RETRIES = 3;
 
 const render = async (req, res) => {
     // try match path
@@ -59,9 +49,9 @@ const render = async (req, res) => {
     let failed = requests.length > 0;
     let apiErrorCode = 0;
     if (requests.length > 0) {
-        while (attempt <= retries) {
+        while (attempt <= RETRIES) {
             try {
-                api = await Promise.all(requests.map((url) => fetcher.get(`${host}${url}`, { auth, timeout })));
+                api = await Promise.all(requests.map((url) => fetcher.get(`${host}${url}`)));
                 failed = false;
                 break;
             } catch (error) {
@@ -86,14 +76,11 @@ const render = async (req, res) => {
         return res.send(`something going wrong ${apiErrorCode}`);
     }
 
-    // basic on api request
-    // create state
+    // basic on api request create state
     const history = createMemoryHistory({ initialEntries: [req.originalUrl], initialIndex: 0 });
     const preloadedState = route.getInitState(api);
-    // request state data
-    preloadedState.request = {
-        url: 'https://' + req.get('host'),
-    };
+    preloadedState.request = { url: 'https://' + req.get('host') };
+    preloadedState.matchedParams = matchedRoute.params;
     const store = createStore(history, preloadedState);
     const storeInstance = store.getState();
     const { metaTags } = storeInstance;

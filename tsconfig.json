@@ -16,7 +16,8 @@
             "models/*": ["./src/models/*"],
             "pages/*": ["./src/pages/*"],
             "modules/*": ["./src/modules/*"],
-            "hooks/*": ["./src/hooks/*"]
+            "hooks/*": ["./src/hooks/*"],
+            "server/*": ["./server/*"]
         }
     }
 }
