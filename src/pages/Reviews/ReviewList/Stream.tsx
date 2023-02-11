@@ -53,6 +53,7 @@ const Stream: FC<StreamProps> = ({ defaultList, page, disableLoadStreams }) => {
         if (defaultList.length > 0) {
             return;
         }
+        streamRef.current.style.height = '1000px';
         axios.get(`/shards/reviews/?page=${page}`).then((response) => {
             const { articles, pagination } = response.data;
             // save ids for loading
@@ -60,6 +61,7 @@ const Stream: FC<StreamProps> = ({ defaultList, page, disableLoadStreams }) => {
             setList(articles);
             // paginations need recalc (because change curr page)
             dispatch(setPagination(pagination));
+            streamRef.current.style.height = null;
             if (articles.length < LIMIT_ITEMS) {
                 // detect end of section
                 disableLoadStreams();
