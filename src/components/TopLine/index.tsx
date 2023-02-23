@@ -3,25 +3,28 @@ import React, { FC } from 'react';
 import Column from 'gg-ukit/components/Column';
 import ColumnsWrapper from 'gg-ukit/components/ColumnsWrapper';
 
-import 'components/Header/headerTopLine.less';
+import SearchForm from 'components/SearchForm';
+import SearchInput from 'components/SearchInput';
 
-const HeaderTopLine: FC = () => {
+import 'components/TopLine/topLine.less';
+
+const TopLine: FC = () => {
     return (
         <ColumnsWrapper>
             <Column l={12} m={12} s={6} xs={4}>
-                <div className="header-top-line-wrapper">
-                    <div className="header-top-line-site">
-                        <span className="header-top-line-site__spec-symbol">G</span>ame
-                        <span className="header-top-line-site__spec-symbol">S</span>pirit.org
+                <div className="top-line-wrapper">
+                    <div className="top-line-site">
+                        <span className="top-line-site__spec-symbol">G</span>ame
+                        <span className="top-line-site__spec-symbol">S</span>pirit.org
                     </div>
-                    <div className="header-top-line-icons">
+                    <div className="top-line-icons">
                         <a
                             href="https://steamcommunity.com/groups/gamespirit-org"
                             aria-label="Группа в Steam"
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <div className="header-icon header-icon_steam" />
+                            <div className="top-line-icon top-line-icon_steam" />
                         </a>
                         <a
                             href="https://zen.yandex.ru/godlike_goblin"
@@ -29,7 +32,7 @@ const HeaderTopLine: FC = () => {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <div className="header-icon header-icon_zen" />
+                            <div className="top-line-icon top-line-icon_zen" />
                         </a>
                         <a
                             href="https://www.patreon.com/gamespirit"
@@ -37,13 +40,23 @@ const HeaderTopLine: FC = () => {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <div className="header-icon header-icon_patreon" />
+                            <div className="top-line-icon top-line-icon_patreon" />
                         </a>
                     </div>
+                    <div className="top-line-search top-line-search_desktop">
+                        <SearchForm>
+                            <SearchInput />
+                        </SearchForm>
+                    </div>
+                </div>
+                <div className="top-line-search top-line-search_mobile">
+                    <SearchForm>
+                        <SearchInput />
+                    </SearchForm>
                 </div>
             </Column>
         </ColumnsWrapper>
     );
 };
 
-export default HeaderTopLine;
+export default TopLine;

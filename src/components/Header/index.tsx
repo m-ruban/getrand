@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 
-import HeaderMenu from 'components/Header/HeaderMenu';
-import HeaderTopLine from 'components/Header/HeaderTopLine';
+import Menu from 'components/Menu';
+import TopLine from 'components/TopLine';
 
 const Header: FC = () => {
     return (
         <div>
-            <HeaderTopLine />
-            <HeaderMenu />
+            <TopLine />
+            <Menu />
         </div>
     );
 };

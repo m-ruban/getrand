@@ -1,16 +1,17 @@
 @import 'gg-ukit/styles/screen';
+@import 'gg-ukit/styles/colors';
 
-.header-top-line-wrapper {
+.top-line-wrapper {
     height: 55px;
     display: flex;
     align-items: center;
 
     @media @screen-gt-xs {
-        height: 40px;
+        height: 70px;
     }
 }
 
-.header-top-line-site {
+.top-line-site {
     color: #fff;
     font-family: Montserrat, sans-serif;
     font-size: 16px;
@@ -22,13 +23,13 @@
     }
 }
 
-.header-top-line-site__spec-symbol {
+.top-line-site__spec-symbol {
     font-size: 20px;
     position: relative;
     top: 1px;
 }
 
-.header-top-line-icons {
+.top-line-icons {
     margin-left: auto;
 
     a {
@@ -40,7 +41,7 @@
     }
 }
 
-.header-icon {
+.top-line-icon {
     display: inline-block;
     content: '';
     height: 25px;
@@ -48,21 +49,53 @@
     margin-right: 23px;
 
     @media @screen-gt-xs {
-        height: 19px;
-        width: 19px;
-        margin-right: 20px;
+        margin-right: 25px;
     }
 }
 
-.header-icon_steam {
+.top-line-icon_steam {
     background-image: url('./icons/steam.svg');
 }
 
-.header-icon_patreon {
+.top-line-icon_patreon {
     background-image: url('./icons/patreon.svg');
     margin-right: 0;
 }
 
-.header-icon_zen {
+.top-line-icon_zen {
     background-image: url('./icons/zen.svg');
+}
+
+.top-line-search {
+    .gg-button {
+        background-color: @minor;
+        background-image: linear-gradient(#191c1f, #191c1f);
+
+        &:active {
+            background-image: linear-gradient(#191c1f, #191c1f);
+        }
+    }
+}
+
+.top-line-search_desktop {
+    display: none;
+    margin-left: auto;
+
+    @media @screen-gt-xs {
+        display: block;
+        min-width: 355px;
+    }
+
+    @media @screen-gt-s {
+        min-width: 455px;
+    }
+}
+
+.top-line-search_mobile {
+    display: block;
+    margin-bottom: 15px;
+
+    @media @screen-gt-xs {
+        display: none;
+    }
 }

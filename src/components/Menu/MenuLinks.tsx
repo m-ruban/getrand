@@ -5,19 +5,19 @@ import Link, { LinkType } from 'gg-ukit/components/Link';
 
 import { sectionLink } from 'modules/links';
 
-import links from 'components/Header/links';
+import links from 'components/Menu/links';
 
-import 'components/Header/headerLinks.less';
+import 'components/Menu/menuLinks.less';
 
 const HeaderLinks: FC = () => {
     return (
-        <div className="header-menu-links">
+        <div className="menu-links">
             {links.map(({ href, title }) => {
                 return (
                     <div
                         key={href}
-                        className={classnames('header-menu-links-link', {
-                            'header-menu-links-link__companies': href === 'companies/',
+                        className={classnames('menu-links-link', {
+                            'menu-links-link__companies': href === 'companies/',
                         })}
                     >
                         <Link type={LinkType.Secondary} href={sectionLink(href)}>
