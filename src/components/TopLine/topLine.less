@@ -12,11 +12,16 @@
 }
 
 .top-line-site {
+    display: none;
     color: #fff;
     font-family: Montserrat, sans-serif;
     font-size: 16px;
     text-transform: uppercase;
     margin-bottom: 5px;
+
+    @media (min-width: 380px) {
+        display: block;
+    }
 
     @media (min-width: 550px) {
         display: none;
@@ -57,13 +62,31 @@
     background-image: url('./icons/steam.svg');
 }
 
-.top-line-icon_patreon {
-    background-image: url('./icons/patreon.svg');
-    margin-right: 0;
-}
-
 .top-line-icon_zen {
     background-image: url('./icons/zen.svg');
+}
+
+.top-line-icon_patreon {
+    background-image: url('./icons/patreon.svg');
+    background-repeat: no-repeat;
+    margin-right: 19px;
+    border-right: 2px solid #3a444d;
+    padding-right: 19px;
+
+    @media @screen-gt-xs {
+        margin-right: 0;
+        border: none;
+        padding: 0;
+    }
+}
+
+.top-line-icon_search {
+    background-image: url('./icons/search.svg');
+    margin-right: 0;
+
+    @media @screen-gt-xs {
+        display: none;
+    }
 }
 
 .top-line-search {
@@ -94,8 +117,23 @@
 .top-line-search_mobile {
     display: block;
     margin-bottom: 15px;
+    animation: show-search 0.3s ease forwards;
 
     @media @screen-gt-xs {
         display: none;
     }
+}
+
+@keyframes show-search {
+    from {
+        max-height: 0;
+    }
+
+    to {
+        max-height: 40px;
+    }
+}
+
+.top-line-search_mobile-hide {
+    display: none;
 }

@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
+import classnames from 'classnames';
 
 import Column from 'gg-ukit/components/Column';
 import ColumnsWrapper from 'gg-ukit/components/ColumnsWrapper';
@@ -9,6 +10,7 @@ import SearchInput from 'components/SearchInput';
 import 'components/TopLine/topLine.less';
 
 const TopLine: FC = () => {
+    const [showSearch, setShowSearch] = useState<boolean>(false);
     return (
         <ColumnsWrapper>
             <Column l={12} m={12} s={6} xs={4}>
@@ -42,6 +44,12 @@ const TopLine: FC = () => {
                         >
                             <div className="top-line-icon top-line-icon_patreon" />
                         </a>
+                        <div
+                            className="top-line-icon top-line-icon_search"
+                            onClick={() => {
+                                setShowSearch(!showSearch);
+                            }}
+                        />
                     </div>
                     <div className="top-line-search top-line-search_desktop">
                         <SearchForm>
@@ -49,7 +57,11 @@ const TopLine: FC = () => {
                         </SearchForm>
                     </div>
                 </div>
-                <div className="top-line-search top-line-search_mobile">
+                <div
+                    className={classnames('top-line-search', 'top-line-search_mobile', {
+                        'top-line-search_mobile-hide': !showSearch,
+                    })}
+                >
                     <SearchForm>
                         <SearchInput />
                     </SearchForm>
