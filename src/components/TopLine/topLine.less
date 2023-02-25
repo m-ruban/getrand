@@ -12,16 +12,12 @@
 }
 
 .top-line-site {
-    display: none;
+    display: block;
     color: #fff;
     font-family: Montserrat, sans-serif;
     font-size: 16px;
     text-transform: uppercase;
     margin-bottom: 5px;
-
-    @media (min-width: 380px) {
-        display: block;
-    }
 
     @media (min-width: 550px) {
         display: none;
@@ -32,6 +28,14 @@
     font-size: 20px;
     position: relative;
     top: 1px;
+}
+
+.top-line-site__other-symbols {
+    display: none;
+
+    @media (min-width: 380px) {
+        display: inline;
+    }
 }
 
 .top-line-icons {

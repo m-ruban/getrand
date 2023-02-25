@@ -16,8 +16,11 @@ const TopLine: FC = () => {
             <Column l={12} m={12} s={6} xs={4}>
                 <div className="top-line-wrapper">
                     <div className="top-line-site">
-                        <span className="top-line-site__spec-symbol">G</span>ame
-                        <span className="top-line-site__spec-symbol">S</span>pirit.org
+                        <span className="top-line-site__spec-symbol">G</span>
+                        <span className="top-line-site__other-symbols">ame</span>
+                        <span className="top-line-site__spec-symbol">S</span>
+                        <span className="top-line-site__other-symbols">pirit</span>
+                        .org
                     </div>
                     <div className="top-line-icons">
                         <a
