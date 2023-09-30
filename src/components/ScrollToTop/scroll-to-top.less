@@ -1,0 +1,43 @@
+@import 'gg-ukit/styles/colors';
+@import 'gg-ukit/styles/columns';
+@import 'gg-ukit/styles/screen';
+
+@xs-columns-half-size: @column-width-xs * 2;
+@s-columns-half-size: @column-width-s * 4;
+@m-columns-half-size: @column-width-m * 9;
+@l-columns-half-size: @column-width-l * 8;
+@control-width: 44px;
+
+.abstract-left-margin(@columns-half-size) {
+    left: calc(50% + @columns-half-size + @control-width);
+}
+
+.scroll-to-top {
+    position: sticky;
+    z-index: 1000;
+    width: @control-width;
+    opacity: 0;
+    transition: opacity 200ms;
+    bottom: @column-padding;
+    margin-right: @column-padding;
+
+    .abstract-left-margin(@xs-columns-half-size);
+
+    @media @screen-gt-xs {
+        margin-right: 0;
+        .abstract-left-margin(@s-columns-half-size);
+    }
+
+    @media @screen-gt-s {
+        .abstract-left-margin(@m-columns-half-size);
+    }
+
+    @media @screen-gt-m {
+        .abstract-left-margin(@l-columns-half-size);
+    }
+}
+
+.scroll-to-top_shown {
+    opacity: 1;
+    transition: opacity 600ms;
+}
