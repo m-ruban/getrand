@@ -9,7 +9,6 @@ import RelatedArticles from 'components/ArticleView/RelatedArticles';
 import CategoryBadges from 'components/CategoryBadges';
 import Comments from 'components/Comments';
 import Keywords from 'components/Keywords';
-import Like from 'components/Like';
 import SectionHeader from 'components/SectionHeader';
 import TreeElement from 'components/TreeElement';
 
@@ -27,7 +26,6 @@ const ArticleView: FC = () => {
                 <CategoryBadges categories={categories} />
             </div>
             <TreeElement treeElement={render_tree} />
-            <Like />
             <RelatedArticles articles={children} type={article_type_keyword} />
             <div>
                 <Authors redactor={redactor} author={autor} />
