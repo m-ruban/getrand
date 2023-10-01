@@ -9,6 +9,7 @@ import Footer from 'components/Footer';
 import Header from 'components/Header';
 import PageLayout from 'components/PageLayout';
 import Pagination from 'components/Pagination';
+import ScrollToTop from 'components/ScrollToTop';
 import Sidebar from 'components/Sidebar';
 import StickyContainer from 'components/StickyContainer';
 
@@ -31,6 +32,7 @@ const Guides: FC = () => {
                     </Column>
                 </StickyContainer>
             </ColumnsWrapper>
+            <ScrollToTop />
             <Footer />
         </PageLayout>
     );

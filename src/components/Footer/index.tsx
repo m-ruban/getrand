@@ -3,9 +3,7 @@ import React, { FC } from 'react';
 import Column from 'gg-ukit/components/Column';
 import ColumnsWrapper from 'gg-ukit/components/ColumnsWrapper';
 import { H2 } from 'gg-ukit/components/Header';
-import ArrowUpAlt2 from 'gg-ukit/components/Icon/ArrowUpAlt2';
 import Link from 'gg-ukit/components/Link';
-import Colors from 'gg-ukit/modules/colors';
 
 import { host } from 'modules/links';
 import { sectionLink } from 'modules/links';
@@ -59,16 +57,6 @@ const Footer: FC = () => {
                                 <H2 title="Контакты" />
                                 <div className="footer-contacts">
                                     <Link href="mailto:gamespirit.org@gmail.com">gamespirit.org@gmail.com</Link>
-                                </div>
-                            </Column>
-                            <Column l={1} m={1} s={1} xs={4}>
-                                <div
-                                    className="footer-to-top"
-                                    onClick={() => {
-                                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                                    }}
-                                >
-                                    <ArrowUpAlt2 scale={2} color={Colors.Primary} />
                                 </div>
                             </Column>
                         </ColumnContainer>

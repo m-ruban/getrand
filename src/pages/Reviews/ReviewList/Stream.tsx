@@ -31,7 +31,6 @@ const Stream: FC<StreamProps> = ({ defaultList, page, disableLoadStreams }) => {
     const onHideStream = useCallback(() => {
         streamRef.current.style.height = `${streamRef.current.offsetHeight}px`;
         setShowStream(false);
-        setList([]);
     }, []);
 
     // load list by ids
@@ -39,13 +38,8 @@ const Stream: FC<StreamProps> = ({ defaultList, page, disableLoadStreams }) => {
         if (showStream) {
             return;
         }
-        const params = ids.current.map((id) => 'id=' + id).join('&');
-        axios.get(`/shards/reviews-by-ids/?${params}`).then((response) => {
-            const { articles } = response.data;
-            setList(articles);
-            setShowStream(true);
-            streamRef.current.style.height = null;
-        });
+        setShowStream(true);
+        streamRef.current.style.height = null;
     }, [showStream]);
 
     // load data by page
