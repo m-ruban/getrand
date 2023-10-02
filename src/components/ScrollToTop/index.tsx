@@ -1,9 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import classnames from 'classnames';
 
-import Button, { ButtonKind } from 'gg-ukit/components/Button';
 import ArrowUpAlt2 from 'gg-ukit/components/Icon/ArrowUpAlt2';
-import Colors from 'gg-ukit/modules/colors';
 
 import scrollTop from 'modules/scrollTop';
 import throttle from 'modules/throttle';
@@ -51,12 +49,9 @@ const ScrollToTop: FC = () => {
                 'scroll-to-top_shown': shown,
             })}
         >
-            <Button
-                kind={ButtonKind.Promo}
-                onClick={handleClick}
-                icon={<ArrowUpAlt2 color={Colors.Secondary} />}
-                rounded
-            />
+            <div onClick={handleClick}>
+                <ArrowUpAlt2 color="#566472" />
+            </div>
         </div>
     );
 };
