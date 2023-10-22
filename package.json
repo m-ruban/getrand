@@ -3,17 +3,18 @@
   "description": "GameSpirit.org ssr app",
   "version": "1.0.0",
   "scripts": {
-    "dev-client": "NODE_ENV=development webpack --config ./webpack.config.client.js",
-    "dev-ssr": "NODE_ENV=development webpack --config ./webpack.config.getrand.js",
-    "dev-build": "yarn dev-client && yarn dev-ssr",
+    "serve-components": "NODE_ENV=development webpack serve --config ./webpack.config.shared.js",
+    "build-components": "NODE_ENV=production webpack --config ./webpack.config.shared.js",
+    "build-shared-client": "yarn build-components && yarn make-types",
     "client": "NODE_ENV=production webpack --config ./webpack.config.client.js",
     "ssr": "NODE_ENV=production webpack --config ./webpack.config.getrand.js",
-    "build": "yarn client && yarn ssr",
-    "getrand": "yarn client && yarn ssr && node dist/server",
+    "build": "yarn client && yarn ssr && yarn build-shared-client",
     "ts-check": "tsc -p tsconfig.json --noEmit",
+    "make-types": "make-federated-types --output-types-folder=dist/shared/@types",
     "postinstall": "ln -sf $(pwd)/githooks/* .git/hooks || true"
   },
   "dependencies": {
+    "@cloudbeds/webpack-module-federation-types-plugin": "^1.13.12",
     "@loadable/component": "^5.15.2",
     "@loadable/server": "^5.15.2",
     "@reduxjs/toolkit": "^1.8.1",
@@ -85,6 +86,7 @@
     "svgo-loader": "^3.0.1",
     "terser-webpack-plugin": "^5.3.3",
     "webpack": "^5.10.0",
-    "webpack-cli": "^4.2.0"
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^4.15.1"
   }
 }

@@ -1,0 +1,6 @@
+{
+    "name": "getrand",
+    "exposes": {
+        "./Test": "./src/shared/Test"
+    }
+  }
