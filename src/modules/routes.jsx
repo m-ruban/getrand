@@ -15,6 +15,7 @@ const CategoryArticles = loadable(() => import('pages/CategoryArticles'));
 const Search = loadable(() => import('pages/Search'));
 const Classifications = loadable(() => import('pages/Classifications'));
 const NotFound = loadable(() => import('pages/NotFound'));
+const SharedArticle = loadable(() => import('pages/SharedArticle'));
 
 import { param2str } from 'modules/query';
 
@@ -184,6 +185,17 @@ const routes = [
             article: page.data.article,
             metaTags: page.data.metaTags,
             breadcrumbs: page.data.breadcrumbs,
+        }),
+    },
+    {
+        path: '/article/:article/',
+        exact: true,
+        component: () => <SharedArticle />,
+        api: ({ article }) => {
+            return [`/api/v1/map/article-by-id/${article}/`];
+        },
+        getInitState: ([page]) => ({
+            article: page.data.article,
         }),
     },
     {

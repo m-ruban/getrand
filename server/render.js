@@ -72,8 +72,8 @@ const render = async (req, res) => {
     // something going wrong
     if (failed || apiErrorCode) {
         res.status(apiErrorCode || 400);
-        console.log(`WARN: something going wrong ${apiErrorCode}, url - ${req.originalUrl}`);
-        return res.send(`something going wrong ${apiErrorCode}`);
+        console.log(`WARN: something going wrong with api ${apiErrorCode}, url - ${req.originalUrl}`);
+        return res.send(`something going wrong with api ${apiErrorCode}`);
     }
 
     // basic on api request create state
