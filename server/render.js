@@ -104,7 +104,6 @@ const render = async (req, res) => {
     const appHtml = `<div id="app">${appView}</div>`;
     const storeHtml = `<script>window.__state__ = ${serialize(storeInstance)}</script>`;
     const encoding = { encoding: 'utf8' };
-    const yaMetrika = fs.readFileSync(path.resolve(__dirname, '../raw/yaMetrika.html'), encoding);
 
     // inject html
     const html = fs
@@ -112,7 +111,6 @@ const render = async (req, res) => {
         .replace('<div id="app"></div>', appHtml + storeHtml)
         .replace('<title></title>', tags(metaTags, req.originalUrl))
         .replace('</head>', `${styleTags}</head>`)
-        .replace('</head>', `${yaMetrika}</head>`)
         .replace('</body>', `${scriptTags}</body>`);
 
     res.contentType('text/html');
