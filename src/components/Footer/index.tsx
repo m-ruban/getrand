@@ -40,13 +40,13 @@ const Footer: FC = () => {
                                 <H2 title="Ссылки" />
                                 <div className="footer-links">
                                     <div className="footer-link">
-                                        <Link href="https://steamcommunity.com/groups/gamespirit-org">Steam</Link>
-                                    </div>
-                                    <div className="footer-link">
                                         <Link href="https://zen.yandex.ru/godlike_goblin">Дзен</Link>
                                     </div>
                                     <div className="footer-link">
-                                        <Link href="https://www.patreon.com/gamespirit">Patreon</Link>
+                                        <Link href="https://boosty.to/gamespirit.org">Boosty</Link>
+                                    </div>
+                                    <div className="footer-link">
+                                        <Link href="https://steamcommunity.com/groups/gamespirit-org">Steam</Link>
                                     </div>
                                     <div className="footer-link">
                                         <Link href={sectionLink('faq/')}>FAQ</Link>

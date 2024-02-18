@@ -24,14 +24,6 @@ const TopLine: FC = () => {
                     </div>
                     <div className="top-line-icons">
                         <a
-                            href="https://steamcommunity.com/groups/gamespirit-org"
-                            aria-label="Группа в Steam"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            <div className="top-line-icon top-line-icon_steam" />
-                        </a>
-                        <a
                             href="https://zen.yandex.ru/godlike_goblin"
                             aria-label="Группа в Яндекс.Дзен"
                             target="_blank"
@@ -40,12 +32,20 @@ const TopLine: FC = () => {
                             <div className="top-line-icon top-line-icon_zen" />
                         </a>
                         <a
-                            href="https://www.patreon.com/gamespirit"
-                            aria-label="Страница в Patreon"
+                            href="https://boosty.to/gamespirit.org"
+                            aria-label="Страница на Boosty"
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <div className="top-line-icon top-line-icon_patreon" />
+                            <div className="top-line-icon top-line-icon_boosty" />
+                        </a>
+                        <a
+                            href="https://steamcommunity.com/groups/gamespirit-org"
+                            aria-label="Группа в Steam"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            <div className="top-line-icon top-line-icon_steam" />
                         </a>
                         <div
                             className="top-line-icon top-line-icon_search"
