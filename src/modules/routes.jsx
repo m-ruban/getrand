@@ -1,6 +1,8 @@
 import React from 'react';
 import loadable from '@loadable/component';
 
+import { imgSrc } from 'modules/links';
+
 const Main = loadable(() => import('pages/Main'));
 const Guides = loadable(() => import('pages/Guides'));
 const Reviews = loadable(() => import('pages/Reviews'));
@@ -45,6 +47,15 @@ export const route404 = {
     component: () => <NotFound />,
     api: () => [],
     getInitState: () => ({}),
+};
+
+const getArticlePreview = ([page]) => {
+    const {
+        main_img,
+        is_old,
+        seo: { keyword },
+    } = page.data.article;
+    return !is_old ? imgSrc(keyword, main_img, is_old) : '';
 };
 
 const routes = [
@@ -186,6 +197,7 @@ const routes = [
             metaTags: page.data.metaTags,
             breadcrumbs: page.data.breadcrumbs,
         }),
+        getPreview: getArticlePreview,
     },
     {
         path: '/article/:article/',
@@ -213,6 +225,7 @@ const routes = [
             metaTags: page.data.metaTags,
             breadcrumbs: page.data.breadcrumbs,
         }),
+        getPreview: getArticlePreview,
     },
     {
         path: '/companies/:keyword([a-zA-Z0-9-]+)/',

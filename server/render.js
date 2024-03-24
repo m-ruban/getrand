@@ -103,13 +103,13 @@ const render = async (req, res) => {
     const styleTags = await extractor.getInlineStyleTags();
     const appHtml = `<div id="app">${appView}</div>`;
     const storeHtml = `<script>window.__state__ = ${serialize(storeInstance)}</script>`;
-    const encoding = { encoding: 'utf8' };
+    const preview = route.getPreview ? route.getPreview(api) : '';
 
     // inject html
     const html = fs
         .readFileSync(path.resolve(__dirname, '../index.html'), { encoding: 'utf8' })
         .replace('<div id="app"></div>', appHtml + storeHtml)
-        .replace('<title></title>', tags(metaTags, req.originalUrl))
+        .replace('<title></title>', tags(metaTags, req.originalUrl, preview))
         .replace('</head>', `${styleTags}</head>`)
         .replace('</body>', `${scriptTags}</body>`);
 
