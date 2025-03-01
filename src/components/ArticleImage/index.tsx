@@ -3,13 +3,13 @@ import React, { FC } from 'react';
 import Button, { ButtonKind } from 'gg-ukit/components/Button';
 import SearchAdd from 'gg-ukit/components/Icon/SearchAdd';
 import { BasicImageProps } from 'gg-ukit/components/Image';
-import { ImageLoad } from 'gg-ukit/components/Image';
 import FramedImage, { FramedImageKind } from 'gg-ukit/components/Image/FramedImage';
 import Modal from 'gg-ukit/components/Modal';
 import Colors from 'gg-ukit/modules/colors';
 
 import { gallerySrcImg } from 'modules/links';
 
+import { useImageLoadType } from 'hooks/useImageLoadType';
 import useZoom, { EMPTY_IMG } from 'hooks/useZoom';
 
 import ModalImage from 'components/ModalImage';
@@ -22,6 +22,7 @@ interface ArticleImageProps extends BasicImageProps {
 
 const ArticleImage: FC<ArticleImageProps> = ({ src, alt, preview, kind, note = '' }) => {
     const [zoom, setZoom] = useZoom();
+    const imageLoadType = useImageLoadType();
     return (
         <>
             <Modal
@@ -37,7 +38,7 @@ const ArticleImage: FC<ArticleImageProps> = ({ src, alt, preview, kind, note = '
                 src={gallerySrcImg(preview)}
                 note={note}
                 kind={kind}
-                loading={ImageLoad.Lazy}
+                loading={imageLoadType}
                 hoverView={
                     <Button
                         kind={ButtonKind.Promo}

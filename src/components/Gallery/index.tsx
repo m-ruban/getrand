@@ -11,6 +11,7 @@ import Colors from 'gg-ukit/modules/colors';
 
 import { gallerySrcImg } from 'modules/links';
 
+import { useImageLoadType } from 'hooks/useImageLoadType';
 import useZoom, { EMPTY_IMG } from 'hooks/useZoom';
 
 import ModalImage from 'components/ModalImage';
@@ -28,6 +29,7 @@ interface GalleryProps {
 
 const Gallery: FC<GalleryProps> = ({ slides, note }) => {
     const [zoom, setZoom] = useZoom();
+    const imageLoadType = useImageLoadType();
     return (
         <div className="gallery-wrapper">
             <div className="gallery">
@@ -47,7 +49,7 @@ const Gallery: FC<GalleryProps> = ({ slides, note }) => {
                                 <HoveredImage
                                     alt={alt}
                                     src={gallerySrcImg(preview)}
-                                    loading={ImageLoad.Lazy}
+                                    loading={imageLoadType}
                                     hoverView={
                                         <Button
                                             kind={ButtonKind.Promo}
