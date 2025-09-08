@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
@@ -15,7 +14,7 @@ import { host } from 'modules/links';
 import routes, { route404 } from 'modules/routes';
 import tags from 'modules/tags';
 
-import fetcher from 'server/fetcher';
+import { getWithRetry } from 'server/utils';
 
 import { App } from 'components/App';
 
@@ -36,6 +35,7 @@ const render = async (req, res) => {
     if (!matchedRoute) {
         responseCode = 404;
         matchedRoute = { path: '/not-found/', params: {} };
+        // eslint-disable-next-line no-console
         console.log(`WARN: 404 on client ${req.originalUrl}`);
     }
 
@@ -43,40 +43,45 @@ const render = async (req, res) => {
     let route = routes.find(({ path }) => path === matchedRoute.path) || route404;
 
     // try get api data
-    let api = [];
-    let attempt = 1;
     const requests = route.api(matchedRoute.params, req.query);
-    let failed = requests.length > 0;
-    let apiErrorCode = 0;
-    if (requests.length > 0) {
-        while (attempt <= RETRIES) {
-            try {
-                api = await Promise.all(requests.map((url) => fetcher.get(`${host}${url}`)));
-                failed = false;
-                break;
-            } catch (error) {
-                // retry request if timeout work
-                if (error.code === 'ECONNABORTED') {
-                    console.log(`WARN: request failed on attempt ${attempt}`);
-                    attempt++;
-                    continue;
-                }
+    const urls = requests.map((url) => `${host}${url}`);
+    let apiFailedAfterRetry = false;
+    const onError = () => (apiFailedAfterRetry = true);
+    const settled = await Promise.allSettled(urls.map((url) => getWithRetry(url, RETRIES, onError)));
+    const results = settled.map((request, index) => {
+        return request.status === 'fulfilled'
+            ? { ok: true, request: request.value, url: urls[index] }
+            : {
+                  ok: false,
+                  request: request.value,
+                  url: urls[index],
+                  error: request.reason && request.reason.code,
+                  status: request.reason.response.status,
+              };
+    });
 
-                // try to save code and break while
-                apiErrorCode = error.request.res?.statusCode;
-                break;
-            }
+    // without requiried data call error
+    const failed = results.filter((request) => !request.ok);
+    let have404 = false;
+    if (failed.length > 0 || apiFailedAfterRetry) {
+        have404 = failed.some(({ status }) => status === 404);
+        if (have404) {
+            res.status(404);
+            // eslint-disable-next-line no-console
+            console.log(`WARN: 404 on api, url - ${req.originalUrl}`);
+            return res.send(`404, url - ${req.originalUrl}`);
+        }
+        if (!have404) {
+            const errorInfo = failed.map((request) => `${request.url}[${request.error || 'ERR'}]`).join(', ');
+            res.status(500);
+            // eslint-disable-next-line no-console
+            console.log(`WARN: something going wrong with api ${errorInfo}, url - ${req.originalUrl}`);
+            return res.send(`something going wrong with api ${errorInfo}, url - ${req.originalUrl}`);
         }
     }
 
-    // something going wrong
-    if (failed || apiErrorCode) {
-        res.status(apiErrorCode || 400);
-        console.log(`WARN: something going wrong with api ${apiErrorCode}, url - ${req.originalUrl}`);
-        return res.send(`something going wrong with api ${apiErrorCode}`);
-    }
-
     // basic on api request create state
+    const api = results.filter((request) => request.ok).map(({ request }) => request);
     const history = createMemoryHistory({ initialEntries: [req.originalUrl], initialIndex: 0 });
     const preloadedState = route.getInitState(api);
     preloadedState.request = { url: 'https://' + req.get('host') };
