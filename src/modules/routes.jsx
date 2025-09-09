@@ -244,7 +244,7 @@ const routes = [
         }),
     },
     {
-        path: `/users/:login([a-zA-Z0-9-]+)/${pageRe}/`,
+        path: `/users/:login([a-zA-Z0-9-_]+)/${pageRe}/`,
         exact: true,
         component: () => <UserArticles />,
         api: ({ login, page }) => {

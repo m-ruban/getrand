@@ -42,7 +42,7 @@ const Team: FC = () => {
                         <Paragraph>Михаил</Paragraph>
                         <Paragraph>Пишу игровые материалы</Paragraph>
                         <Paragraph>
-                            <Link href="/users/Folstaad/">Материалы</Link>
+                            <Link href="/users/Godlike_Goblin/">Материалы</Link>
                         </Paragraph>
                     </Column>
                 </div>
