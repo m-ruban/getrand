@@ -19,7 +19,7 @@ export class App extends React.Component {
                 <>
                     <Switch>
                         {routes.map(({ path, exact, component }) => {
-                            return <Route key={path} path={path} exact={exact} render={component} />;
+                            return <Route key={path || '404'} path={path} exact={exact} render={component} />;
                         })}
                     </Switch>
                 </>
