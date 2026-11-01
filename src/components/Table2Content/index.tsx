@@ -7,19 +7,22 @@ import List from 'gg-ukit/components/List';
 import Section from 'components/Section';
 import { ListItem } from 'components/TreeElement/BasicTags';
 
+import { getTrl } from 'lang/trls';
 interface Table2ContentItem {
     hash: string;
     title: string;
 }
-
-export const Table2Content: FC<{ links: Table2ContentItem[] }> = ({ links }) => {
+export const Table2Content: FC<{
+    links: Table2ContentItem[];
+}> = ({ links }) => {
     if (links.length === 0) {
         return null;
     }
+
     return (
         <Section>
             <div>
-                <H2 title="Содержание" />
+                <H2 title={getTrl('tableOfContents')} />
             </div>
             <List>
                 {links.map(({ hash, title }) => {
@@ -35,5 +38,4 @@ export const Table2Content: FC<{ links: Table2ContentItem[] }> = ({ links }) => 
         </Section>
     );
 };
-
 export default Table2Content;

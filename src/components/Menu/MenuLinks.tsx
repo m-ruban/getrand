@@ -7,6 +7,8 @@ import { sectionLink } from 'modules/links';
 
 import links from 'components/Menu/links';
 
+import { getTrl } from 'lang/trls';
+
 import 'components/Menu/menuLinks.less';
 
 const HeaderLinks: FC = () => {
@@ -21,7 +23,7 @@ const HeaderLinks: FC = () => {
                         })}
                     >
                         <Link type={LinkType.Secondary} href={sectionLink(href)}>
-                            {title}
+                            {getTrl(title)}
                         </Link>
                     </div>
                 );

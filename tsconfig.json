@@ -8,10 +8,11 @@
         "target": "es2017",
         "jsx": "react",
         "moduleResolution": "node",
-        "typeRoots" : ["node_modules/@types"],
+        "typeRoots": ["node_modules/@types"],
         "esModuleInterop": true,
         "skipLibCheck": true,
         "paths": {
+            "lang/*": ["./src/lang/*"],
             "components/*": ["./src/components/*"],
             "models/*": ["./src/models/*"],
             "pages/*": ["./src/pages/*"],

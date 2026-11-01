@@ -10,6 +10,8 @@ import { sectionLink } from 'modules/links';
 
 import ColumnContainer from 'components/ColumnContainer';
 
+import { getTrl } from 'lang/trls';
+
 import 'components/Footer/footer.less';
 
 const Footer: FC = () => {
@@ -23,24 +25,21 @@ const Footer: FC = () => {
                                 <img
                                     className="footer-logo"
                                     src={`${host}/img/logo/golem.png`}
-                                    alt="GameSpirit.org logo"
+                                    alt={getTrl('siteLogo')}
                                 />
                             </Column>
                             <Column l={3} m={3} s={3} xs={4}>
-                                <H2 title="О нас" />
+                                <H2 title={getTrl('aboutUs')} />
                                 <div className="footer-about">
-                                    <div className="footer-about-content">
-                                        Мы совсем небольшой коллектив единомышленников, который задался целью создания
-                                        информационного портала о компьютерных играх.
-                                    </div>
-                                    <Link href={sectionLink('about/')}>Далее</Link>
+                                    <div className="footer-about-content">{getTrl('footerAbout')}</div>
+                                    <Link href={sectionLink('about/')}>{getTrl('readMore')}</Link>
                                 </div>
                             </Column>
                             <Column l={2} m={2} s={1} xs={4}>
-                                <H2 title="Ссылки" />
+                                <H2 title={getTrl('footerLinks')} />
                                 <div className="footer-links">
                                     <div className="footer-link">
-                                        <Link href="https://zen.yandex.ru/godlike_goblin">Дзен</Link>
+                                        <Link href="https://zen.yandex.ru/godlike_goblin">{getTrl('zen')}</Link>
                                     </div>
                                     <div className="footer-link">
                                         <Link href="https://boosty.to/gamespirit.org">Boosty</Link>
@@ -54,7 +53,7 @@ const Footer: FC = () => {
                                 </div>
                             </Column>
                             <Column l={4} m={4} s={5} xs={4}>
-                                <H2 title="Контакты" />
+                                <H2 title={getTrl('footerContact')} />
                                 <div className="footer-contacts">
                                     <Link href="mailto:gamespirit.org@gmail.com">gamespirit.org@gmail.com</Link>
                                 </div>
@@ -66,10 +65,7 @@ const Footer: FC = () => {
             <div className="footer-copyright">
                 <ColumnsWrapper>
                     <Column l={12} m={12} s={6} xs={4}>
-                        Все размещенные на сайте материалы и логотипы являются собственностью их владельцев и охраняются
-                        в соответствии с действующим законодательством. Все материалы предоставляются исключительно в
-                        ознакомительных целях. При использовании информации с сайта обязательно указывайте активную и
-                        индексируемую ссылку на сайт GameSpirit.org
+                        {getTrl('footerCopyright')}
                     </Column>
                 </ColumnsWrapper>
             </div>

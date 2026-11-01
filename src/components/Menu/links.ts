@@ -1,13 +1,24 @@
+import { StaticTrlKey } from 'lang/trls';
 interface Link {
     href: string;
-    title: string;
+    title: StaticTrlKey;
 }
-
 const links: Link[] = [
-    { href: 'reviews/', title: 'Обзоры' },
-    { href: 'walkthrough/', title: 'Гайды' },
-    { href: 'games/', title: 'Игры' },
-    { href: 'companies/', title: 'Компании' },
+    {
+        href: 'reviews/',
+        title: 'reviews',
+    },
+    {
+        href: 'walkthrough/',
+        title: 'guides',
+    },
+    {
+        href: 'games/',
+        title: 'games',
+    },
+    {
+        href: 'companies/',
+        title: 'companies',
+    },
 ];
-
 export default links;

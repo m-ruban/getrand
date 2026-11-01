@@ -19,6 +19,8 @@ import PopularGuides from 'pages/Main/PopularGuides';
 import PopularReviews from 'pages/Main/PopularReviews';
 import VSpacing from 'pages/Main/VSpacing';
 
+import { getTrl } from 'lang/trls';
+
 const Main: FC = () => {
     return (
         <PageLayout>
@@ -37,10 +39,10 @@ const Main: FC = () => {
                     </Column>
                     <Column l={4} m={4} s={6} xs={4}>
                         <StickyBox>
-                            <SidebarColumn title="Топ обзоров">
+                            <SidebarColumn title={getTrl('topReviews')}>
                                 <PopularReviews />
                             </SidebarColumn>
-                            <SidebarColumn title="Топ гайдов">
+                            <SidebarColumn title={getTrl('topGuides')}>
                                 <PopularGuides />
                             </SidebarColumn>
                         </StickyBox>

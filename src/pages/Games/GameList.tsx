@@ -10,11 +10,13 @@ import ColumnContainer from 'components/ColumnContainer';
 import Game from 'components/Game';
 import SectionHeader from 'components/SectionHeader';
 
+import { getTrl } from 'lang/trls';
+
 const GameList: FC = () => {
     const games = useSelector((state: RootStore) => state.games);
     return (
         <>
-            <SectionHeader title="Игры и статьи" combineColor />
+            <SectionHeader title={getTrl('gamesTitle')} combineColor />
             <ColumnContainer>
                 {games.map(({ id, ...props }, index) => {
                     return (

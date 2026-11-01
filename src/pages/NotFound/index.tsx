@@ -11,11 +11,13 @@ import Footer from 'components/Footer';
 import Header from 'components/Header';
 import PageLayout from 'components/PageLayout';
 
+import { getTrl } from 'lang/trls';
+
 import 'pages/NotFound/notFound.less';
 
 const NotFound: FC = () => {
     useEffect(() => {
-        document.title = 'Страница не найдена';
+        document.title = getTrl('notFoundTitle');
     }, []);
     return (
         <PageLayout>
@@ -24,14 +26,14 @@ const NotFound: FC = () => {
                 <Column l={12} m={12} s={6} xs={4}>
                     <div className="not-found">
                         <div className="not-found-title">404</div>
-                        <Paragraph>Похоже, вы выбрали неправильный путь или что-то пошло не так.</Paragraph>
-                        <Paragraph>Не волнуйтесь, иногда случается.</Paragraph>
+                        <Paragraph>{getTrl('notFoundDescription')}</Paragraph>
+                        <Paragraph>{getTrl('notFoundReassurance')}</Paragraph>
                         <Paragraph>
-                            Вернитесь на{' '}
+                            {getTrl('notFoundReturn')}{' '}
                             <Link type={LinkType.Secondary} href="/">
-                                главную страницу
+                                {getTrl('homepage')}
                             </Link>{' '}
-                            и попробуйте еще раз.
+                            {getTrl('notFoundRetry')}
                         </Paragraph>
                         <div>
                             <img className="not-found-img" src={`${host}/image/icon/not_found.jpeg`} alt="404" />

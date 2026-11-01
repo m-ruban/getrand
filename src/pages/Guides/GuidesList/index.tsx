@@ -10,11 +10,13 @@ import ArticleSearchItem from 'components/ArticleSearchItem';
 import ColumnContainer from 'components/ColumnContainer';
 import SectionHeader from 'components/SectionHeader';
 
+import { getTrl } from 'lang/trls';
+
 const GuidesList: FC = () => {
     const guides = useSelector((state: RootStore) => state.guides);
     return (
         <>
-            <SectionHeader title="Гайды по играм" combineColor />
+            <SectionHeader title={getTrl('guidesTitle')} combineColor />
             <ColumnContainer>
                 {guides.map(({ id, ...props }, index) => {
                     return (

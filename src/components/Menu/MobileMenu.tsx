@@ -10,6 +10,8 @@ import { sectionLink } from 'modules/links';
 
 import links from 'components/Menu/links';
 
+import { getTrl } from 'lang/trls';
+
 import 'components/Menu/mobileMenu.less';
 
 const MobileMenu: FC = () => {
@@ -30,7 +32,7 @@ const MobileMenu: FC = () => {
                     return (
                         <div key={href} className="mobile-menu-links-link">
                             <Link type={LinkType.Secondary} href={sectionLink(href)}>
-                                {title}
+                                {getTrl(title)}
                             </Link>
                         </div>
                     );

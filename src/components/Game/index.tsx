@@ -14,8 +14,9 @@ import { articleLink } from 'modules/links';
 import CategoryBadges from 'components/CategoryBadges';
 import GameSearchItem from 'components/GameSearchItem';
 
-import 'components/Game/game.less';
+import { getTrl } from 'lang/trls';
 
+import 'components/Game/game.less';
 interface GameProps extends GameModelProps {
     loading?: ImageLoad;
 }
@@ -31,7 +32,7 @@ const Game: FC<GameProps> = ({ categories, articles, loading, ...gameProps }) =>
                 <Paragraph>{gameProps.seo.descr}</Paragraph>
             </div>
             <div className="game-articles">
-                <H3 title="Материалы" />
+                <H3 title={getTrl('articles')} />
                 <List>
                     {articles.map(({ seo: { name, keyword }, id, article_type_keyword }) => {
                         return (

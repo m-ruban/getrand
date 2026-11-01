@@ -11,11 +11,13 @@ import ArticleDivider from 'components/ArticleDivider';
 import ArticleSearchItem from 'components/ArticleSearchItem';
 import ColumnContainer from 'components/ColumnContainer';
 
+import { getTrl } from 'lang/trls';
+
 const LastReviews: FC = () => {
     const lastReviews = useSelector((state: RootStore) => state.lastReviews);
     return (
         <>
-            <H2 title="Последние обзоры" line={HeaderLine.TertiaryDimmed} combineColor />
+            <H2 title={getTrl('latestReviews')} line={HeaderLine.TertiaryDimmed} combineColor />
             <ColumnContainer>
                 {lastReviews.map(({ id, ...props }, index) => {
                     return (

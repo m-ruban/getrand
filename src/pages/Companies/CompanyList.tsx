@@ -10,11 +10,13 @@ import ColumnContainer from 'components/ColumnContainer';
 import CompanySearchItem from 'components/CompanySearchItem';
 import SectionHeader from 'components/SectionHeader';
 
+import { getTrl } from 'lang/trls';
+
 const CompanyList: FC = () => {
     const companies = useSelector((state: RootStore) => state.companies);
     return (
         <>
-            <SectionHeader title="Игровые компании" combineColor />
+            <SectionHeader title={getTrl('companiesTitle')} combineColor />
             <ColumnContainer>
                 {companies.map(({ id, ...props }, index) => {
                     return (

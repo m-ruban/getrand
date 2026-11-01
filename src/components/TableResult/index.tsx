@@ -5,21 +5,21 @@ import Like from 'gg-ukit/components/Icon/Like';
 
 import Section from 'components/Section';
 
-import 'components/TableResult/tableResult.less';
+import { getTrl } from 'lang/trls';
 
+import 'components/TableResult/tableResult.less';
 interface TableResultProps {
     pluses: string[];
     minuses: string[];
 }
-
 export const TableResult: FC<TableResultProps> = ({ pluses, minuses }) => {
     const lines = pluses.length > minuses.length ? pluses : minuses;
     return (
         <Section>
             <table className="table-result">
                 <tr>
-                    <th className="table-result-pluses">Плюсы</th>
-                    <th className="table-result-minuses">Минусы</th>
+                    <th className="table-result-pluses">{getTrl('pros')}</th>
+                    <th className="table-result-minuses">{getTrl('cons')}</th>
                 </tr>
                 {lines.map((_, index) => {
                     const plus = pluses[index] || '';
@@ -49,5 +49,4 @@ export const TableResult: FC<TableResultProps> = ({ pluses, minuses }) => {
         </Section>
     );
 };
-
 export default TableResult;

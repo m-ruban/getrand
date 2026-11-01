@@ -10,12 +10,14 @@ import ArticleDivider from 'components/ArticleDivider';
 import ColumnContainer from 'components/ColumnContainer';
 import SectionHeader from 'components/SectionHeader';
 
+import { getTrl } from 'lang/trls';
+
 import 'pages/About/about.less';
 
 const Team: FC = () => {
     return (
         <>
-            <SectionHeader title="Команда проекта" combineColor />
+            <SectionHeader title={getTrl('teamTitle')} combineColor />
             <ColumnContainer>
                 <div className="human">
                     <Column l={3} m={3} s={2} xs={4}>
@@ -24,10 +26,10 @@ const Team: FC = () => {
                         </div>
                     </Column>
                     <Column l={5} m={5} s={4} xs={4}>
-                        <Paragraph>Михаил</Paragraph>
-                        <Paragraph>Ворчу, делаю дизайн, разрабатываю, иногда пишу</Paragraph>
+                        <Paragraph>{getTrl('teamMemberName')}</Paragraph>
+                        <Paragraph>{getTrl('teamDeveloperDescription')}</Paragraph>
                         <Paragraph>
-                            <Link href="/users/DolanDuck/">Материалы</Link>
+                            <Link href="/users/DolanDuck/">{getTrl('articles')}</Link>
                         </Paragraph>
                     </Column>
                 </div>
@@ -39,19 +41,19 @@ const Team: FC = () => {
                         </div>
                     </Column>
                     <Column l={5} m={5} s={4} xs={4}>
-                        <Paragraph>Михаил</Paragraph>
-                        <Paragraph>Пишу игровые материалы</Paragraph>
+                        <Paragraph>{getTrl('teamMemberName')}</Paragraph>
+                        <Paragraph>{getTrl('teamWriterDescription')}</Paragraph>
                         <Paragraph>
-                            <Link href="/users/Godlike_Goblin/">Материалы</Link>
+                            <Link href="/users/Godlike_Goblin/">{getTrl('articles')}</Link>
                         </Paragraph>
                     </Column>
                 </div>
             </ColumnContainer>
-            <Paragraph>* в команду проекта берем только людей с именем &quot;Михаил&quot;</Paragraph>
+            <Paragraph>{getTrl('teamRecruitmentNote')}</Paragraph>
             <Paragraph>
-                Нам всегда нужны авторы игрового контента, примеры материалов можно прислать на{' '}
-                <Link href="mailto:gamespirit.org@gmail.com">gamespirit.org@gmail.com</Link> с пометкой
-                &quot;автор&quot;
+                {getTrl('teamContactIntro')}{' '}
+                <Link href="mailto:gamespirit.org@gmail.com">gamespirit.org@gmail.com</Link>{' '}
+                {getTrl('teamContactSubject')}
             </Paragraph>
         </>
     );

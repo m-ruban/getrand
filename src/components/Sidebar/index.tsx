@@ -7,16 +7,18 @@ import SidebarColumn from 'components/SidebarColumn';
 import PopularGuides from 'pages/Main/PopularGuides';
 import PopularReviews from 'pages/Main/PopularReviews';
 
+import { getTrl } from 'lang/trls';
+
 const Sidebar: FC = () => {
     return (
         <StickyBox>
-            <SidebarColumn title="Категории статей">
+            <SidebarColumn title={getTrl('articleCategories')}>
                 <SidebarCategories />
             </SidebarColumn>
-            <SidebarColumn title="Топ обзоров">
+            <SidebarColumn title={getTrl('topReviews')}>
                 <PopularReviews />
             </SidebarColumn>
-            <SidebarColumn title="Топ гайдов">
+            <SidebarColumn title={getTrl('topGuides')}>
                 <PopularGuides />
             </SidebarColumn>
         </StickyBox>

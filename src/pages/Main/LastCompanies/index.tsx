@@ -11,11 +11,13 @@ import ArticleDivider from 'components/ArticleDivider';
 import ColumnContainer from 'components/ColumnContainer';
 import CompanySearchItem from 'components/CompanySearchItem';
 
+import { getTrl } from 'lang/trls';
+
 const LastCompanies: FC = () => {
     const lastCompanies = useSelector((state: RootStore) => state.lastCompanies);
     return (
         <>
-            <H2 title="Игровые компании" line={HeaderLine.TertiaryDimmed} combineColor />
+            <H2 title={getTrl('companiesTitle')} line={HeaderLine.TertiaryDimmed} combineColor />
             <ColumnContainer>
                 {lastCompanies.map(({ id, ...props }, index) => {
                     return (

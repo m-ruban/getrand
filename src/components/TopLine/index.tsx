@@ -7,6 +7,8 @@ import ColumnsWrapper from 'gg-ukit/components/ColumnsWrapper';
 import SearchForm from 'components/SearchForm';
 import SearchInput from 'components/SearchInput';
 
+import { getTrl } from 'lang/trls';
+
 import 'components/TopLine/topLine.less';
 
 const TopLine: FC = () => {
@@ -25,7 +27,7 @@ const TopLine: FC = () => {
                     <div className="top-line-icons">
                         <a
                             href="https://zen.yandex.ru/godlike_goblin"
-                            aria-label="Группа в Яндекс.Дзен"
+                            aria-label={getTrl('zenLinkLabel')}
                             target="_blank"
                             rel="noreferrer"
                         >
@@ -33,19 +35,11 @@ const TopLine: FC = () => {
                         </a>
                         <a
                             href="https://boosty.to/gamespirit.org"
-                            aria-label="Страница на Boosty"
+                            aria-label={getTrl('boostyLinkLabel')}
                             target="_blank"
                             rel="noreferrer"
                         >
                             <div className="top-line-icon top-line-icon_boosty" />
-                        </a>
-                        <a
-                            href="https://steamcommunity.com/groups/gamespirit-org"
-                            aria-label="Группа в Steam"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            <div className="top-line-icon top-line-icon_steam" />
                         </a>
                         <div
                             className="top-line-icon top-line-icon_search"

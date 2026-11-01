@@ -18,12 +18,14 @@ import Keywords from 'components/Keywords';
 import SectionHeader from 'components/SectionHeader';
 import TreeElement from 'components/TreeElement';
 
+import { getTrl } from 'lang/trls';
+
 import 'components/CompanyView/companyView.less';
 
 const CompanyView: FC = () => {
     const { seo, created_iso, location, link, developed_games } = useSelector((state: RootStore) => state.company);
-    const { name, render_tree, meta_keyword } = seo;
-    // TODO render published_games after merge
+    const { name, render_tree, meta_keyword } = seo; // TODO render published_games after merge
+
     return (
         <div>
             <SectionHeader title={name} />
@@ -44,7 +46,7 @@ const CompanyView: FC = () => {
                         <LinkAlt color="#738697" />
                         &nbsp;
                         <Link type={LinkType.Secondary} href={link}>
-                            Оф. сайт
+                            {getTrl('officialWebsite')}
                         </Link>
                     </div>
                 </Paragraph>
@@ -53,7 +55,7 @@ const CompanyView: FC = () => {
             <Keywords keywords={meta_keyword} />
             {developed_games.length > 0 && (
                 <>
-                    <H2 title="Разработанные игры" line={HeaderLine.TertiaryDimmed} combineColor />
+                    <H2 title={getTrl('developedGames')} line={HeaderLine.TertiaryDimmed} combineColor />
                     {developed_games.map(({ id, ...gameProps }) => {
                         return <GameSearchItem key={id} id={id} {...gameProps} loading={ImageLoad.Lazy} />;
                     })}

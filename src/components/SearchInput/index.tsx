@@ -9,6 +9,8 @@ import Colors from 'gg-ukit/modules/colors';
 
 import { RootStore } from 'models/reducers';
 
+import { getTrl } from 'lang/trls';
+
 const SearchInput: FC = () => {
     const query = useSelector((state: RootStore) => state.searchCriteria.query);
     const [value, setValue] = useState<string>(query);
@@ -18,7 +20,7 @@ const SearchInput: FC = () => {
                 <Input
                     kind={InputKind.Minor}
                     name="query"
-                    placeholder="Найти гайд, обзор или игру..."
+                    placeholder={getTrl('searchPlaceholder')}
                     value={value}
                     autoComplete="off"
                     onChange={(e) => {
@@ -29,7 +31,7 @@ const SearchInput: FC = () => {
                 <Button
                     kind={ButtonKind.Promo}
                     icon={<Search color={Colors.Secondary} />}
-                    aria-label="Поиск по сайту"
+                    aria-label={getTrl('searchLabel')}
                     rounded
                 />
             </GroupControl>

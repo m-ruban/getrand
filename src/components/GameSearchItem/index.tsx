@@ -12,13 +12,15 @@ import { GameSearchItem as GameProps } from 'models/games';
 import dateFormat from 'modules/date-format';
 import { EMPTY_IMAGE, imgFullSrc } from 'modules/links';
 
-import 'components/GameSearchItem/gameSearchItem.less';
+import { getTrl } from 'lang/trls';
 
+import 'components/GameSearchItem/gameSearchItem.less';
 interface GameSearchItemProps extends GameProps {
     loading?: ImageLoad;
 }
-
-export const GameSearchItemAdapter: FC<{ game: GameProps }> = ({ game }) => <GameSearchItem {...game} />;
+export const GameSearchItemAdapter: FC<{
+    game: GameProps;
+}> = ({ game }) => <GameSearchItem {...game} />;
 
 const GameSearchItem: FC<GameSearchItemProps> = ({
     preview_main_img,
@@ -44,7 +46,7 @@ const GameSearchItem: FC<GameSearchItemProps> = ({
                 <table className="game-search-item-info-table">
                     <tr>
                         <td>
-                            <div className="game-search-item-info-title">Название:</div>
+                            <div className="game-search-item-info-title">{getTrl('gameNameLabel')}</div>
                             <div className="game-search-item-info-icon">
                                 <DocumentTextAlt color={Colors.Secondary} />
                             </div>
@@ -53,7 +55,7 @@ const GameSearchItem: FC<GameSearchItemProps> = ({
                     </tr>
                     <tr>
                         <td>
-                            <div className="game-search-item-info-title">Разработчик:</div>
+                            <div className="game-search-item-info-title">{getTrl('developerLabel')}</div>
                             <div className="game-search-item-info-icon">
                                 <Commandline color={Colors.Secondary} />
                             </div>
@@ -62,7 +64,7 @@ const GameSearchItem: FC<GameSearchItemProps> = ({
                     </tr>
                     <tr>
                         <td>
-                            <div className="game-search-item-info-title">Издатель:</div>
+                            <div className="game-search-item-info-title">{getTrl('publisherLabel')}</div>
                             <div className="game-search-item-info-icon">
                                 <Desktop color={Colors.Secondary} />
                             </div>
@@ -71,7 +73,7 @@ const GameSearchItem: FC<GameSearchItemProps> = ({
                     </tr>
                     <tr>
                         <td>
-                            <div className="game-search-item-info-title">Релиз:</div>
+                            <div className="game-search-item-info-title">{getTrl('releaseLabel')}</div>
                             <div className="game-search-item-info-icon">
                                 <Calendar color={Colors.Secondary} />
                             </div>

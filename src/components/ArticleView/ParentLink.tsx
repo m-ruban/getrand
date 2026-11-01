@@ -9,6 +9,7 @@ import { articleLink } from 'modules/links';
 
 import Section from 'components/Section';
 
+import { getTrl } from 'lang/trls';
 interface ParentLinkProps extends ArticleShort {
     type: string;
 }
@@ -17,7 +18,7 @@ const ParentLink: FC<ParentLinkProps> = ({ seo: { name, keyword }, type }) => {
     return (
         <Section>
             <Paragraph>
-                Статья является частью цикла{' '}
+                {getTrl('partOfSeries')}{' '}
                 <Link type={LinkType.Secondary} href={articleLink(type, keyword)}>
                     {name}
                 </Link>

@@ -11,31 +11,29 @@ import SectionHeader from 'components/SectionHeader';
 
 import Stream from 'pages/Reviews/ReviewList/Stream';
 
+import { getTrl } from 'lang/trls';
 const DEFAULT_LIST = [];
 
 const ReviewList: FC = () => {
     const reviewList = useSelector((state: RootStore) => state.reviews);
     const defaultPage = useSelector((state: RootStore) => state.matchedParams.page || '1');
-
     const loaderRef = useRef<HTMLDivElement>(null);
     const [pages, setPages] = useState<number[]>([Number(defaultPage)]);
     const [enableLoadStreams, setEnableLoadStreams] = useState<boolean>(true);
-
     const disableLoadStreams = useCallback(() => {
         setEnableLoadStreams(false);
     }, []);
-
     const onShowLoader = useCallback(() => {
         setPages((pages) => {
             const last = pages[pages.length - 1];
             return [...pages, last + 1];
         });
     }, []);
-
     useEffect(() => {
         if (!loaderRef.current || !enableLoadStreams) {
             return;
         }
+
         const loaderObserver = elementObserver({
             element: loaderRef.current,
             onShow: onShowLoader,
@@ -46,10 +44,9 @@ const ReviewList: FC = () => {
             loaderObserver.stopObserverving();
         };
     }, [onShowLoader, enableLoadStreams]);
-
     return (
         <>
-            <SectionHeader title="Обзоры игр" combineColor />
+            <SectionHeader title={getTrl('reviewsTitle')} combineColor />
             <ColumnContainer>
                 {pages.map((page, index) => {
                     return (

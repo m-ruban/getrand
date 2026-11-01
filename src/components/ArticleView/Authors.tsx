@@ -7,18 +7,27 @@ import { Author } from 'models/article';
 
 import { host } from 'modules/links';
 
+import { getTrl } from 'lang/trls';
+
 import 'components/ArticleView/articleView.less';
 
-const Authors: FC<{ redactor: Author; author: Author }> = ({ redactor, author }) => {
+const Authors: FC<{
+    redactor: Author;
+    author: Author;
+}> = ({ redactor, author }) => {
     return (
         <>
             <Paragraph>
-                Автор: {author.name} для сайта{' '}
+                {getTrl('authorLabel')} {author.name} {getTrl('authorWebsite')}{' '}
                 <Link type={LinkType.Secondary} href={host}>
                     GameSpirit.org
                 </Link>
             </Paragraph>
-            {author.id != redactor.id && <Paragraph>Редактор: {redactor.name}</Paragraph>}
+            {author.id != redactor.id && (
+                <Paragraph>
+                    {getTrl('editorLabel')} {redactor.name}
+                </Paragraph>
+            )}
         </>
     );
 };

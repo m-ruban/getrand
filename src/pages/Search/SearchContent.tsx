@@ -17,6 +17,8 @@ import SearchForm from 'components/SearchForm';
 import SearchInput from 'components/SearchInput';
 import SectionHeader from 'components/SectionHeader';
 
+import { getTrl } from 'lang/trls';
+
 import 'pages/Search/search-content.less';
 
 const SearchContent: FC = () => {
@@ -42,7 +44,7 @@ const SearchContent: FC = () => {
                                     dispatch(setTypes(SearchType.Reviews));
                                 }}
                             >
-                                Обзоры
+                                {getTrl('reviews')}
                             </Chip>
                             <Chip
                                 name="type"
@@ -52,7 +54,7 @@ const SearchContent: FC = () => {
                                     dispatch(setTypes(SearchType.WalkThrough));
                                 }}
                             >
-                                Гайды
+                                {getTrl('guides')}
                             </Chip>
                         </div>
                     </SearchForm>
@@ -62,7 +64,7 @@ const SearchContent: FC = () => {
             <ColumnContainer>
                 {articles.length === 0 && (
                     <Column l={8} m={8} s={6} xs={4}>
-                        <Paragraph>По запросу мы ничего не нашли. Попробуйте изменить критерии запроса</Paragraph>
+                        <Paragraph>{getTrl('searchEmpty')}</Paragraph>
                     </Column>
                 )}
                 {articles.map(({ id, article_type_keyword: type, ...props }, index) => {

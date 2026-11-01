@@ -11,15 +11,21 @@ import { articleLink } from 'modules/links';
 import Section from 'components/Section';
 import { ListItem } from 'components/TreeElement/BasicTags';
 
+import { getTrl } from 'lang/trls';
+
 import 'components/ArticleView/articleView.less';
 
-const RelatedArticles: FC<{ articles: ArticleShort[]; type: string }> = ({ articles, type }) => {
+const RelatedArticles: FC<{
+    articles: ArticleShort[];
+    type: string;
+}> = ({ articles, type }) => {
     if (articles.length === 0) {
         return null;
     }
+
     return (
         <Section>
-            <H2 title="Оглавление" />
+            <H2 title={getTrl('articleSeries')} />
             <List>
                 {articles.map(({ id, seo: { name, keyword } }) => {
                     return (

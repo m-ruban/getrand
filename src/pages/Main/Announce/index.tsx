@@ -15,6 +15,8 @@ import { articleLink, imgFullSrc } from 'modules/links';
 
 import CategoryBadges from 'components/CategoryBadges';
 
+import { getTrl } from 'lang/trls';
+
 import 'pages/Main/Announce/announce.less';
 
 const Announce: FC = () => {
@@ -28,7 +30,11 @@ const Announce: FC = () => {
             <Column l={12} m={12} s={6} xs={4}>
                 <div className="announce">
                     <div className="announce-content">
-                        <div className={classnames('announce-info', { 'announce-info_open': showDescription })}>
+                        <div
+                            className={classnames('announce-info', {
+                                'announce-info_open': showDescription,
+                            })}
+                        >
                             <div className="announce-title">
                                 <div>
                                     <h1>{short_name}</h1>
@@ -52,11 +58,11 @@ const Announce: FC = () => {
                                 <CategoryBadges categories={categories} alt />
                             </div>
                             <div className="announce-link">
-                                <Link href={articleLink(section, keyword)}>Далее</Link>
+                                <Link href={articleLink(section, keyword)}>{getTrl('readMore')}</Link>
                             </div>
                             <div className="announce-mobile-link-wrapper">
                                 <div className="announce-mobile-link">
-                                    <Link href={articleLink(section, keyword)}>Далее</Link>
+                                    <Link href={articleLink(section, keyword)}>{getTrl('readMore')}</Link>
                                 </div>
                             </div>
                         </div>
