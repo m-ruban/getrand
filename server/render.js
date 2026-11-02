@@ -16,6 +16,7 @@ import routes, { route404 } from 'modules/routes';
 import tags from 'modules/tags';
 
 import { apiLanguage, withLanguage } from 'server/language';
+import { browserSentryConfig, captureServerError } from 'server/sentry';
 import { getWithRetry } from 'server/utils';
 
 import { App } from 'components/App';
@@ -64,8 +65,8 @@ const render = async (req, res) => {
                   ok: false,
                   request: request.value,
                   url: urls[index],
-                  error: request.reason && request.reason.code,
-                  status: request.reason.response.status,
+                  error: request.reason?.code,
+                  status: request.reason?.response?.status,
               };
     });
 
@@ -81,6 +82,10 @@ const render = async (req, res) => {
             return res.send(`404, url - ${req.originalUrl}`);
         }
         if (!have404) {
+            failed.forEach(({ url }) => {
+                const index = urls.indexOf(url);
+                captureServerError(settled[index].reason, { api: new URL(url).pathname });
+            });
             const errorInfo = failed.map((request) => `${request.url}[${request.error || 'ERR'}]`).join(', ');
             res.status(500);
             // eslint-disable-next-line no-console
@@ -116,9 +121,9 @@ const render = async (req, res) => {
     const scriptTags = extractor.getScriptTags();
     const styleTags = await extractor.getInlineStyleTags();
     const appHtml = `<div id="app">${appView}</div>`;
-    const storeHtml = `<script>window.__language__ = ${serialize(language)};window.__state__ = ${serialize(
-        storeInstance
-    )}</script>`;
+    const storeHtml = `<script>window.__sentry__ = ${serialize(browserSentryConfig)};window.__language__ = ${serialize(
+        language
+    )};window.__state__ = ${serialize(storeInstance)}</script>`;
     const preview = route.getPreview ? route.getPreview(api) : '';
 
     // inject html

@@ -2,6 +2,7 @@ import { host } from 'modules/links';
 
 import fetcher from 'server/fetcher';
 import { apiLanguage, withLanguage } from 'server/language';
+import { captureServerError } from 'server/sentry';
 
 const articlesByType = async (req, res) => {
     let articles = [];
@@ -12,7 +13,11 @@ const articlesByType = async (req, res) => {
         const response = await fetcher.get(apiLanguage(`${host}${url}`));
         articles = response.data.articles;
         pagination = response.data.pagination;
-    } catch (_) {}
+    } catch (error) {
+        if (error.response?.status !== 404) {
+            captureServerError(error, { api: url.split('?')[0] });
+        }
+    }
     res.contentType('application/json');
     res.status(200);
     res.json({ articles, pagination });
@@ -26,7 +31,11 @@ const articlesByIds = async (req, res) => {
     try {
         const response = await fetcher.get(apiLanguage(`${host}${url}`));
         articles = response.data.articles;
-    } catch (_) {}
+    } catch (error) {
+        if (error.response?.status !== 404) {
+            captureServerError(error, { api: url.split('?')[0] });
+        }
+    }
     res.contentType('application/json');
     res.status(200);
     res.json({ articles });

@@ -1,4 +1,6 @@
 const ru = {
+    applicationError: 'Не удалось загрузить страницу.',
+    reloadPage: 'Перезагрузить',
     appTitle: 'GameSpirit.org',
     siteLogo: 'Логотип GameSpirit.org',
     siteSlogan: 'We`ve heard you like games',

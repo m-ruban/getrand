@@ -1,6 +1,8 @@
 import { TranslationDictionary } from 'lang/ru';
 
 const en: TranslationDictionary = {
+    applicationError: 'Unable to load the page.',
+    reloadPage: 'Reload',
     appTitle: 'GameSpirit.org',
     siteLogo: 'GameSpirit.org logo',
     siteSlogan: "We've heard you like games",

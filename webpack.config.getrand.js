@@ -1,5 +1,4 @@
 const path = require('path');
-const { ProvidePlugin } = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 
 const aliases = require('./aliases');
@@ -7,7 +6,7 @@ const aliases = require('./aliases');
 module.exports = {
     mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
     target: 'node',
-    entry: './server/index.js',
+    entry: ['./server/sentry.js', './server/index.js'],
     output: {
         path: path.resolve(__dirname, 'dist/server'),
         filename: ({ chunk: { name } }) => {
@@ -37,11 +36,6 @@ module.exports = {
             },
         ],
     },
-    plugins: [
-        new ProvidePlugin({
-            process: 'process/browser',
-        }),
-    ],
     resolve: {
         alias: aliases,
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.less'],

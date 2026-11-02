@@ -10,7 +10,7 @@ const aliases = require('./aliases');
 
 module.exports = {
     mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
-    entry: './src/index.jsx',
+    entry: ['./src/modules/sentry.js', './src/index.jsx'],
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'build/[name].[chunkhash].js',
@@ -51,7 +51,7 @@ module.exports = {
     },
     plugins: [
         new ProvidePlugin({
-            process: 'process/browser',
+            process: 'process/browser.js',
         }),
         new HTMLWebpackPlugin({
             filename: 'index.html',

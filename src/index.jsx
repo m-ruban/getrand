@@ -7,6 +7,8 @@ import { setLanguageResolver } from 'lang/language';
 
 import { createStore } from 'models/store';
 
+import { captureClientError, ErrorBoundary } from 'modules/sentry';
+
 import { App } from 'components/App';
 
 const language = window.__language__ === 'en' ? 'en' : 'ru';
@@ -17,11 +19,16 @@ const history = createBrowserHistory();
 const store = createStore(history, window.__state__);
 delete window.__state__;
 
+const container = document.getElementById('app');
+const serverHtml = container.innerHTML;
+
 loadableReady(() => {
     hydrate(
         <Provider store={store}>
-            <App history={history} />
+            <ErrorBoundary fallback={<div dangerouslySetInnerHTML={{ __html: serverHtml }} />}>
+                <App history={history} />
+            </ErrorBoundary>
         </Provider>,
-        document.getElementById('app')
+        container
     );
-});
+}).catch(captureClientError);
