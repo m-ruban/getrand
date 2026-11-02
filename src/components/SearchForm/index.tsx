@@ -1,4 +1,5 @@
 import React, { FC, ReactNode } from 'react';
+import { languagePath } from 'lang/language';
 
 interface SearchFormProps {
     children: ReactNode;
@@ -6,7 +7,7 @@ interface SearchFormProps {
 
 const SearchForm: FC<SearchFormProps> = ({ children }) => {
     return (
-        <form action="/search/" method="get">
+        <form action={languagePath('/search/')} method="get">
             {children}
         </form>
     );

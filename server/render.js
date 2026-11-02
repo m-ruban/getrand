@@ -5,6 +5,7 @@ import { matchPath } from 'react-router';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import fs from 'fs';
 import { createMemoryHistory } from 'history';
+import { getLanguage, languagePath, stripLanguagePrefix } from 'lang/language';
 import path from 'path';
 import serialize from 'serialize-javascript';
 
@@ -14,6 +15,7 @@ import { host } from 'modules/links';
 import routes, { route404 } from 'modules/routes';
 import tags from 'modules/tags';
 
+import { apiLanguage, withLanguage } from 'server/language';
 import { getWithRetry } from 'server/utils';
 
 import { App } from 'components/App';
@@ -21,11 +23,18 @@ import { App } from 'components/App';
 const RETRIES = 3;
 
 const render = async (req, res) => {
+    const language = getLanguage();
+    const original = new URL(req.originalUrl, host);
+    const pathname = stripLanguagePrefix(original.pathname);
+    const target = languagePath(pathname, language) + original.search;
+    if (target !== req.originalUrl) {
+        return res.redirect(302, target);
+    }
     // try match path
     let responseCode = 0;
     let matchedRoute = null;
     for (const { path, exact } of routes) {
-        matchedRoute = matchPath(req.originalUrl, { path, exact });
+        matchedRoute = path ? matchPath(pathname, { path, exact }) : null;
         if (matchedRoute) {
             break;
         }
@@ -44,7 +53,7 @@ const render = async (req, res) => {
 
     // try get api data
     const requests = route.api(matchedRoute.params, req.query);
-    const urls = requests.map((url) => `${host}${url}`);
+    const urls = requests.map((url) => apiLanguage(`${host}${url}`));
     let apiFailedAfterRetry = false;
     const onError = () => (apiFailedAfterRetry = true);
     const settled = await Promise.allSettled(urls.map((url) => getWithRetry(url, RETRIES, onError)));
@@ -107,12 +116,15 @@ const render = async (req, res) => {
     const scriptTags = extractor.getScriptTags();
     const styleTags = await extractor.getInlineStyleTags();
     const appHtml = `<div id="app">${appView}</div>`;
-    const storeHtml = `<script>window.__state__ = ${serialize(storeInstance)}</script>`;
+    const storeHtml = `<script>window.__language__ = ${serialize(language)};window.__state__ = ${serialize(
+        storeInstance
+    )}</script>`;
     const preview = route.getPreview ? route.getPreview(api) : '';
 
     // inject html
     const html = fs
         .readFileSync(path.resolve(__dirname, '../index.html'), { encoding: 'utf8' })
+        .replace(/<html lang=['"]\w+['"]>/, `<html lang="${language}">`)
         .replace('<div id="app"></div>', appHtml + storeHtml)
         .replace('<title></title>', tags(metaTags, req.originalUrl, preview))
         .replace('</head>', `${styleTags}</head>`)
@@ -123,4 +135,4 @@ const render = async (req, res) => {
     return res.send(html);
 };
 
-export default render;
+export default withLanguage(render);

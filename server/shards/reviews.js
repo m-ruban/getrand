@@ -1,6 +1,7 @@
 import { host } from 'modules/links';
 
 import fetcher from 'server/fetcher';
+import { apiLanguage, withLanguage } from 'server/language';
 
 const articlesByType = async (req, res) => {
     let articles = [];
@@ -8,7 +9,7 @@ const articlesByType = async (req, res) => {
     const page = req.query?.page || 0;
     const url = `/api/v1/reviews/${page}/?limit=10`;
     try {
-        const response = await fetcher.get(`${host}${url}`);
+        const response = await fetcher.get(apiLanguage(`${host}${url}`));
         articles = response.data.articles;
         pagination = response.data.pagination;
     } catch (_) {}
@@ -23,7 +24,7 @@ const articlesByIds = async (req, res) => {
     const params = ids.map((id) => 'id[]=' + id).join('&');
     const url = '/api/v1/articlies-by-ids/?' + params;
     try {
-        const response = await fetcher.get(`${host}${url}`);
+        const response = await fetcher.get(apiLanguage(`${host}${url}`));
         articles = response.data.articles;
     } catch (_) {}
     res.contentType('application/json');
@@ -31,4 +32,6 @@ const articlesByIds = async (req, res) => {
     res.json({ articles });
 };
 
-export { articlesByIds, articlesByType };
+const localizedArticlesByIds = withLanguage(articlesByIds);
+const localizedArticlesByType = withLanguage(articlesByType);
+export { localizedArticlesByIds as articlesByIds, localizedArticlesByType as articlesByType };

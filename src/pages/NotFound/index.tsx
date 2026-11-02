@@ -1,4 +1,5 @@
 import React, { FC, useEffect } from 'react';
+import { languagePath } from 'lang/language';
 
 import Column from 'gg-ukit/components/Column';
 import ColumnsWrapper from 'gg-ukit/components/ColumnsWrapper';
@@ -30,7 +31,7 @@ const NotFound: FC = () => {
                         <Paragraph>{getTrl('notFoundReassurance')}</Paragraph>
                         <Paragraph>
                             {getTrl('notFoundReturn')}{' '}
-                            <Link type={LinkType.Secondary} href="/">
+                            <Link type={LinkType.Secondary} href={languagePath('/')}>
                                 {getTrl('homepage')}
                             </Link>{' '}
                             {getTrl('notFoundRetry')}

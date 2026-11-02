@@ -1,8 +1,9 @@
 import { ReactNode } from 'react';
 import { en } from 'lang/en';
+import { getLanguage, Language } from 'lang/language';
 import { ru } from 'lang/ru';
 
-export type Language = 'ru' | 'en';
+export type { Language } from 'lang/language';
 export type TrlKey = keyof typeof ru;
 
 type DynamicTrlKey = {
@@ -18,7 +19,7 @@ function getTrl<K extends DynamicTrlKey>(key: K, params: TrlParams<K>, language?
 function getTrl(
     key: TrlKey,
     paramsOrLanguage?: TrlParams<DynamicTrlKey> | Language,
-    language: Language = 'ru'
+    language: Language = getLanguage()
 ): ReactNode {
     const selectedLanguage = typeof paramsOrLanguage === 'string' ? paramsOrLanguage : language;
     const translation = dictionaries[selectedLanguage][key];

@@ -5,6 +5,7 @@ import Paragraph from 'gg-ukit/components/Paragraph';
 
 import { Author } from 'models/article';
 
+import { localizedLink } from 'modules/links';
 import { host } from 'modules/links';
 
 import { getTrl } from 'lang/trls';
@@ -19,7 +20,7 @@ const Authors: FC<{
         <>
             <Paragraph>
                 {getTrl('authorLabel')} {author.name} {getTrl('authorWebsite')}{' '}
-                <Link type={LinkType.Secondary} href={host}>
+                <Link type={LinkType.Secondary} href={localizedLink(`${host}/`)}>
                     GameSpirit.org
                 </Link>
             </Paragraph>

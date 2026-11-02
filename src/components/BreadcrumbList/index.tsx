@@ -9,6 +9,8 @@ import Scroller from 'gg-ukit/components/Scroller';
 
 import { RootStore } from 'models/reducers';
 
+import { localizedLink } from 'modules/links';
+
 import 'components/BreadcrumbList/breadcrumbList.less';
 
 const BreadcrumbList: FC = () => {
@@ -20,7 +22,7 @@ const BreadcrumbList: FC = () => {
                     <div className="breadcrumb-list">
                         <Breadcrumbs
                             linkType={LinkType.Secondary}
-                            links={breadcrumbs.map(({ name, link }) => ({ title: name, href: link }))}
+                            links={breadcrumbs.map(({ name, link }) => ({ title: name, href: localizedLink(link) }))}
                         />
                     </div>
                 </Scroller>

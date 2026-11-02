@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { languagePath } from 'lang/language';
 
 import Column from 'gg-ukit/components/Column';
 import Link from 'gg-ukit/components/Link';
@@ -29,7 +30,7 @@ const Team: FC = () => {
                         <Paragraph>{getTrl('teamMemberName')}</Paragraph>
                         <Paragraph>{getTrl('teamDeveloperDescription')}</Paragraph>
                         <Paragraph>
-                            <Link href="/users/DolanDuck/">{getTrl('articles')}</Link>
+                            <Link href={languagePath('/users/DolanDuck/')}>{getTrl('articles')}</Link>
                         </Paragraph>
                     </Column>
                 </div>
@@ -44,7 +45,7 @@ const Team: FC = () => {
                         <Paragraph>{getTrl('teamMemberName')}</Paragraph>
                         <Paragraph>{getTrl('teamWriterDescription')}</Paragraph>
                         <Paragraph>
-                            <Link href="/users/Godlike_Goblin/">{getTrl('articles')}</Link>
+                            <Link href={languagePath('/users/Godlike_Goblin/')}>{getTrl('articles')}</Link>
                         </Paragraph>
                     </Column>
                 </div>
