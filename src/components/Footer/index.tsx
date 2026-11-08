@@ -28,16 +28,19 @@ const Footer: FC = () => {
                                     alt={getTrl('siteLogo')}
                                 />
                             </Column>
-                            <Column l={3} m={3} s={3} xs={4}>
+                            <Column l={3} m={3} s={4} xs={4}>
                                 <H2 title={getTrl('aboutUs')} />
                                 <div className="footer-about">
                                     <div className="footer-about-content">{getTrl('footerAbout')}</div>
                                     <Link href={sectionLink('about/')}>{getTrl('readMore')}</Link>
                                 </div>
                             </Column>
-                            <Column l={2} m={2} s={1} xs={4}>
+                            <Column l={3} m={3} s={6} xs={4}>
                                 <H2 title={getTrl('footerLinks')} />
                                 <div className="footer-links">
+                                    <div className="footer-link">
+                                        <Link href={sectionLink('recommended/')}>{getTrl('recommended')}</Link>
+                                    </div>
                                     <div className="footer-link">
                                         <Link href="https://zen.yandex.ru/godlike_goblin">{getTrl('zen')}</Link>
                                     </div>
@@ -52,7 +55,7 @@ const Footer: FC = () => {
                                     </div>
                                 </div>
                             </Column>
-                            <Column l={4} m={4} s={5} xs={4}>
+                            <Column l={4} m={4} s={6} xs={4}>
                                 <H2 title={getTrl('footerContact')} />
                                 <div className="footer-contacts">
                                     <Link href="mailto:gamespirit.org@gmail.com">gamespirit.org@gmail.com</Link>

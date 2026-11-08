@@ -22,6 +22,7 @@ import popularReviews from 'models/popularReviews';
 import request from 'models/request';
 import reviews from 'models/reviews';
 import searchCriteria from 'models/searchCriteria';
+import section from 'models/section';
 
 export const reducers = {
     announce,
@@ -45,6 +46,7 @@ export const reducers = {
     faq,
     companies,
     searchCriteria,
+    section,
     matchedParams,
     router: undefined,
 };

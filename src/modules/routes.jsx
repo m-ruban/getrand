@@ -5,6 +5,7 @@ import { imgSrc } from 'modules/links';
 
 const Main = loadable(() => import('pages/Main'));
 const Guides = loadable(() => import('pages/Guides'));
+const Recommended = loadable(() => import('pages/Recommended'));
 const Reviews = loadable(() => import('pages/Reviews'));
 const Games = loadable(() => import('pages/Games'));
 const About = loadable(() => import('pages/About'));
@@ -73,6 +74,20 @@ const routes = [
             popularReviews: populars.data.reviews,
             popularGuides: populars.data.guides,
             metaTags: page.data.metaTags,
+        }),
+    },
+    {
+        path: '/recommended/',
+        exact: true,
+        component: () => <Recommended />,
+        api: () => ['/api/v1/recommended/', '/api/v1/populars/?categories=true'],
+        getInitState: ([page, populars]) => ({
+            breadcrumbs: page.data.breadcrumbs,
+            section: page.data.section,
+            metaTags: page.data.metaTags,
+            mainCategories: populars.data.categories,
+            popularReviews: populars.data.reviews,
+            popularGuides: populars.data.guides,
         }),
     },
     {

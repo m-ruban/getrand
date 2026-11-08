@@ -8,7 +8,17 @@ export const GUIDES = 'walkthrough';
 
 export const EMPTY_IMAGE = `${host}/img/content/no-image.png`;
 
-const getRandPages = ['', `${REVIEWS}/`, `${GUIDES}/`, 'games/', 'faq/', 'about/', 'companies/', 'categories/'];
+const getRandPages = [
+    '',
+    `${REVIEWS}/`,
+    `${GUIDES}/`,
+    'games/',
+    'faq/',
+    'about/',
+    'companies/',
+    'categories/',
+    'recommended/',
+];
 
 export const articleLink = (section: string, keyword: string): string => {
     return languagePath(`/${section}/${keyword}/`);

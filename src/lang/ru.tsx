@@ -13,6 +13,7 @@ const ru = {
     topReviews: 'Топ обзоров',
     topGuides: 'Топ гайдов',
     reviews: 'Обзоры',
+    recommended: 'Интересные проекты',
     guides: 'Гайды',
     games: 'Игры',
     companies: 'Компании',

@@ -15,6 +15,7 @@ const en: TranslationDictionary = {
     topReviews: 'Top reviews',
     topGuides: 'Top guides',
     reviews: 'Reviews',
+    recommended: 'Worth Exploring',
     guides: 'Guides',
     games: 'Games',
     companies: 'Companies',
