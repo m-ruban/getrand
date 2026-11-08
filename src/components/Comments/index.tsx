@@ -1,4 +1,5 @@
 import React, { FC, memo, useCallback, useEffect, useRef, useState } from 'react';
+import { getLanguage } from 'lang/language';
 
 import elementObserver from 'modules/elementObserver';
 
@@ -43,9 +44,10 @@ const Comments: FC = () => {
                 if (error) {
                     return;
                 }
+                const lang = getLanguage();
                 /* eslint-disable @typescript-eslint/ban-ts-comment */
                 // @ts-ignore-start
-                VK.init({ apiId: 6456413, onlyWidgets: true });
+                VK.init({ apiId: 6456413, onlyWidgets: true, lang });
                 // @ts-ignore
                 VK.Widgets.Comments('vk_comments', { limit: 5, attach: '*' });
                 /* eslint-enable @typescript-eslint/ban-ts-comment */
