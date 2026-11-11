@@ -34,10 +34,10 @@ const Footer: FC = () => {
                                         <Link href={sectionLink('recommended/')}>{getTrl('recommended')}</Link>
                                     </div>
                                     <div className="footer-link">
-                                        <Link href={sectionLink('games/')}>{getTrl('games')}</Link>
+                                        <Link href={sectionLink('companies/')}>{getTrl('companies')}</Link>
                                     </div>
                                     <div className="footer-link">
-                                        <Link href={sectionLink('companies/')}>{getTrl('companies')}</Link>
+                                        <Link href={sectionLink('games/')}>{getTrl('games')}</Link>
                                     </div>
                                     <div className="footer-link">
                                         <Link href={sectionLink('faq/')}>FAQ</Link>
