@@ -13,12 +13,8 @@ const links: Link[] = [
         title: 'guides',
     },
     {
-        href: 'games/',
-        title: 'games',
-    },
-    {
-        href: 'companies/',
-        title: 'companies',
+        href: 'categories/history/',
+        title: 'history',
     },
 ];
 export default links;

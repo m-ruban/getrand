@@ -14,12 +14,12 @@ import 'components/Menu/menuLinks.less';
 const HeaderLinks: FC = () => {
     return (
         <div className="menu-links">
-            {links.map(({ href, title }) => {
+            {links.map(({ href, title }, index) => {
                 return (
                     <div
                         key={href}
                         className={classnames('menu-links-link', {
-                            'menu-links-link__companies': href === 'companies/',
+                            'menu-links-link__last': index === links.length - 1,
                         })}
                     >
                         <Link type={LinkType.Secondary} href={sectionLink(href)}>
