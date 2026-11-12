@@ -38,6 +38,10 @@ const en: TranslationDictionary = {
     searchLabel: 'Search the site',
     zenLinkLabel: 'GameSpirit on Yandex Zen',
     boostyLinkLabel: 'GameSpirit on Boosty',
+    tipBoostyLabel: 'Support on Boosty',
+    tipYoomoneyLabel: 'Support on YooMoney',
+    tipDescription:
+        'Enjoyed this article? Found it helpful? Support GameSpirit.org and help us create more great content.',
     steamLinkLabel: 'GameSpirit on Steam',
     searchEmpty: 'No results found. Try changing your search criteria.',
     teamTitle: 'Our team',

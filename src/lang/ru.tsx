@@ -36,6 +36,10 @@ const ru = {
     searchLabel: 'Поиск по сайту',
     zenLinkLabel: 'Группа в Яндекс.Дзен',
     boostyLinkLabel: 'Страница на Boosty',
+    tipBoostyLabel: 'Поддержать на Boosty',
+    tipYoomoneyLabel: 'Поддержать на ЮMoney',
+    tipDescription:
+        'Понравился материал? Было полезно? Поддержи GameSpirit.org — помоги нам создавать новые материалы.',
     steamLinkLabel: 'Группа в Steam',
     searchEmpty: 'По запросу мы ничего не нашли. Попробуйте изменить критерии запроса',
     teamTitle: 'Команда проекта',

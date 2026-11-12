@@ -1,0 +1,78 @@
+@import 'gg-ukit/styles/mixins';
+@import 'gg-ukit/styles/colors';
+
+.tip {
+    margin-bottom: 12px;
+}
+
+.tip__description {
+    .basic-text();
+
+    margin: 0 0 12px;
+}
+
+.tip__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.tip__button {
+    display: inline-flex;
+    align-items: center;
+    width: 300px;
+    min-width: 0;
+    max-width: 100%;
+    min-height: 48px;
+    box-sizing: border-box;
+    padding: 10px 24px 10px 20px;
+    border-radius: 12px;
+    background: linear-gradient(110deg, #383f47, #292f35 55%, #383f47);
+    color: @secondary;
+    text-decoration: none;
+
+    &:hover {
+        background: #383f47;
+        color: @secondary;
+        text-decoration: none;
+    }
+
+    &:focus-visible {
+        outline: 2px solid @secondary;
+        outline-offset: 3px;
+    }
+}
+
+.tip__button_yoomoney {
+    background: linear-gradient(110deg, #383a47, #2c2d38 55%, #383a47);
+}
+
+.tip__icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 30px;
+    margin-right: 12px;
+    background-color: #f4511e;
+    mask: url('./boosty.svg') center / 38px 46px no-repeat;
+}
+
+.tip__label {
+    .basic-text();
+
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: @secondary;
+}
+
+.tip__icon_yoomoney {
+    width: 34px;
+    background: none;
+    mask: none;
+    background-image: url('./yoomoney.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
