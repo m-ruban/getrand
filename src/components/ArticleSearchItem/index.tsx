@@ -9,6 +9,7 @@ import { ArticleSearch } from 'models/lastReviews';
 
 import { articleLink, GUIDES, imgSrc, REVIEWS } from 'modules/links';
 
+import BlurredImage from 'components/BlurredImage';
 import CategoryBadges from 'components/CategoryBadges';
 
 import 'components/ArticleSearchItem/articleSearchItem.less';
@@ -28,13 +29,17 @@ const ArticleSearchItem: FC<ArticleSearchItemProps> = ({
     is_old,
     loading = ImageLoad.Eager,
 }) => {
+    const ImageComponent = type === 'guide' ? BlurredImage : 'img';
+
     return (
         <Column l={short ? 4 : 8} m={short ? 4 : 8} s={short ? 3 : 6} xs={4}>
             <div className="article-search-item">
                 <div className="article-search-item-image-wrapper">
                     <a href={articleLink(type === 'review' ? REVIEWS : GUIDES, keyword)}>
-                        <img
-                            className="article-search-item-image"
+                        <ImageComponent
+                            className={`article-search-item-image${
+                                type === 'guide' ? ' article-search-item-image_guide' : ''
+                            }`}
                             src={imgSrc(keyword, main_img, is_old)}
                             alt={name}
                             loading={loading}

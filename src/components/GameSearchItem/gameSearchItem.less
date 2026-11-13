@@ -20,13 +20,24 @@
 
 .game-search-item-logo {
     @media @screen-gt-xs {
-        max-width: 250px;
+        flex: 0 0 250px;
+        width: 250px;
     }
 }
 
 .game-search-item-image-wrapper {
     width: 100%;
     height: 220px;
+
+    .blurred-image {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+
+        @media @screen-gt-xs {
+            border-bottom-left-radius: @border-radius;
+            border-top-right-radius: 0;
+        }
+    }
 
     @media @screen-gt-xs {
         height: 100%;
@@ -37,7 +48,9 @@
 .game-search-item-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    position: relative;
+    display: block;
     border-top-right-radius: @border-radius;
     border-top-left-radius: @border-radius;
 

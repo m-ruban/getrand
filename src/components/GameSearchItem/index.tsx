@@ -12,6 +12,8 @@ import { GameSearchItem as GameProps } from 'models/games';
 import dateFormat from 'modules/date-format';
 import { EMPTY_IMAGE, imgFullSrc } from 'modules/links';
 
+import BlurredImage from 'components/BlurredImage';
+
 import { getTrl } from 'lang/trls';
 
 import 'components/GameSearchItem/gameSearchItem.less';
@@ -34,7 +36,7 @@ const GameSearchItem: FC<GameSearchItemProps> = ({
         <div className="game-search-item">
             <div className="game-search-item-logo">
                 <div className="game-search-item-image-wrapper">
-                    <img
+                    <BlurredImage
                         className="game-search-item-image"
                         src={preview_main_img ? imgFullSrc(keyword, preview_main_img) : EMPTY_IMAGE}
                         alt={name}
