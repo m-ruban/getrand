@@ -36,9 +36,15 @@
     border-radius: 4px;
     padding: 15px 25px;
     border-bottom: @category-border;
+
+     @media @screen-gt-xs {
+        padding-left: 0;
+    }
 }
 
 .category-icon-wrapper {
+    display: flex;
+    justify-content: center;
     width: 50%;
 }
 
@@ -56,4 +62,5 @@
 .category-title {
     width: 50%;
     text-transform: uppercase;
+    text-align: center;
 }

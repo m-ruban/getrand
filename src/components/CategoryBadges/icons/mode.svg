@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="#fff">
+<!-- Multiplayer: solid character silhouettes -->
+<circle cx="12" cy="5.8" r="3.3"/>
+<path d="M5.9 17.2c0-3.5 2.7-6.4 6.1-6.4s6.1 2.9 6.1 6.4V20H5.9z"/>
+<circle cx="4.7" cy="9.2" r="2.5"/>
+<path d="M.8 18v-2.5c0-2.5 1.6-4.4 3.8-4.4.8 0 1.5.2 2.1.6-1.6 1.6-2.4 3.7-2.4 6.1V20H2.8c-1.1 0-2-.9-2-2Z"/>
+<circle cx="19.3" cy="9.2" r="2.5"/>
+<path d="M23.2 18v-2.5c0-2.5-1.6-4.4-3.8-4.4-.8 0-1.5.2-2.1.6 1.6 1.6 2.4 3.7 2.4 6.1V20h1.5c1.1 0 2-.9 2-2Z"/>
+</svg>

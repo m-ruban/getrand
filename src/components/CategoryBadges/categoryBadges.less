@@ -2,14 +2,46 @@
 
 .category-badges {
     display: flex;
+    align-items: center;
+    gap: 16px;
     width: max-content;
 }
 
+.category-badge-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.category-badge-icon {
+    display: block;
+    flex: 0 0 26px;
+    width: 26px;
+    height: 26px;
+    background-color: #566472;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+}
+
+.category-type-icon(@name) {
+    .category-badge-icon_@{name} {
+        mask-image: url('./icons/@{name}.svg');
+    }
+}
+
+.category-type-icon(genre);
+.category-type-icon(distribution);
+.category-type-icon(mode);
+.category-type-icon(platform);
+.category-type-icon(other);
+.category-type-icon(setting);
+
 .category-badge {
     display: inline-flex;
-    margin-right: 15px;
-    padding: 8px 18px;
-    font-family: 'Open Sans', sans-serif;
+    align-items: center;
+    padding: 8px 12px;
+    font-family: Montserrat, sans-serif;
     border-radius: 5px;
     font-size: 14px;
     color: #fff;
@@ -21,10 +53,6 @@
     background-repeat: no-repeat;
     transition: background-size 150ms;
     background-position: 0 100%;
-
-    &:last-of-type {
-        margin-right: 0;
-    }
 
     &:hover {
         background-size: 100% 100%;

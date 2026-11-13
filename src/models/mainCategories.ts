@@ -4,6 +4,7 @@ import { Seo } from 'models/announce';
 
 export interface Category {
     id: number;
+    category_type_id?: number;
     icon: string;
     code: string;
     alt_image: string;
