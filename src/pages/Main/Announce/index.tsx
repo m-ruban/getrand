@@ -67,7 +67,13 @@ const Announce: FC = () => {
                             </div>
                         </div>
                     </div>
-                    <img className="announce-img" src={imgFullSrc(keyword, basic_image)} alt={short_name} />
+                    <img
+                        className="announce-img"
+                        src={imgFullSrc(keyword, basic_image)}
+                        alt={short_name}
+                        loading="eager"
+                        {...{ fetchpriority: 'high' }}
+                    />
                 </div>
             </Column>
         </ColumnsWrapper>
