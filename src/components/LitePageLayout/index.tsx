@@ -7,7 +7,7 @@ interface PageLayoutProps {
 import './litePageLayout.less';
 
 const LitePageLayout: FC<PageLayoutProps> = ({ children }) => {
-    return <div className="lite-page-layout">{children}</div>;
+    return <main className="lite-page-layout">{children}</main>;
 };
 
 export default LitePageLayout;

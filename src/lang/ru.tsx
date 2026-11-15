@@ -33,6 +33,7 @@ const ru = {
     publisherLabel: 'Издатель:',
     releaseLabel: 'Релиз:',
     searchPlaceholder: 'Найти гайд, обзор или игру...',
+    mainNavigationLabel: 'Основная навигация',
     menuLabel: 'Меню',
     descriptionLabel: 'Описание анонса',
     scrollToTopLabel: 'Наверх',

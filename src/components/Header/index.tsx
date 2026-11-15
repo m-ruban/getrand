@@ -5,10 +5,10 @@ import TopLine from 'components/TopLine';
 
 const Header: FC = () => {
     return (
-        <div>
+        <header>
             <TopLine />
             <Menu />
-        </div>
+        </header>
     );
 };
 

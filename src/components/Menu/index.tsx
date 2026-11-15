@@ -7,6 +7,8 @@ import Logo from 'components/Menu/Logo';
 import MenuLinks from 'components/Menu/MenuLinks';
 import MobileMenu from 'components/Menu/MobileMenu';
 
+import { getTrl } from 'lang/trls';
+
 import 'components/Menu/menu.less';
 
 const Menu: FC = () => {
@@ -16,10 +18,10 @@ const Menu: FC = () => {
                 <Column l={12} m={12} s={6} xs={4}>
                     <div className="menu">
                         <Logo />
-                        <div className="menu-links">
+                        <nav className="menu-links" aria-label={getTrl('mainNavigationLabel')}>
                             <MenuLinks />
                             <MobileMenu />
-                        </div>
+                        </nav>
                     </div>
                 </Column>
             </ColumnsWrapper>

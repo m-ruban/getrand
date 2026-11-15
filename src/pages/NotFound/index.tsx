@@ -23,25 +23,27 @@ const NotFound: FC = () => {
     return (
         <PageLayout>
             <Header />
-            <ColumnsWrapper>
-                <Column l={12} m={12} s={6} xs={4}>
-                    <div className="not-found">
-                        <div className="not-found-title">404</div>
-                        <Paragraph>{getTrl('notFoundDescription')}</Paragraph>
-                        <Paragraph>{getTrl('notFoundReassurance')}</Paragraph>
-                        <Paragraph>
-                            {getTrl('notFoundReturn')}{' '}
-                            <Link type={LinkType.Secondary} href={languagePath('/')}>
-                                {getTrl('homepage')}
-                            </Link>{' '}
-                            {getTrl('notFoundRetry')}
-                        </Paragraph>
-                        <div>
-                            <img className="not-found-img" src={`${host}/image/icon/not_found.jpeg`} alt="404" />
+            <main>
+                <ColumnsWrapper>
+                    <Column l={12} m={12} s={6} xs={4}>
+                        <div className="not-found">
+                            <div className="not-found-title">404</div>
+                            <Paragraph>{getTrl('notFoundDescription')}</Paragraph>
+                            <Paragraph>{getTrl('notFoundReassurance')}</Paragraph>
+                            <Paragraph>
+                                {getTrl('notFoundReturn')}{' '}
+                                <Link type={LinkType.Secondary} href={languagePath('/')}>
+                                    {getTrl('homepage')}
+                                </Link>{' '}
+                                {getTrl('notFoundRetry')}
+                            </Paragraph>
+                            <div>
+                                <img className="not-found-img" src={`${host}/image/icon/not_found.jpeg`} alt="404" />
+                            </div>
                         </div>
-                    </div>
-                </Column>
-            </ColumnsWrapper>
+                    </Column>
+                </ColumnsWrapper>
+            </main>
             <Footer />
         </PageLayout>
     );

@@ -35,6 +35,7 @@ const en: TranslationDictionary = {
     publisherLabel: 'Publisher:',
     releaseLabel: 'Release:',
     searchPlaceholder: 'Find a guide, review or game...',
+    mainNavigationLabel: 'Main navigation',
     menuLabel: 'Menu',
     descriptionLabel: 'Announcement description',
     scrollToTopLabel: 'Back to top',

@@ -25,30 +25,32 @@ const Main: FC = () => {
     return (
         <PageLayout>
             <Header />
-            <VSpacing />
-            <Announce />
-            <VSpacing />
-            <Categories />
-            <VSpacing />
-            <ColumnsWrapper>
-                <StickyContainer>
-                    <Column l={8} m={8} s={6} xs={4}>
-                        <LastReviews />
-                        <LastGuides />
-                        <LastCompanies />
-                    </Column>
-                    <Column l={4} m={4} s={6} xs={4}>
-                        <StickyBox>
-                            <SidebarColumn title={getTrl('topReviews')}>
-                                <PopularReviews />
-                            </SidebarColumn>
-                            <SidebarColumn title={getTrl('topGuides')}>
-                                <PopularGuides />
-                            </SidebarColumn>
-                        </StickyBox>
-                    </Column>
-                </StickyContainer>
-            </ColumnsWrapper>
+            <main>
+                <VSpacing />
+                <Announce />
+                <VSpacing />
+                <Categories />
+                <VSpacing />
+                <ColumnsWrapper>
+                    <StickyContainer>
+                        <Column l={8} m={8} s={6} xs={4}>
+                            <LastReviews />
+                            <LastGuides />
+                            <LastCompanies />
+                        </Column>
+                        <Column l={4} m={4} s={6} xs={4}>
+                            <StickyBox>
+                                <SidebarColumn title={getTrl('topReviews')}>
+                                    <PopularReviews />
+                                </SidebarColumn>
+                                <SidebarColumn title={getTrl('topGuides')}>
+                                    <PopularGuides />
+                                </SidebarColumn>
+                            </StickyBox>
+                        </Column>
+                    </StickyContainer>
+                </ColumnsWrapper>
+            </main>
             <Footer />
         </PageLayout>
     );

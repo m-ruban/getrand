@@ -16,18 +16,20 @@ const Article: FC = () => {
     return (
         <PageLayout>
             <Header />
-            <BreadcrumbList />
-            <ColumnsWrapper>
-                <StickyContainer>
-                    <Column l={8} m={8} s={6} xs={4}>
-                        <ArticleView />
-                    </Column>
-                    <Column l={4} m={4} s={6} xs={4}>
-                        <Sidebar />
-                    </Column>
-                </StickyContainer>
-            </ColumnsWrapper>
-            <ScrollToTop />
+            <main>
+                <BreadcrumbList />
+                <ColumnsWrapper>
+                    <StickyContainer>
+                        <Column l={8} m={8} s={6} xs={4}>
+                            <ArticleView />
+                        </Column>
+                        <Column l={4} m={4} s={6} xs={4}>
+                            <Sidebar />
+                        </Column>
+                    </StickyContainer>
+                </ColumnsWrapper>
+                <ScrollToTop />
+            </main>
             <Footer />
         </PageLayout>
     );

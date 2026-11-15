@@ -29,7 +29,7 @@ const Footer: FC = () => {
                             </Column>
                             <Column l={3} m={3} s={3} xs={4}>
                                 <H2 title={getTrl('footerSections')} />
-                                <div className="footer-links">
+                                <nav className="footer-links" aria-label={getTrl('footerSections')}>
                                     <div className="footer-link">
                                         <Link href={sectionLink('recommended/')}>{getTrl('recommended')}</Link>
                                     </div>
@@ -42,11 +42,11 @@ const Footer: FC = () => {
                                     <div className="footer-link">
                                         <Link href={sectionLink('faq/')}>FAQ</Link>
                                     </div>
-                                </div>
+                                </nav>
                             </Column>
                             <Column l={3} m={3} s={3} xs={4}>
                                 <H2 title={getTrl('footerLinks')} />
-                                <div className="footer-links">
+                                <nav className="footer-links" aria-label={getTrl('footerLinks')}>
                                     <div className="footer-link">
                                         <Link href="https://zen.yandex.ru/godlike_goblin">{getTrl('zen')}</Link>
                                     </div>
@@ -56,7 +56,7 @@ const Footer: FC = () => {
                                     <div className="footer-link">
                                         <Link href="https://steamcommunity.com/groups/gamespirit-org">Steam</Link>
                                     </div>
-                                </div>
+                                </nav>
                             </Column>
                             <Column l={3} m={3} s={3} xs={4}>
                                 <H2 title={getTrl('footerContact')} />
