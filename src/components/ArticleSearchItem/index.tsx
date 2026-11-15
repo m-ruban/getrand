@@ -35,7 +35,10 @@ const ArticleSearchItem: FC<ArticleSearchItemProps> = ({
         <Column l={short ? 4 : 8} m={short ? 4 : 8} s={short ? 3 : 6} xs={4}>
             <div className="article-search-item">
                 <div className="article-search-item-image-wrapper">
-                    <a href={articleLink(type === 'review' ? REVIEWS : GUIDES, keyword)}>
+                    <a
+                        className="article-search-item-image-link"
+                        href={articleLink(type === 'review' ? REVIEWS : GUIDES, keyword)}
+                    >
                         <ImageComponent
                             className={`article-search-item-image${
                                 type === 'guide' ? ' article-search-item-image_guide' : ''

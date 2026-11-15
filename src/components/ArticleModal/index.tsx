@@ -9,14 +9,16 @@ const ArticleModal: FC<{ children: ReactNode; trigger: string }> = ({ children, 
     const [show, setShow] = useState<boolean>(false);
     return (
         <>
-            <span
+            <button
+                type="button"
+                aria-expanded={show}
                 className="article-modal-trigger"
                 onClick={() => {
                     setShow(!show);
                 }}
             >
                 {trigger}
-            </span>{' '}
+            </button>{' '}
             <span className="article-modal-icon">
                 <Stack scale={1} color="#738697" />
             </span>

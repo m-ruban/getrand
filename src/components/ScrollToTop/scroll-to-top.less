@@ -17,6 +17,7 @@
     z-index: 1000;
     width: @control-width;
     height: @control-width;
+    visibility: hidden;
     opacity: 0;
     transition: opacity 200ms;
     bottom: @column-padding;
@@ -44,6 +45,14 @@
 }
 
 .scroll-to-top_shown {
+    visibility: visible;
     opacity: 0.8;
     transition: opacity 600ms;
+}
+
+.scroll-to-top button {
+    display: block;
+    padding: 0;
+    border: 0;
+    background: transparent;
 }

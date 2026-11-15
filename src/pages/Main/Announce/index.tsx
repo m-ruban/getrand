@@ -39,7 +39,10 @@ const Announce: FC = () => {
                                 <div>
                                     <h1>{short_name}</h1>
                                 </div>
-                                <div
+                                <button
+                                    type="button"
+                                    aria-expanded={showDescription}
+                                    aria-label={getTrl('descriptionLabel')}
                                     className="announce-title-icon"
                                     onClick={() => {
                                         setShowDescription(!showDescription);
@@ -47,7 +50,7 @@ const Announce: FC = () => {
                                 >
                                     {!showDescription && <ArrowDownAlt2 scale={1} color={Colors.Secondary} />}
                                     {showDescription && <ArrowUpAlt2 scale={1} color={Colors.Secondary} />}
-                                </div>
+                                </button>
                             </div>
                             <div
                                 className={classnames('announce-description-and-categories', {

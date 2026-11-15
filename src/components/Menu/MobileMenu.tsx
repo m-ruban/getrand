@@ -18,7 +18,10 @@ const MobileMenu: FC = () => {
     const [show, setShow] = useState<boolean>(false);
     return (
         <div className="mobile-menu">
-            <div
+            <button
+                type="button"
+                aria-expanded={show}
+                aria-label={getTrl('menuLabel')}
                 className="mobile-menu-icon"
                 onClick={() => {
                     setShow(!show);
@@ -26,7 +29,7 @@ const MobileMenu: FC = () => {
             >
                 {!show && <MenuDotAlt scale={2} color={Colors.Secondary} />}
                 {show && <DeclineAlt scale={2} color={Colors.Secondary} />}
-            </div>
+            </button>
             <div className={classnames('mobile-menu-links', { 'mobile-menu-links_show': show })}>
                 {links.map(({ href, title }) => {
                     return (

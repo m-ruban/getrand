@@ -19,14 +19,16 @@ const ArticleSheet: FC<ArticleSheetProps> = ({ trigger, title, position, childre
     const [show, setShow] = useState(false);
     return (
         <>
-            <span
+            <button
+                type="button"
+                aria-expanded={show}
                 className="article-sheet-trigger"
                 onClick={() => {
                     setShow(!show);
                 }}
             >
                 {trigger}
-            </span>{' '}
+            </button>{' '}
             <span className="article-sheet-icon">
                 <DocumentTextAlt scale={1} color="#738697" />
             </span>

@@ -10,12 +10,23 @@
 }
 
 .mobile-menu-icon {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font-family: Montserrat, sans-serif;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+
     &:hover {
         cursor: pointer;
     }
 }
 
 .mobile-menu-links {
+    visibility: hidden;
     max-height: 0;
     overflow: hidden;
 
@@ -28,11 +39,13 @@
 }
 
 .mobile-menu-links_show {
+    visibility: visible;
     animation: show 1s ease forwards;
 }
 
 @keyframes show {
     from {
+        visibility: hidden;
         max-height: 0;
     }
 

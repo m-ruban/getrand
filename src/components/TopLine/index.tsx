@@ -41,7 +41,10 @@ const TopLine: FC = () => {
                         >
                             <div className="top-line-icon top-line-icon_boosty" />
                         </a>
-                        <div
+                        <button
+                            type="button"
+                            aria-label={getTrl('searchLabel')}
+                            aria-expanded={showSearch}
                             className="top-line-icon top-line-icon_search"
                             onClick={() => {
                                 setShowSearch(!showSearch);

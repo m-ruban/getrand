@@ -6,6 +6,8 @@ import ArrowUpAlt2 from 'gg-ukit/components/Icon/ArrowUpAlt2';
 import scrollTop from 'modules/scrollTop';
 import throttle from 'modules/throttle';
 
+import { getTrl } from 'lang/trls';
+
 import './scroll-to-top.less';
 
 const SCROLL_THROTTLE_DELAY_MS = 100;
@@ -49,9 +51,9 @@ const ScrollToTop: FC = () => {
                 'scroll-to-top_shown': shown,
             })}
         >
-            <div onClick={handleClick}>
+            <button type="button" aria-label={getTrl('scrollToTopLabel')} onClick={handleClick}>
                 <ArrowUpAlt2 color="#566472" />
-            </div>
+            </button>
         </div>
     );
 };
