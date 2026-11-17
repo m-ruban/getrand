@@ -1,5 +1,5 @@
 import { AsyncLocalStorage } from 'async_hooks';
-import { getLanguage, setLanguageResolver } from 'lang/language';
+import { getLanguage, isLanguage, setLanguageResolver } from 'lang/language';
 
 export const TRANSLATION_COOKIE = 'i18n_test';
 export const LANGUAGE_COOKIE = 'language';
@@ -12,7 +12,8 @@ export const languageFromCookies = (header = '') => {
         }
         return result;
     }, {});
-    return cookies[TRANSLATION_COOKIE] === '1' && cookies[LANGUAGE_COOKIE] === 'en' ? 'en' : 'ru';
+    const language = cookies[LANGUAGE_COOKIE];
+    return cookies[TRANSLATION_COOKIE] === '1' && isLanguage(language) ? language : 'ru';
 };
 
 export const apiLanguage = (url, language = getLanguage()) => {

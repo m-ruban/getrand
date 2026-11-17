@@ -3,7 +3,7 @@ import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 import { loadableReady } from '@loadable/component';
 import { createBrowserHistory } from 'history';
-import { setLanguageResolver } from 'lang/language';
+import { isLanguage, setLanguageResolver } from 'lang/language';
 
 import { createStore } from 'models/store';
 
@@ -11,7 +11,7 @@ import { captureClientError, ErrorBoundary } from 'modules/sentry';
 
 import { App } from 'components/App';
 
-const language = window.__language__ === 'en' ? 'en' : 'ru';
+const language = isLanguage(window.__language__) ? window.__language__ : 'ru';
 setLanguageResolver(() => language);
 delete window.__language__;
 

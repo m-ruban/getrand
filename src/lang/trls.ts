@@ -1,7 +1,9 @@
 import { ReactNode } from 'react';
 import { en } from 'lang/en';
+import { es } from 'lang/es';
 import { getLanguage, Language } from 'lang/language';
 import { ru } from 'lang/ru';
+import { sr } from 'lang/sr';
 
 export type { Language } from 'lang/language';
 export type TrlKey = keyof typeof ru;
@@ -12,7 +14,7 @@ type DynamicTrlKey = {
 export type StaticTrlKey = Exclude<TrlKey, DynamicTrlKey>;
 type TrlParams<K extends DynamicTrlKey> = Parameters<typeof ru[K]>[0];
 
-const dictionaries = { ru, en };
+const dictionaries = { ru, en, sr, es };
 
 function getTrl(key: StaticTrlKey, language?: Language): string;
 function getTrl<K extends DynamicTrlKey>(key: K, params: TrlParams<K>, language?: Language): ReactNode;

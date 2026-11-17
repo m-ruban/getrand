@@ -22,7 +22,7 @@ export class App extends React.Component {
                             return (
                                 <Route
                                     key={path || '404'}
-                                    path={path ? `/:language(en)?${path}` : undefined}
+                                    path={path ? `/:language(en|sr|es)?${path}` : undefined}
                                     exact={exact}
                                     render={component}
                                 />
