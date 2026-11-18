@@ -23,7 +23,7 @@ import { getTrl } from 'lang/trls';
 import 'components/CompanyView/companyView.less';
 
 const CompanyView: FC = () => {
-    const { seo, created_iso, location, link, developed_games } = useSelector((state: RootStore) => state.company);
+    const { seo, created_iso, link, developed_games } = useSelector((state: RootStore) => state.company);
     const { name, render_tree, meta_keyword } = seo; // TODO render published_games after merge
 
     return (
@@ -32,14 +32,6 @@ const CompanyView: FC = () => {
             <Paragraph>
                 <CreatedDate created_iso={created_iso} />
             </Paragraph>
-            {location && (
-                <Paragraph>
-                    <div className="company-property">
-                        <LocationPinCircle color="#738697" />
-                        &nbsp;{location}
-                    </div>
-                </Paragraph>
-            )}
             {link && (
                 <Paragraph>
                     <div className="company-property">
