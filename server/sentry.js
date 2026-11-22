@@ -44,6 +44,8 @@ export const asyncHandler = (handler) => (req, res, next) =>
 export const captureServerError = (error, context = {}) => Sentry.captureException(error, { extra: context });
 
 export const sentryErrorHandler = (error, req, res, next) => {
+    // eslint-disable-next-line no-console
+    console.error('SSR error:', req.method, req.originalUrl, error);
     captureServerError(error);
     if (res.headersSent) {
         return next(error);

@@ -23,13 +23,17 @@ interface GalleryImage extends BasicImageProps {
 }
 
 interface GalleryProps {
-    slides: GalleryImage[];
+    slides?: GalleryImage[];
     note?: string;
 }
 
 const Gallery: FC<GalleryProps> = ({ slides, note }) => {
     const [zoom, setZoom] = useZoom();
     const imageLoadType = useImageLoadType();
+    if (!slides?.length) {
+        return null;
+    }
+
     return (
         <div className="gallery-wrapper">
             <div className="gallery">
