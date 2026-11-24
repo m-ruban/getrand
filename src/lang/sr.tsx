@@ -43,6 +43,7 @@ const sr: TranslationDictionary = {
     zenLinkLabel: 'GameSpirit na Yandex Zen-u',
     boostyLinkLabel: 'GameSpirit na Boosty-ju',
     tipBoostyLabel: 'Podrži na Boosty-ju',
+    tipKofiLabel: 'Podrži GameSpirit na Ko-fi-ju',
     tipYoomoneyLabel: 'Podrži na YooMoney-ju',
     tipDescription:
         'Dopao vam se članak? Bio vam je koristan? Podržite GameSpirit.org i pomozite nam da stvaramo još kvalitetnog sadržaja.',

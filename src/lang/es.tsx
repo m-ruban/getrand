@@ -43,6 +43,7 @@ const es: TranslationDictionary = {
     zenLinkLabel: 'GameSpirit en Yandex Zen',
     boostyLinkLabel: 'GameSpirit en Boosty',
     tipBoostyLabel: 'Apoyar en Boosty',
+    tipKofiLabel: 'Apoyar a GameSpirit en Ko-fi',
     tipYoomoneyLabel: 'Apoyar en YooMoney',
     tipDescription:
         '¿Te ha gustado este artículo? ¿Te ha resultado útil? Apoya a GameSpirit.org y ayúdanos a crear más contenido de calidad.',

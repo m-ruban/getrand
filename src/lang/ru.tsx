@@ -41,6 +41,7 @@ const ru = {
     zenLinkLabel: 'Группа в Яндекс.Дзен',
     boostyLinkLabel: 'Страница на Boosty',
     tipBoostyLabel: 'Поддержать на Boosty',
+    tipKofiLabel: 'Поддержать GameSpirit на Ko-fi',
     tipYoomoneyLabel: 'Поддержать на ЮMoney',
     tipDescription:
         'Понравился материал? Было полезно? Поддержи GameSpirit.org — помоги нам создавать новые материалы.',
