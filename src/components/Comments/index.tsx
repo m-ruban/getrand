@@ -20,6 +20,9 @@ const loadRemoteScript = (src: string) => {
         tag.type = 'text/javascript';
         tag.src = src;
         tag.async = true;
+        if (src === DISFORA_SCRIPT) {
+            tag.setAttribute('data-floating-button', 'false');
+        }
         tag.addEventListener('load', () => {
             resolve(true);
         });
