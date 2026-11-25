@@ -6,64 +6,74 @@ import elementObserver from 'modules/elementObserver';
 import 'components/Comments/comments.less';
 
 const VK_OPEN_API = 'https://vk.com/js/api/openapi.js?168';
+const DISFORA_SCRIPT = 'https://disfora.com/public/disfora.js';
 
-interface LoadPromise {
-    error: boolean;
-}
+const scriptLoads = new Map<string, Promise<boolean>>();
 
 const loadRemoteScript = (src: string) => {
-    return new Promise<LoadPromise>((resolve, reject) => {
-        // create script request
+    const existing = scriptLoads.get(src);
+    if (existing) {
+        return existing;
+    }
+    const loading = new Promise<boolean>((resolve) => {
         const tag = document.createElement('script');
-        const container = document.head;
         tag.type = 'text/javascript';
         tag.src = src;
-        // some events
+        tag.async = true;
         tag.addEventListener('load', () => {
-            resolve({ error: false });
+            resolve(true);
         });
         tag.addEventListener('error', () => {
-            reject({ error: true });
+            tag.remove();
+            scriptLoads.delete(src);
+            resolve(false);
         });
-        // add tag to head
-        container.appendChild(tag);
+        document.head.appendChild(tag);
     });
+    scriptLoads.set(src, loading);
+    return loading;
 };
 
 const Comments: FC = () => {
-    const vkRef = useRef<HTMLDivElement>(null);
+    const language = getLanguage();
+    const commentsRef = useRef<HTMLDivElement>(null);
     const [injectWidget, setInjectWidget] = useState<boolean>(false);
 
     const onShowLoader = useCallback(() => {
-        setInjectWidget((value) => !value);
+        setInjectWidget(true);
     }, []);
 
+    // Загружаем выбранный сервис/инициализируем VK при приближении к блоку комментариев
     useEffect(() => {
+        let cancelled = false;
         if (injectWidget) {
-            loadRemoteScript(VK_OPEN_API).then(({ error }) => {
-                if (error) {
+            loadRemoteScript(language === 'ru' ? VK_OPEN_API : DISFORA_SCRIPT).then((loaded) => {
+                if (!loaded || cancelled || language !== 'ru') {
                     return;
                 }
-                const lang = getLanguage();
                 /* eslint-disable @typescript-eslint/ban-ts-comment */
                 // @ts-ignore-start
-                VK.init({ apiId: 6456413, onlyWidgets: true, lang });
+                VK.init({ apiId: 6456413, onlyWidgets: true, lang: language });
                 // @ts-ignore
                 VK.Widgets.Comments('vk_comments', { limit: 5, attach: '*' });
                 /* eslint-enable @typescript-eslint/ban-ts-comment */
             });
         }
-    }, [injectWidget]);
+        return () => {
+            cancelled = true;
+        };
+    }, [injectWidget, language]);
 
+    // Следим за приближением к блоку комментариев, затем отключаем наблюдение.
     useEffect(() => {
-        if (!vkRef.current) {
+        if (!commentsRef.current) {
             return;
         }
         if (injectWidget) {
             return;
         }
         const loaderObserver = elementObserver({
-            element: vkRef.current,
+            element: commentsRef.current,
             onShow: onShowLoader,
             rootMargin: '0px 0px 500px 0px',
         });
@@ -73,8 +83,8 @@ const Comments: FC = () => {
     }, [onShowLoader, injectWidget]);
 
     return (
-        <div className="comments">
-            <div ref={vkRef} id="vk_comments" />
+        <div className="comments" ref={commentsRef}>
+            {language === 'ru' ? <div id="vk_comments" /> : injectWidget && <div data-disfora-comments="" />}
         </div>
     );
 };
